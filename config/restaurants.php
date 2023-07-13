@@ -125,9 +125,9 @@ return
         "visible" => "1",
     ],
     [
-        "name" => "Ganesha India",
-        "image_path" => "img/indiano/ganesha-india.jpg",
-        "image_original_name" => "ganesha-india",
+        "name" => "Himalayas Kashmir",
+        "image_path" => "img/indiano/himalayas-kashmir.jpg",
+        "image_original_name" => "himalayas-kashmir",
         "address" => "via labicana, 29, 00184 Roma",
         "p_iva" => "IT123456789",
         "visible" => "1",
@@ -202,8 +202,8 @@ return
     ],
     [
         "name" => "El Jalapeño",
-        "image_path" => "img/messicano/montebello.jpg",
-        "image_original_name" => "montebello",
+        "image_path" => "img/messicano/el-jalapeno.jpg",
+        "image_original_name" => "el-jalapeno",
         "address" => "Via aurelia, 483, 00165 Roma",
         "p_iva" => "IT123456789",
         "visible" => "1",
