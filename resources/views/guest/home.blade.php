@@ -4,7 +4,9 @@
 
 <div class="container">
 
-    <h1>Home Pubblica</h1>
+    <div id="app">
+
+    </div>
 
 </div>
 
