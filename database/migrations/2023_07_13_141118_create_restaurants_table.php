@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
+            $table->string('name', 255)->unique();
             $table->string('slug', 255)->unique();
+            $table->string('image_path')->nullable();
+            $table->string('image_original_name')->nullable();
             $table->string('address', 255);
             $table->string('p_iva', 45);
             $table->tinyInteger('visible');
