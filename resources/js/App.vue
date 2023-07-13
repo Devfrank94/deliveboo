@@ -1,12 +1,24 @@
 <script>
+import Header from "./components/Header.vue"
+
 export default {
-name: 'App'
+name: 'App',
+components:{
+    Header,
+    // Main,
+    // Footer
+  }
 }
 </script>
 
 <template>
 
-<h1>Home pubblica Vue</h1>
+    <div class="container">
+        <Header />
+        <router-view></router-view>
+
+    </div>
+
 
 </template>
 

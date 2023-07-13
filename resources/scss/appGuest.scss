@@ -2,6 +2,19 @@
 @import '@fontsource/galada';
 @import '@fontsource/spectral-sc';
 
+// Partials
+@import './partialsGuest/general';
+@import './partialsGuest/mixin';
+@import './partialsGuest/typography';
+@import './partialsGuest/vars';
+@import './partialsGuest/utilities';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     font-family: 'Galada';
 }
