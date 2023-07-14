@@ -28,6 +28,5 @@ class RestaurantsTableSeeder extends Seeder
             $new_restaurant->visible = $restaurant['visible'];
             $new_restaurant->save();
             }
-
     }
 }
