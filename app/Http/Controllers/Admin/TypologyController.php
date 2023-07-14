@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Typology;
 use Illuminate\Http\Request;
+use App\Http\Requests\TypologyRequest;
 
 class TypologyController extends Controller
 {
@@ -35,9 +36,14 @@ class TypologyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TypologyRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $form_data['slug'] = Typology::generateSlug($form_data['name']);
+
+        return redirect()->route('admin.typologies.index');
+
     }
 
     /**
@@ -57,9 +63,9 @@ class TypologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Typology $typology)
     {
-        //
+        return view('admin.typologies.edit', compact('typology'));
     }
 
     /**
@@ -69,9 +75,14 @@ class TypologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TypologyRequest $request,Typology $typology)
     {
-        //
+        $form_data=$request->all();
+
+        $typology->update($form_data);
+        $form_data['slug'] = Typology::generateSlug($form_data['name']);
+
+        return redirect()->route('admin.typologies.index');
     }
 
     /**
@@ -80,8 +91,9 @@ class TypologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Typology $typology)
     {
-        //
+        $typology->delete();
+        return redirect()->route('admin.typologies.index')->with('deleted', " $typology->name è stato eliminato correttamente");
     }
 }

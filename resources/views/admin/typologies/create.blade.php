@@ -15,7 +15,7 @@
   </div>
   @endif
 
-  {{-- Form --}}
+  {{-- Form Create --}}
   <h2> Crea una nuova tipologia </h2>
 
   <form action="{{route('admin.typologies.store')}}" method="POST">
@@ -38,6 +38,9 @@
       @error('name')
       <p class="text-danger">{{$message}}</p>
       @enderror
+
+
+      <button type="submit" class="my-3 btn btn-primary">Invia</button>
 
     </div>
 
