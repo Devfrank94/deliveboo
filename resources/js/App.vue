@@ -13,11 +13,10 @@ components:{
 
 <template>
 
-    <div class="container">
+
         <Header />
         <router-view></router-view>
-        
-    </div>
+
 
 
 </template>
