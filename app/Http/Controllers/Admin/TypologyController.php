@@ -24,9 +24,9 @@ class TypologyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Typology $typologies)
     {
-        //
+        return view('admin.typologies.create', compact('typologies'));
     }
 
     /**
