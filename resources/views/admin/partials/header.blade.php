@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <div class="logo w-25">
-               <img class="w-100" src="deliveboo-white-no-background.png" alt="Logo Deliveboo Dashboard">
+               <img class="w-100" src="img/deliveboo-white-no-background.png" alt="Logo Deliveboo Dashboard">
             </div>
             {{-- config('app.name', 'Laravel') --}}
         </a>
