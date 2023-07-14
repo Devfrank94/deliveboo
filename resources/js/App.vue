@@ -18,7 +18,6 @@ components:{
 
 
 
-        <Header />
         <router-view></router-view>
 
 

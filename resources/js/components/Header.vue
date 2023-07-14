@@ -40,7 +40,7 @@ export default {
       </ul>
 
     </div>
-
+</header>
 
 </template>
 
