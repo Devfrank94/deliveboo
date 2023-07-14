@@ -10,6 +10,15 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'address',
+        'p_iva',
+        'slug',
+        'visible',
+        'user_id'
+    ];
+
     public function typologies(){
         return $this->belongsToMany(Typology::class);
     }
