@@ -12,6 +12,7 @@ export default {
 
 <template>
 
+
 <header class="py-2">
     <div class="container-fluid d-flex px-0 my-4 px-3">
 
@@ -39,8 +40,6 @@ export default {
       </ul>
 
     </div>
-
-</header>
 
 
 </template>
