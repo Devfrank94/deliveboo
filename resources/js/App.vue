@@ -16,7 +16,11 @@ components:{
     <Header/>
         <div>
 
-            <router-view></router-view>
+
+
+        <Header />
+        <router-view></router-view>
+
 
         </div>
     <Footer/>
