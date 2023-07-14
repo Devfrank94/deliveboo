@@ -12,7 +12,7 @@ export default {
 
 <template>
 
-<header>
+<header class="container-fluid">
 
   <ul class="d-flex justify-content-center fs-5 my-4">
 
