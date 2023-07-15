@@ -3,9 +3,9 @@
 @section('content')
 <main>
 <div class="container-fluid my-4">
-    <h1 class="mb-3">Elenco Piatti</h1>
+    <h1 class="mb-3 ms-3">Elenco Piatti</h1>
 
-    <a href="{{route('admin.dishes.create')}}" class="btn btn-success mb-4"><i class="fa-solid fa-utensils"></i> Crea Nuovo Piatto</a>
+    <a href="{{route('admin.dishes.create')}}" class="btn btn-success mb-4 ms-3"><i class="fa-solid fa-utensils"></i> Crea Nuovo Piatto</a>
         @if (session('deleted'))
             <div class="alert alert-success" role="alert">
                 {{ session('deleted') }}
@@ -45,9 +45,9 @@
         </div>
   </div>
   {{-- Pagination --}}
-  {{-- <div>
-    {{ $projects->links() }}
-  </div> --}}
+  <div class="ms-4 my-3">
+    {{ $dishes->links() }}
+  </div>
 </div>
 </main>
 
