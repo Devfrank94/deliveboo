@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <div class="logo w-25">
-               <img class="w-100" src="img/deliveboo-white-no-background.png" alt="Logo Deliveboo Dashboard">
+               <img class="w-100" src="{{ asset('deliveboo-white-no-background.png') }}">
             </div>
             {{-- config('app.name', 'Laravel') --}}
         </a>
@@ -18,7 +18,7 @@
                 <li class="nav-item">
                     {{-- scritta in questo modo richiama varivbili per sito multilanguage
                     <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a> --}}
-                    <a class="nav-link" target="_blank" href="{{ route('home') }}">Vai il sito</a>
+                    <a class="nav-link" target="_blank" href="{{ route('home') }}">Home</a>
                 </li>
                 @auth()
                 {{-- <li class="nav-item">

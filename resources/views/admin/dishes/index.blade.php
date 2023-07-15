@@ -38,7 +38,7 @@
                 <li class="list-group-item text-center my-3">
                     <a href="{{route('admin.dishes.show', $dish)}}" class="btn btn-secondary"><i class="fa-regular fa-eye" title="Vedi" style="color: #ffffff;"></i></a>
                     {{-- <a href="{{route('admin.dishes.edit', $dish)}}" class="btn btn-primary"><i class="fa-regular fa-pen-to-square" title="Modifica" style="color: #ffffff;"></i></a> --}}
-                    {{-- @include('admin.partials.form-delete') --}}
+                    @include('admin.partials.form-delete')
                 </li>
             </div>
             @endforeach

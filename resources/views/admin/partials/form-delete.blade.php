@@ -1,4 +1,4 @@
-{{-- <!-- Button trigger modal -->
+<!-- Button trigger modal -->
 <button type="button" class="btn btn-danger d-inline" data-bs-toggle="modal" data-bs-target="#exampleModal">
   <i class="fa-regular fa-trash-can" title="Elimina" style="color: #ffffff;"></i>
 </button>
@@ -27,4 +27,4 @@
       </div>
     </div>
   </div>
-</div> --}}
+</div>
