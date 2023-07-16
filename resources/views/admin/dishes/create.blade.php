@@ -4,7 +4,7 @@
     <div class="container my-5">
         <h1 class="my-3">Crea Nuovo Piatto</h1>
 
-        {{-- @if ($errors->any())
+        @if ($errors->any())
             <div class="alert alert-danger" role="alert">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -12,7 +12,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif --}}
+        @endif
 
 
         <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">
