@@ -36,7 +36,7 @@
 
             {{--------------- IMMAGINE PIATTO -----------------}}
             <div class="mb-4">
-                <label for="image_path" class="form-label">Immagine Piatto</label>
+                <label for="image_path" class="form-label">Immagine Piatto (*)</label>
                 <input
                   id="image_path"
                   onchange="showImage(event)"
@@ -84,7 +84,7 @@
 
             {{--------------- VOTO PIATTO -----------------}}
             <div class="mb-4">
-                <label for="vote" class="form-label">Seleziona un voto da 1 a 5(*)</label>
+                <label for="vote" class="form-label">Seleziona un voto da 1 a 5 (*)</label>
                 <div>
                     <input type="range" class="form-range w-50" min="1" max="5" id="vote" value="{{ old('vote') }}" name="vote">
                     @error('vote')
