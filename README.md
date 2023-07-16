@@ -11,7 +11,7 @@ Permette agli utenti di cercare i loro cibi preferiti, preparati dai loro ristor
 1. aprire il progetto su vscode
 2. aprire un nuovo terminale da dividere, e nel primo inserire
 ```
-npm i
+npm i // nel caso dia errore npm i --force
 ```
 ```
 composer install
@@ -22,7 +22,12 @@ composer install
 php artisan key:generate
 ```
 
-4. Avviare in due diversi terminali per visualizzare il progetto
+4. creare con comando cartella di storage virtuale e cancellare la vecchia storage se presente (se si hanno problemi di visualizzazione)
+```
+php artisan storage:link
+```
+
+5. Avviare in due diversi terminali per visualizzare il progetto
 
 ```
 npm run dev
