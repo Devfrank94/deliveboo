@@ -24,18 +24,18 @@ export default {
 <!-- menu header -->
       <ul class="d-flex justify-content-between fs-5 my-4 w-75">
         <li>
-          <router-link :to="{ name: 'home' }">Home</router-link>
+            <router-link :to="{ name: 'home' }">Home</router-link>
         </li>
 
         <li>
-          <router-link :to="{ name: 'restaurants' }">Ristoranti</router-link>
+            <router-link :to="{ name: 'restaurants' }">Ristoranti</router-link>
         </li>
 
         <li>
-          <router-link :to="{ name: 'dishes' }">Piatti</router-link>
+            <router-link :to="{ name: 'dishes' }">Piatti</router-link>
         </li>
         <li>
-            Registrati
+            <a href="/admin">Account</a>
         </li>
       </ul>
 
