@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
+use App\Models\Typology;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -21,7 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+      $typologies = Typology::all();
+      return view('auth.register', compact('typologies'));
     }
 
     /**
@@ -56,7 +58,11 @@ class RegisteredUserController extends Controller
             'visible' => 1
         ]);
 
+        $form_data = $request->all();
 
+        if(array_key_exists('typologies', $form_data)){
+          $restaurant->typologies()->attach($form_data['typologies']);
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }
