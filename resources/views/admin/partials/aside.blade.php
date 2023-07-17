@@ -11,9 +11,9 @@
     <li class="mb-3">
     <a href="{{route('admin.dishes.index')}}"><i class="fa-solid fa-utensils"></i> Piatti</a>
     </li>
-    {{-- <li class="mb-3">
+    <li class="mb-3">
     <a href="{{route('admin.typologies.index')}}"><i class="fa-solid fa-folder-open"></i> Tipologie</a>
-    </li> --}}
+    </li>
 </ul>
 </nav>
 

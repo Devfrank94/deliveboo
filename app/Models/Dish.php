@@ -17,6 +17,7 @@ class Dish extends Model
         'description',
         'ingredients',
         'image_path',
+        'image_original_name',
         'price',
         'vote',
         'visible'

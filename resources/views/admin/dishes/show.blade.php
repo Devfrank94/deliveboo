@@ -14,13 +14,13 @@
         <div class="card mb-3" style="max-width: 70rem;">
             <div class="row g-0">
               <div class="col-md-6">
-                <img src="{{ asset($dish->image_path) }}" class="img-fluid rounded-start ratio ratio-1x1 h-100" alt="{{ $dish->image_original_name }}">
+                <img src="{{ asset('storage/' . $dish->image_path) }}" class="img-fluid rounded-start ratio ratio-1x1 h-100" alt="{{ $dish->image_original_name }}">
               </div>
               <div class="col-md-6">
                 <div class="card-body">
                   <h5 class="card-title"><div class="fw-bold">Nome Piatto:</div><span class="badge rounded-pill text-bg-primary">{{$dish->name}}</span></h5>
                   <p class="card-text"><div class="fw-bold">Descrizione:</div>{!!$dish->description!!}</p>
-                  <p class="card-text"><div class="fw-bold">Ingredienti:</div>{{$dish->ingredients}}</p>
+                  <p class="card-text"><div class="fw-bold">Ingredienti:</div>{!!$dish->ingredients!!}</p>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><div class="fw-bold">Prezzo:</div>{{$dish->price}} €</li>
                     <li class="list-group-item">
