@@ -9,9 +9,6 @@ use Illuminate\Support\Str;
 class Dish extends Model
 {
     use HasFactory;
-
-<<<<<<< HEAD
-=======
     protected $fillable = [
         'name',
         'restaurant_id',
@@ -22,9 +19,8 @@ class Dish extends Model
         'price',
         'vote',
         'visible'
-      ];
+    ];
 
->>>>>>> parent of 5826ff6 (fix some errors)
     public function restaurant(){
         return $this->belongsTo(Restaurant::class);
     }
