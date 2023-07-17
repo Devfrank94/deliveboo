@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -45,6 +46,17 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        $restaurant = Restaurant::create([
+            'user_id' => Auth::user()->id,
+            'name' => $request->name_restaurant,
+            'slug' => Restaurant::generateSlug($request->name_restaurant,),
+            'address' => $request->address,
+            'p_iva' => $request->p_iva,
+            'visible' => 1
+        ]);
+
+
 
         return redirect(RouteServiceProvider::HOME);
     }
