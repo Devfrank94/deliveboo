@@ -74,7 +74,7 @@
                 class="form-control w-25 @error('price') is-invalid @enderror"
                 min="1"
                 name="price"
-                placeholder="Inserisci il costo del piatto"
+                placeholder="Costo del piatto"
                 type="number"
                 >
                 @error('price')
@@ -95,17 +95,17 @@
 
             {{-- STATO DI ATTIVAZIONE DEL PRODOTTO --}}
             <div class="mb-4">
-                <label class="form-check-label" for="visible">Vuoi attivare il prodotto?</label>
-                <div class="form-check form-switch">
-                    <input
-                    class="form-check-input"
-                    name="visible"
-                    type="checkbox"
-                    value="{{ old('visible') }}"
-                    role="switch" id="visible" checked
-                    >
-                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="visible">
+                      Vuoi attivare il prodotto?
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="visible" value="1" id="visible" {{ old('visible') === '1' || (isset($dish) && $dish->visible === 1) ? 'checked' : '' }}>
+                  </div>
+
+
+                  {{-- TODO:fornire user auth al campo restaurant id --}}
             </div>
+
 
                 <button type="submit" class="btn btn-success">Salva</button>
                 <button type="reset" class="btn btn-danger">Cancella</button>

@@ -14,9 +14,8 @@
 
         <div class="container-fluid d-flex flex-wrap row-cols-auto gap-3">
             @foreach ($dishes as $dish)
-            {{-- TODO:caricare anche le immagini in storage  {{ asset('storage/' . $dish->image_path) }} --}}
             <div class="card" style="width: 20rem;">
-                <img src="{{ asset($dish->image_path) }}" onerror="this.src='/img/no_image.jpg'" alt="{{ $dish->image_original_name }}" class="card-img-top h-25">
+                <img src="{{ asset('storage/uploads/' . $dish->image_path) }}" onerror="this.src='/img/no_image.jpg'" alt="{{ $dish->image_original_name }}" class="card-img-top h-25">
                 <div class="card-body h-25">
                 <h5 class="card-title"><div class="fw-bold">Nome Piatto:</div><span class="badge rounded-pill text-bg-primary">{{$dish->name}}</span>
                 </h5>
