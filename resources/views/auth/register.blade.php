@@ -101,10 +101,30 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="mb-3">
+                          <label class="col-md-4 col-form-label text-md-right">Typologies</label>
+                          <div class="btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+                              @foreach ($typologies as $typology)
+                                  <input
+                                      type="checkbox"
+                                      class="btn-check"
+                                      id="typology{{$loop->iteration}}"
+                                      value="{{$typology->id}}"
+                                      name="typologies[]"
+                                      autocomplete="off"
+                                      @if (in_array($typology->id, old('typologies', [])))
+                                          checked
+                                      @endif
+                                      >
+                                  <label class="btn btn-outline-secondary m-2" for="typology{{$loop->iteration}}">{{ $typology->name }}</label>
+                              @endforeach
+                          </div>
+                      </div>
                         <!------------------------------------------------------------ CUSTOM PART-------------------------------------------------------->
 
-                        <div class="mb-4 row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="w-100 mt-5">
+                            <div class="w-100 text-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

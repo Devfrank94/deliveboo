@@ -15,10 +15,18 @@
         @endif
     </h2>
 
+    <div class="typology-container text-center mt-3">
+      @foreach ($restaurant->typologies as $typology)
+        <span class="badge text-bg-dark fs-6">{{$typology->name}}</span>
+      @endforeach
+    </div>
+
     <div class="image-container text-center py-5">
         @if ($restaurant->image_path == null)
-            <h6>Aggiungi qui la tua immagine</h6>
-            <a href="" class="btn btn-dark"><i class="fa-solid fa-image fs-3"></i></a>
+          <h6>Aggiungi qui la tua immagine</h6>
+
+          @include('admin.partials.form-add-gallery')
+
         @else
             <img src="{{ asset('storage/' . $restaurant->image_path) }}" alt="{{$restaurant->image_original_name}}" class="w-50">
         @endif

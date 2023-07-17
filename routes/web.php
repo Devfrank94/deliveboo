@@ -31,6 +31,7 @@ Route::middleware(['auth', 'verified'])
     Route::resource('typologies', TypologyController::class);
     Route::resource('dishes', DishController::class);
     Route::resource('restaurant', RestaurantController::class);
+    Route::put('/gallery', [RestaurantController::class, 'gallery'])->name('gallery');
 });
 
 require __DIR__.'/auth.php';
