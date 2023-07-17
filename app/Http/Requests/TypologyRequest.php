@@ -24,7 +24,17 @@ class TypologyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => "required|min:3|max:50"
         ];
     }
+
+    public function messages()
+    {
+        return [
+            "name.required" => "il nome è obbligatorio",
+            "name.min" => "il nome deve contenere :min caratteri",
+            "name.max" => "il nome deve contenere :max caratteri"
+        ];
+    }
+
 }

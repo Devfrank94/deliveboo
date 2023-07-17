@@ -38,12 +38,16 @@ class TypologyController extends Controller
      */
     public function store(TypologyRequest $request)
     {
+
         $form_data = $request->all();
 
         $form_data['slug'] = Typology::generateSlug($form_data['name']);
 
-        return redirect()->route('admin.typologies.index');
+        $new_typology = new Typology();
+        $new_typology ->fill($form_data);
+        $new_typology ->save();
 
+        return redirect()->route('admin.typologies.index', $new_typology);
     }
 
     /**
