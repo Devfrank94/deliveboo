@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DishController;
+use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Guest\PageController;
 
 /*
@@ -27,6 +28,7 @@ Route::middleware(['auth', 'verified'])
 ->group( function() {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::resource('dishes', DishController::class);
+    Route::resource('restaurant', RestaurantController::class);
 });
 
 require __DIR__.'/auth.php';
