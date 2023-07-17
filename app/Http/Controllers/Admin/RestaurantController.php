@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -19,6 +20,28 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::where('user_id', '=', Auth::user()->id)->first();
 
         return view('admin.restaurant.index', compact('restaurant'));
+    }
+
+    public function gallery(Request $request)
+    {
+      $form_data = $request->all();
+
+      if(array_key_exists('image', $form_data)){
+
+        $form_data['image_original_name'] = $request->file('image')->getClientOriginalName();
+
+        $form_data['image_path'] = Storage::put('uploads', $form_data['image']);
+      }
+
+
+      $restaurant = Restaurant::where('user_id', '=', Auth::user()->id)->first();
+
+      $restaurant->image_path = $form_data['image_path'];
+      $restaurant->image_original_name = $form_data['image_original_name'];
+
+      $restaurant->update();
+
+      return view('admin.restaurant.index', compact('restaurant'));
     }
 
     /**

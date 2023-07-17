@@ -55,7 +55,9 @@ class RegisteredUserController extends Controller
             'slug' => Restaurant::generateSlug($request->name_restaurant,),
             'address' => $request->address,
             'p_iva' => $request->p_iva,
-            'visible' => 1
+            'visible' => 1,
+            'image_path' => '',
+            'image_original_name' => '',
         ]);
 
         $form_data = $request->all();
