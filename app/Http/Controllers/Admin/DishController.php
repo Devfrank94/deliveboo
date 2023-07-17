@@ -47,8 +47,10 @@ class DishController extends Controller
 
         $form_data['restaurant_id'] = Auth::user()->restaurant->id;
 
-        if (!array_key_exists('visible', $form_data)) {
+        if (array_key_exists('visible', $form_data)) {
             $form_data['visible'] = 1;
+        }else{
+          $form_data['visible'] = 0;
         }
 
         if(array_key_exists('image_path', $form_data)){
@@ -97,9 +99,35 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DishRequest $request, Dish $dish)
     {
-        //
+      $form_data = $request->all();
+
+
+      if($dish->name !== $form_data['name']){
+        $form_data['slug'] = Dish::generateSlug($form_data['name']);
+      }else{
+        // altrimenti salvo il slug il vecchio slug
+        $form_data['slug']  = $dish->slug;
+      }
+
+      if (array_key_exists('image_path', $form_data)) {
+        // Verifica se esiste un'immagine precedente e, se presente, eliminala dallo storage
+        if ($dish->image_path) {
+          Storage::disk('public')->delete($dish->image_path);
+        }
+
+        // Prima di salvare, salva il nome originale dell'immagine
+        $form_data['image_original_name'] = $request->file('image_path')->getClientOriginalName();
+
+        // Salva l'immagine nella cartella "uploads" e memorizza il percorso
+        $form_data['image_path'] = Storage::put('uploads', $request->file('image_path'));
+      }
+
+
+      $dish->update($form_data);
+
+      return redirect()->route('admin.dishes.show', compact('dish'));
     }
 
     /**
