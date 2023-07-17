@@ -33,7 +33,7 @@
           name="name"
           value="{{old('name')}}"
           aria-describedby="name"
-          placeholder="Inserisci il nome della Tipologia"
+          placeholder="Modifica il nome della Tipologia"
           >
 
           @error('name')
@@ -43,7 +43,7 @@
 
       </div>
 
-
+      <button type="submit" class="btn btn-primary">Invia</button>
 
 
     </form>
