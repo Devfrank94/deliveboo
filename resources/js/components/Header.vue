@@ -89,6 +89,16 @@ button{
         border-radius: 50px;
         color: white;
         background-color: #D90429;
+
+        a{
+          color: white;
+          text-transform: uppercase;
+          text-decoration: none;
+        }
+        a:hover{
+          color: #F9C80E;
+        }
+
     }
     button:first-child{
         margin-right: 30px;
