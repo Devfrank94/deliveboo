@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger d-inline" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-danger d-inline" data-bs-toggle="modal" data-bs-target="{{'#' . $dish->id}}">
   <i class="fa-regular fa-trash-can" title="Elimina" style="color: #ffffff;"></i>
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="{{$dish->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

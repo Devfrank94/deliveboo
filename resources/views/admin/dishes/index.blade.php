@@ -33,10 +33,18 @@
                                 @endif
                             @endfor
                         </li>
+                        <li class="list-group-item">
+                            <div class="fw-bold">Stato di attivazione:</div>
+                            @if($dish->visible == 1)
+                            <span class="badge rounded-pill text-bg-success">Attivato</span>
+                            @else
+                            <span class="badge rounded-pill text-bg-danger">Disattivato</span>
+                            @endif
+                        </li>
                         </ul>
                         <li class="list-group-item text-center my-3">
                             <a href="{{route('admin.dishes.show', $dish)}}" class="btn btn-secondary"><i class="fa-regular fa-eye" title="Vedi" style="color: #ffffff;"></i></a>
-                            {{-- <a href="{{route('admin.dishes.edit', $dish)}}" class="btn btn-primary"><i class="fa-regular fa-pen-to-square" title="Modifica" style="color: #ffffff;"></i></a> --}}
+                            <a href="{{route('admin.dishes.edit', $dish)}}" class="btn btn-primary"><i class="fa-regular fa-pen-to-square" title="Modifica" style="color: #ffffff;"></i></a>
                             @include('admin.partials.form-delete')
                         </li>
                     </div>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container my-5">
-        <h1 class="my-3">Crea Nuovo Piatto</h1>
+        <h1 class="my-3">Modifica | {{ $dish->name }}</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger" role="alert">
@@ -23,7 +23,7 @@
                 <label for="name" class="form-label">Nome (*)</label>
                 <input
                   id="name"
-                  value="{{ old('name') }}"
+                  value="{{ old('name', $dish?->name) }}"
                   class="form-control @error('name') is-invalid @enderror"
                   name="name"
                   placeholder="Inserisci Nome Piatto"
@@ -50,7 +50,7 @@
             {{--------------- DESCRIZIONE PIATTO -----------------}}
             <div class="mb-4">
                 <label for="description" class="form-label form-control @error('description') is-invalid @enderror">Descrizione (*)</label>
-                <textarea class="form-control"  name="description" id="description" value="{{ old('description') }}" cols="30" rows="10" placeholder="Descrivi il piatto">{{ old('description') }}</textarea>
+                <textarea class="form-control"  name="description" id="description" value="{{ old('description', $dish?->description) }}" cols="30" rows="10" placeholder="Descrivi il piatto">{{ old('description', $dish?->description) }}</textarea>
                 @error('description')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -59,7 +59,7 @@
             {{--------------- INGREDIENTI PIATTO-----------------}}
             <div class="mb-4">
                 <label for="ingredients" class="form-label form-label form-control @error('ingredients') is-invalid @enderror">Ingredienti: (*)</label>
-                <textarea class="form-control"  name="ingredients" id="ingredients" value="{{ old('ingredients') }}" cols="30" rows="10" placeholder="Inserisci ingredienti">{{ old('ingredients') }}</textarea>
+                <textarea class="form-control"  name="ingredients" id="ingredients" value="{{ old('ingredients', $dish?->ingredients) }}" cols="30" rows="10" placeholder="Inserisci ingredienti">{{ old('ingredients', $dish?->ingredients) }}</textarea>
                 @error('ingredients')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -70,7 +70,7 @@
                 <label for="price" class="form-label">Costo in € (*)</label>
                 <input
                 id="price"
-                value="{{ old('price') }}"
+                value="{{ old('price', $dish?->price) }}"
                 class="form-control w-25 @error('price') is-invalid @enderror"
                 min="1"
                 name="price"
@@ -86,7 +86,7 @@
             <div class="mb-4">
                 <label for="vote" class="form-label">Seleziona un voto da 1 a 5 (*)</label>
                 <div>
-                    <input type="range" class="form-range w-50" value="{{ old('vote') }}" min="1" max="5" id="vote" name="vote">
+                    <input type="range" class="form-range w-50" value="{{ old('vote', $dish?->vote) }}" min="1" max="5" id="vote" name="vote">
                     @error('vote')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -95,16 +95,18 @@
 
             {{-- STATO DI ATTIVAZIONE DEL PRODOTTO --}}
             <div class="mb-4">
-                  <div class="form-check form-switch mb-3">
-                    <label for="visible" class="visible">Vuoi attivare la scheda piatto?</label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      name="visible"
-                      id="visible"
-                      value="{{ old('visible')}}">
-                  </div>
+              <div class="form-check form-switch mb-3">
+                <label for="visible" class="visible">Vuoi attivare la scheda piatto?</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  name="visible"
+                  id="visible"
+                  value="{{ old('visible', $dish?->visible)}}" @if($dish?->visible)
+                  checked
+                @endif>
+              </div>
             </div>
 
 
