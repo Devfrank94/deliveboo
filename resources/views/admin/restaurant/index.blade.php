@@ -8,10 +8,10 @@
 
     <h2 class="text-center">
         {{$restaurant->name}}
-        @if ($restaurant->name == 1)
+        @if ($restaurant->visible == 1)
             <i class="fa-solid fa-circle" style="color: #00ff00;"></i>
         @else
-            <i class="fa-solid fa-circle" style="color: #00ff00;"></i>
+            <i class="fa-solid fa-circle" style="color: #ff0000;"></i>
         @endif
     </h2>
 
@@ -20,7 +20,7 @@
             <h6>Aggiungi qui la tua immagine</h6>
             <a href="" class="btn btn-dark"><i class="fa-solid fa-image fs-3"></i></a>
         @else
-            <img src="{{$restaurant->image_path}}" alt="{{$restaurant->image_original_name}}">
+            <img src="{{ asset('storage/' . $restaurant->image_path) }}" alt="{{$restaurant->image_original_name}}" class="w-50">
         @endif
 
     </div>
