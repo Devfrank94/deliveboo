@@ -16,7 +16,7 @@
   @endif
 
   {{-- Form Create --}}
-  <h2> Crea una nuova tipologia </h2>
+  <h2 class="my-4"> Crea una nuova tipologia </h2>
 
   <form action="{{route('admin.typologies.store')}}" method="POST">
     @csrf
@@ -27,7 +27,7 @@
 
       <input
       type="name"
-      class="form-control @error('name') is-invalid @enderror"
+      class="form-control @error('name') is-invalid @enderror w-50"
       id="name"
       name="name"
       value="{{old('name')}}"
