@@ -22,26 +22,22 @@ export default {
         </div>
 
 <!-- menu header -->
-        <div class="central-menu">
-            <ul class="d-flex  fs-5 my-4 w-75">
-                <li>
-                    <router-link :to="{ name: 'home' }">Home</router-link>
-                </li>
+      <ul class="d-flex justify-content-between fs-5 my-4 w-75">
+        <li>
+          <router-link :to="{ name: 'home' }">Home</router-link>
+        </li>
 
-                <li>
-                    <router-link :to="{ name: 'restaurants' }">Ristoranti</router-link>
-                </li>
+        <li>
+          <router-link :to="{ name: 'restaurants' }">Ristoranti</router-link>
+        </li>
 
-                <li>
-                    <router-link :to="{ name: 'dishes' }">Piatti</router-link>
-                </li>
-            </ul>
-        </div>
-
-        <div class="button-head">
-            <button>REGISTRATI</button>
-            <button>COME FUNZIONA</button>
-        </div>
+        <li>
+          <router-link :to="{ name: 'dishes' }">Piatti</router-link>
+        </li>
+        <li>
+            Registrati
+        </li>
+      </ul>
 
     </div>
 </header>
