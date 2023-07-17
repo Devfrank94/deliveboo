@@ -6,8 +6,13 @@
 <div class="container my-4">
 
   <div class="d-flex">
-    
+
     <h2 class="mb-4">Tipologie</h2>
+
+
+    @if (session('deleted'))
+    <div class="alert alert-warning text-center">{{ session('deleted') }}</div>
+    @endif
 
     <div>
       <a href="{{route('admin.typologies.create')}}" class="mx-4 btn btn-outline-primary">
@@ -20,7 +25,7 @@
   <div>
 
     {{-- TABLE --}}
-    <table class="table table-hover w-50 table-bordered">
+    <table class="table table-striped table-hover w-50 table-bordered">
 
       {{-- thead --}}
       <thead class="rounded-top-1">
@@ -47,48 +52,50 @@
               </a>
 
 
-            {{-- Delete --}}
+              {{-- Delete --}}
 
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-danger fw-bold" id="exampleModalLabel"> Attenzione </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5 text-danger fw-bold" id="exampleModalLabel"> Attenzione </h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Sei sicuro di voler eliminare <strong>{{ $typology->name }}</strong> ?
+                    </div>
+
+                    {{-- Form Delete --}}
+                    <form
+                      action="{{route('admin.typologies.destroy', $typology)}}"
+                      method="POST"
+                      class="d-inline"
+                      onsubmit="return confirm('confermi l\'eliminazione di {{$typology->name}} ?')">
+                        @csrf
+                        @method('DELETE')
+
+                      <div class="modal-footer">
+                        <button
+                        type="submit"
+                        title="elimina"
+                        class="btn btn-danger fw-bold">
+                        Elimina
+                        </button>
+
+                        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Annulla</button>
+                    </form>
+
                   </div>
-                  <div class="modal-body">
-                    Sei sicuro di voler eliminare {{ $typology->name }}?
-                  </div>
-
-                  {{-- Form Delete --}}
-                  <form
-                    action="{{route('admin.typologies.destroy', $typology)}}"
-                    method="POST">
-                      @csrf
-                      @method('DELETE')
-
-                    <div class="modal-footer">
-                      <button
-                      type="submit"
-                      class="btn btn-danger fw-bold">
-                      Elimina
-                      </button>
-
-                      <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Annulla</button>
-                  </form>
-
                 </div>
               </div>
-            </div>
             </td>
-
             @endforeach
         </tr>
       </tbody>
