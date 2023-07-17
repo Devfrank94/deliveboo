@@ -3,7 +3,7 @@
 return [
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------INDIANO------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
     [
         "image_path" => "img/indiano/samosa.jpg",
         "image_original_name" => "samosa",
@@ -73,7 +73,7 @@ return [
         "vote" => 5,
     ],
     [
-        "image_path" => "img/indiano/dahl.jgp",
+        "image_path" => "img/indiano/dahl.jpg",
         "image_original_name" => "dahl",
         "restaurant_id" => 14,
         "name" => "Dahl",
@@ -116,7 +116,7 @@ return [
     ],
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------FAST FOOD------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
     [
         "image_path" => "img/fast-food/hamburger-patatine.jpg",
         "image_original_name" => "hamburger-patatine",
@@ -263,7 +263,7 @@ return [
         "image_original_name" => "lasagna",
         "restaurant_id" => 17,
         "name" => "Lasagna",
-        "description" => "Le lasagne al forno sono costituite da una sfoglia di pasta all'uovo tagliata in fogli grossolanamente rettangolari detti lasagne, le quali, una volta bollite e scolate, 
+        "description" => "Le lasagne al forno sono costituite da una sfoglia di pasta all'uovo tagliata in fogli grossolanamente rettangolari detti lasagne, le quali, una volta bollite e scolate,
         vengono disposte in una sequenza di strati, separati da una farcitura che varia in relazione alle diverse tradizioni locali.",
         "ingredients" => [
             "Carne bovina",
@@ -307,8 +307,8 @@ return [
         "image_original_name" => "frittata",
         "restaurant_id" => 18,
         "name" => "Frittata alle cipolle",
-        "description" => "La frittata è un piatto di origine italiana il cui principale elemento sono le uova, simile all'omelette franceseù. Viene cotta da entrambi i lati e a seconda degli ingredienti, 
-        aggiunti durante o al termine della cottura, può essere consumata come secondo piatto, contorno o come dessert. L'omelette, con la quale venne confusa all'estero fino alla metà degli anni cinquanta, invece non viene girata durante la cottura e viene servita piegata in due, 
+        "description" => "La frittata è un piatto di origine italiana il cui principale elemento sono le uova, simile all'omelette franceseù. Viene cotta da entrambi i lati e a seconda degli ingredienti,
+        aggiunti durante o al termine della cottura, può essere consumata come secondo piatto, contorno o come dessert. L'omelette, con la quale venne confusa all'estero fino alla metà degli anni cinquanta, invece non viene girata durante la cottura e viene servita piegata in due,
         eventualmente farcita con altri ingredienti.",
         "ingredients" => [
             "Uova",
@@ -324,10 +324,10 @@ return [
         "visibility" => 1,
         "vote" => 4,
     ],
-    
+
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------SPAGNOLO------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
 
     [
         "image_path" => "img/spagnolo/paella.jpg",
@@ -426,7 +426,7 @@ return [
 
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------CINESE------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
     [
         "image_path" => "img/cinese/involtini-primavera.jpg",
         "image_original_name" => "involtini-primavera",
@@ -513,7 +513,7 @@ return [
 
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------GIAPPONESE------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
     [
         "image_path" => "img/giapponese/sake-tartare.jpg",
         "image_original_name" => "sake-tartare",
@@ -561,8 +561,8 @@ return [
         "vote" => 5,
     ],
     [
-        "image_path" => "img/giapponese/croquetas.jpg",
-        "image_original_name" => "croquetas",
+        "image_path" => "img/giapponese/sashimi-tonno.jpg",
+        "image_original_name" => "sashimi-tonno",
         "restaurant_id" => 10,
         "name" => "Sashimi tonno",
         "description" => "Porzioni di tonno crudo, con eventuale aggiunta di Wasabi",
@@ -593,7 +593,7 @@ return [
 
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------FRANCESE------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
 
     [
         "image_path" => "img/francese/macarons.jpg",
@@ -613,7 +613,7 @@ return [
         "vote" => 5,
     ],
     [
-        "image_path" => "img/francese/madeleine.jgp",
+        "image_path" => "img/francese/madeleine.jpg",
         "image_original_name" => "madeleine",
         "restaurant_id" => 8,
         "name" => "Madeleine",
@@ -691,7 +691,7 @@ return [
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------MESSICANO------------------------------------------------------------------//
     //---------------------------------------------------------------------------------------------------//
-    
+
     [
         "image_path" => "img/messicano/wrap-san-diego.jpg",
         "image_original_name" => "wrap-san-diego",
@@ -781,7 +781,7 @@ return [
     ],
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------GRECO------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
 
     [
         "image_path" => "img/greco/tiropitakia.jpg",
@@ -850,7 +850,7 @@ return [
 
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------AMERICANO------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
 
     [
         "image_path" => "img/americano/cheeseburger.jpg",
@@ -942,7 +942,7 @@ return [
 
     //---------------------------------------------------------------------------------------------------//
     //---------------------------------PIZZE------------------------------------------------------------------//
-    //---------------------------------------------------------------------------------------------------// 
+    //---------------------------------------------------------------------------------------------------//
 
     [
         "image_path" => "img/pizze/margherita.jpg",
