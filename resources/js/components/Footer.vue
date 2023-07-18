@@ -19,30 +19,30 @@
                 </div>
 
                 <!-- CONTENITORE INFO FOOTER -->
-                <div id="footer-info" class="container-fluid">
+                <div id="footer-info">
 
-                    <div class="title-container container-fluid">
-                        <div class="title"><h3>Titolo</h3></div>
-                        <div class="title"><h3>Titolo</h3></div>
+                    <div class="title-container">
+                        <div class="title"><h3>Categorie</h3></div>
+                        <div class="title"><h3>Sito</h3></div>
                     </div>
 
                     <!-- CONTENITORE DELLE INFO  -->
                     <div class="info-container d-flex container-fluid">
                         <div class="ul-container container-fluid">
                             <ul>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor </li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
+                                <li>Italiano</li>
+                                <li>Pizza </li>
+                                <li>Sushi</li>
+                                <li>Americano</li>
                             </ul>
                         </div>
 
                         <div class="ul-container container-fluid">
                             <ul>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
+                                <li>Team</li>
+                                <li>Site Map</li>
+                                <li>Come Funziona</li>
+                                <li>Condizioni d'acquisto</li>
                             </ul>
 
                         </div>
@@ -84,6 +84,7 @@
             padding-left: 21px;
             align-items: center;
             display: flex;
+            width: 30%;
         }img{
             width: 378px;
             @include media-breakpoint-down(xl) {
@@ -102,12 +103,11 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            width: 30%;
             @include media-breakpoint-down(xl) {
-                font-size: small;
                 padding-left: 5px;
             }
             @include media-breakpoint-down(lg) {
-                font-size: x-small;
                 padding: 20px 0px 20px 0px;
             }
             @include media-breakpoint-down(md) {
@@ -122,6 +122,7 @@
         .title{
             width: 50%;
             color: #EDF2F4;
+            padding-left: 23px;
             @include media-breakpoint-down(xl) {
                 font-size: small;
             }
@@ -154,6 +155,7 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+            width: 30%;
         }i{
             font-size: xx-large;
             color: #8D99AE;

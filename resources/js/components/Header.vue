@@ -49,10 +49,26 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+
+// xs: 0,
+// sm: 576px,
+// md: 768px,
+// lg: 992px,
+// xl: 1200px,
+// xxl: 1400px
+
+
 
 .sb-container{
     margin: 0 auto;
     width: 90%;
+    @include media-breakpoint-down(md) {
+      width: 100%;
+          }
 }
 
 img{
@@ -61,16 +77,15 @@ img{
 
 ul{
     list-style: none;
-
   li{
-
     margin: 0 15px;
-
-
     a{
       color:#F9C80E ;
       text-transform: uppercase;
       text-decoration: none;
+      @include media-breakpoint-down(lg) {
+              font-size: small;
+      }
       &.active{
         color: red;
       }
@@ -78,34 +93,66 @@ ul{
     a:hover{
       color: red;
     }
-
   }
-
 }
 
-button{
-        border: 0;
-        padding: 5px 40px;
-        border-radius: 50px;
-        color: white;
-        background-color: #D90429;
-
-        a{
-          color: white;
-          text-transform: uppercase;
-          text-decoration: none;
-        }
-        a:hover{
-          color: #F9C80E;
-        }
-
+.button-head{
+  width: 350px;
+      display: flex;
+      justify-content: space-between;
+      @include media-breakpoint-down(lg) {
+              width: 250px;
+            }
+      @include media-breakpoint-down(md) {
+            width: 200px;
+          }
     }
-    button:first-child{
-        margin-right: 30px;
+
+  button{
+          border: 0;
+          padding: 10px 30px;
+          background-color: #EF233C;
+          color: white;
+          border-radius: 20px;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          @include media-breakpoint-down(xl) {
+            padding: 10px 20px;
+          }
+          @include media-breakpoint-down(lg) {
+              font-size: x-small;
+            }
+          @include media-breakpoint-down(md) {
+            font-size: xx-small;
+            padding: 10px 10px;
+          }
+          a{
+            color: white;
+            text-transform: uppercase;
+            text-decoration: none
+          }
+          a:hover{
+            color: #F9C80E;
+          }
     }
     button:hover{
         color: #F9C80E;
     }
-
-
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
