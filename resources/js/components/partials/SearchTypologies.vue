@@ -1,6 +1,11 @@
 <script>
+import CardTypologies from './CardTypologies.vue';
 export default {
-    name: 'SearchTypologies'
+    name: 'SearchTypologies',
+
+    components:{
+      CardTypologies
+    }
 }
 </script>
 
@@ -98,6 +103,10 @@ export default {
         <div class="typology d-flex">Giapponese</div> -->
       </div>
 
+      <div id="cards-container">
+        <CardTypologies/>
+      </div>
+
 
   </div>
 
@@ -174,5 +183,13 @@ export default {
       font-size: small;
       padding: 10px 20px;
     }
+  }
+
+  #cards-container{
+    padding-top:20px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    padding:60px 200px;
+    justify-content: space-around;
   }
 </style>
