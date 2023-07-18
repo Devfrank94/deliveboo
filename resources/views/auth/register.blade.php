@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" onsubmit="return validateForm(this)" action="{{ route('register') }}">
                         @csrf
 
                         <div class="mb-4 row">
@@ -136,4 +136,26 @@
         </div>
     </div>
 </div>
+
+
+
+<script language="javascript" type="text/javascript">
+
+  function validateForm(passwordForm){
+    if(passwordForm.password.value == ""){
+      alert("Devi inserire una password!")
+      passwordForm.password.focus()
+      return false
+    }
+    if(passwordForm.password.value != passwordForm.password_confirmation.value){
+      alert("Le due password inserite non sono uguali!")
+      passwordForm.password.focus()
+      passwordForm.password.select()
+      return false
+    }
+    return true
+  }
+
+</script>
+
 @endsection
