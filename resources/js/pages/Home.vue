@@ -1,6 +1,12 @@
 <script>
+import SearchTypologies from '../components/partials/SearchTypologies.vue';
+
 export default {
-    name: 'Home'
+    name: 'Home',
+
+    components:{
+      SearchTypologies
+    }
 }
 </script>
 
@@ -12,7 +18,8 @@ export default {
 
     </section>
 
-    <section id="sec-1" class="test2"></section>
+    <SearchTypologies/>
+
     <section id="sec-2 " class="test"></section>
     <section id="sec-3" class="test3"></section>
     <section id="sec-4" class="test2"></section>
