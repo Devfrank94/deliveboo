@@ -10,54 +10,13 @@ export default {
     <div class="card__content">
       <p class="card__title">Card Title</p>
       <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <div class="button-container">
+
+        <div class="button">
+          <a href="#">Visita</a>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -81,6 +40,8 @@ export default {
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   background-image: url(../../../../public/img/pizze/margherita.jpg);
   background-size: contain;
+  cursor: pointer;
+  border: solid 1px black;
 }
 
 .card svg {
@@ -106,6 +67,7 @@ export default {
   transform: rotateX(-90deg);
   transform-origin: bottom;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
 }
 
 .card:hover .card__content {
@@ -128,7 +90,35 @@ export default {
   font-size: 14px;
   color: black;
   line-height: 1.4;
+  height: 20px;
 }
+
+.button-container{
+  height: 25px;
+  position: absolute;
+  bottom:5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.button{
+  height: 100%;
+  width: 60px;
+  border-radius: 10px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black .7px;
+  }a{
+    text-decoration: none;
+    color: white;
+    font-size: small;
+}
+
+.button:hover{
+    background-color:rgba(255, 0, 0, 0.704) ;
+  }
 
 
 </style>

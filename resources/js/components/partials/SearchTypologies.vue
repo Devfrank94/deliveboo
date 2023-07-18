@@ -186,7 +186,7 @@ export default {
   }
 
   #cards-container{
-    padding-top: 50px;
+    padding-top:20px 50px;
     display: flex;
     flex-wrap: wrap;
     padding:100px 100px;
