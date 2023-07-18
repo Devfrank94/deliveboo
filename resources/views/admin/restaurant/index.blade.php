@@ -49,7 +49,7 @@
 
     <div class="action-container pt-4">
         <h3>Azioni</h3>
-        <a href="" class="btn btn-warning"><i class="fa-solid fa-pencil fs-3"></i></a>
+        <a href="{{route('admin.restaurant.edit', $restaurant)}}" class="btn btn-warning"><i class="fa-solid fa-pencil fs-3"></i></a>
     </div>
 
   </div>
