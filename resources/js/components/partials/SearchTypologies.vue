@@ -189,7 +189,7 @@ export default {
     padding-top:20px 50px;
     display: flex;
     flex-wrap: wrap;
-    padding:100px 100px;
+    padding:60px 200px;
     justify-content: space-around;
   }
 </style>
