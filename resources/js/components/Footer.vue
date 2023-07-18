@@ -1,6 +1,10 @@
     <script>
+    import BackToTop from './partials/BackToTop.vue';
     export default {
     name: "Footer",
+    components:{
+      BackToTop,
+    },
         data(){
             return{
 
@@ -58,6 +62,8 @@
                 </div>
 
             </div>
+            <!-- Back to Top Button -->
+        <BackToTop/>
         </footer>
     </template>
 

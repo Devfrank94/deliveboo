@@ -8,7 +8,7 @@ export default {
 
     <h1>Pages Home</h1>
 
-    <section class="jumbotron test">
+    <section id="jumbotr" class="jumbotron test">
 
     </section>
 
