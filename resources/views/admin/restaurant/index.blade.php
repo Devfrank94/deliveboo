@@ -4,6 +4,9 @@
   <div class="container mt-5 ">
     <h4 class="fs-4 text-secondary my-4">
         Il mio Ristorante
+        @if ($restaurant->visible == 0)
+          <p class="text-danger fs-6">Nota: Il tuo ristornate non è visibile al pubblico, appena sei pronto modifica lo stato del tuo ristorante!</p>
+        @endif
     </h4>
 
     <h2 class="text-center">

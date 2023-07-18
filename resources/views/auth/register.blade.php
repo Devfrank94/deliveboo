@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" onsubmit="return validateForm(this)" action="{{ route('register') }}">
+                    <form method="POST" onsubmit="return (validateForm(this) && validateCheckbox())" action="{{ route('register') }}">
                         @csrf
 
                         <div class="mb-4 row">
@@ -108,7 +108,7 @@
                               @foreach ($typologies as $typology)
                                   <input
                                       type="checkbox"
-                                      class="btn-check"
+                                      class="btn-check form-control @error('typologies[]') is-invalid @enderror"
                                       id="typology{{$loop->iteration}}"
                                       value="{{$typology->id}}"
                                       name="typologies[]"
@@ -116,9 +116,15 @@
                                       @if (in_array($typology->id, old('typologies', [])))
                                           checked
                                       @endif
-                                      >
-                                  <label class="btn btn-outline-secondary m-2" for="typology{{$loop->iteration}}">{{ $typology->name }}</label>
+                                    >
+                                    <label class="btn btn-outline-secondary m-2" for="typology{{$loop->iteration}}">{{ $typology->name }}</label>
                               @endforeach
+<!-- CONTROLLARE INPUT ERRORE DAL BACK-END, SEMBRA LEGGERE L'ERRORE MA NON LO FA VEDERE IN PAGINA-->
+                                @error('typologies[]')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>Selezionare almeno una tipologia</strong>
+                                  </span>
+                                @enderror
                           </div>
                       </div>
                         <!------------------------------------------------------------ CUSTOM PART-------------------------------------------------------->
@@ -126,7 +132,7 @@
                         <div class="w-100 mt-5">
                             <div class="w-100 text-center">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Registrati
                                 </button>
                             </div>
                         </div>
@@ -154,6 +160,18 @@
       return false
     }
     return true
+  }
+
+  function validateCheckbox(){
+    var form_data = new FormData(document.querySelector("form"));
+
+    if(!form_data.has("typologies[]")){
+      alert("Devi scegliere almeno una tipologia!")
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
 </script>
