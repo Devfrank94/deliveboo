@@ -20,15 +20,10 @@
 
                 <!-- CONTENITORE INFO FOOTER -->
                 <div id="footer-info">
-
-                    <div class="title-container">
-                        <div class="title"><h3>Categorie</h3></div>
-                        <div class="title"><h3>Sito</h3></div>
-                    </div>
-
                     <!-- CONTENITORE DELLE INFO  -->
                     <div class="info-container d-flex container-fluid">
                         <div class="ul-container container-fluid">
+                          <div class="title"><h3>Categorie</h3></div>
                             <ul>
                                 <li>Italiano</li>
                                 <li>Pizza </li>
@@ -38,6 +33,7 @@
                         </div>
 
                         <div class="ul-container container-fluid">
+                          <div class="title"><h3>Sito</h3></div>
                             <ul>
                                 <li>Team</li>
                                 <li>Site Map</li>
@@ -50,7 +46,7 @@
                 </div>
 
                 <!-- CONTENITORE SOCIAL ICONS-->
-                <div id="footer-social" class="container-fluid">
+                <div id="footer-social">
                     <i class="fa-brands fa-instagram"></i>
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-twitter"></i>
@@ -85,24 +81,25 @@
             align-items: center;
             display: flex;
             width: 30%;
+            position: relative;
         }img{
             width: 378px;
+            position: relative;
             @include media-breakpoint-down(xl) {
                 width: 222px;
             }
             @include media-breakpoint-down(lg) {
-                width: 200;
+                width: 200px;
             }
             @include media-breakpoint-down(md) {
-
+              left: -47px;
             }
         }
 
         #footer-info{
             height: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            align-items: center;
             width: 30%;
             @include media-breakpoint-down(xl) {
                 padding-left: 5px;
@@ -122,7 +119,6 @@
         .title{
             width: 50%;
             color: #EDF2F4;
-            padding-left: 23px;
             @include media-breakpoint-down(xl) {
                 font-size: small;
             }
@@ -139,11 +135,14 @@
         }
 
         ul{
-            margin-bottom: 0px;
+            margin:0px;
+            padding: 0px;
+
         }
 
         li{
             cursor: pointer;
+            list-style: none;
         }
 
         li:hover{
@@ -161,9 +160,22 @@
             color: #8D99AE;
             margin-right: 10px;
             cursor: pointer;
+            @include media-breakpoint-down(xl) {
+              font-size: x-large;
+            }
+            @include media-breakpoint-down(lg) {
+              font-size: large;
+            }
+            @include media-breakpoint-down(md) {
+
+            }
         }
 
         i:hover{
             color: white;
+        }
+
+        .pl-23{
+          padding-left: 23px;
         }
     </style>
