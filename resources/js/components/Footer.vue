@@ -11,74 +11,108 @@
 
     <template>
         <footer>
+
             <div class="nd-container d-flex">
-                <div id="footer-img-container">
-                    <!-- QUI ANDRA IL LOGO DEL FOOTER -->
+
+                <div id="footer-img-container" class="container-fluid">
+                    <img src="../../../public/deliveboo-white-no-background.png" alt="">
                 </div>
 
                 <!-- CONTENITORE INFO FOOTER -->
-                <div id="footer-info">
-                    <div class="title-container">
+                <div id="footer-info" class="container-fluid">
+
+                    <div class="title-container container-fluid">
                         <div class="title"><h3>Titolo</h3></div>
                         <div class="title"><h3>Titolo</h3></div>
                     </div>
+
                     <!-- CONTENITORE DELLE INFO  -->
-                    <div class="info-container d-flex">
-                        <div class="ul-container">
+                    <div class="info-container d-flex container-fluid">
+                        <div class="ul-container container-fluid">
                             <ul>
                                 <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
+                                <li>Lorem ipsum dolor ipsum dolor </li>
                                 <li>Lorem ipsum dolor ipsum dolor</li>
                                 <li>Lorem ipsum dolor ipsum dolor</li>
                             </ul>
                         </div>
 
-                        <div class="ul-container">
+                        <div class="ul-container container-fluid">
                             <ul>
                                 <li>Lorem ipsum dolor ipsum dolor</li>
                                 <li>Lorem ipsum dolor ipsum dolor</li>
                                 <li>Lorem ipsum dolor ipsum dolor</li>
                                 <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
-                                <li>Lorem ipsum dolor ipsum dolor</li>
                             </ul>
+
                         </div>
                     </div>
                 </div>
 
                 <!-- CONTENITORE SOCIAL ICONS-->
-                <div id="footer-social">
+                <div id="footer-social" class="container-fluid">
                     <i class="fa-brands fa-instagram"></i>
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-twitter"></i>
                     <i class="fa-brands fa-linkedin"></i>
                 </div>
+
             </div>
         </footer>
     </template>
 
     <style lang="scss" scoped>
+        @import "~bootstrap/scss/functions";
+        @import "~bootstrap/scss/variables";
+        @import "~bootstrap/scss/mixins";
+
+        // xs: 0,
+        // sm: 576px,
+        // md: 768px,
+        // lg: 992px,
+        // xl: 1200px,
+        // xxl: 1400px
+
         .nd-container{
-            height: 250px;
+            height: 300px;
             background-color: #2B2D42;
             color: #8D99AE;
         }
 
         #footer-img-container{
             height: 100%;
-            width: 25%;
-            background-color: lightblue;
+            padding-left: 21px;
+            align-items: center;
+            display: flex;
+        }img{
+            width: 378px;
+            @include media-breakpoint-down(xl) {
+                width: 222px;
+            }
+            @include media-breakpoint-down(lg) {
+                width: 200;
+            }
+            @include media-breakpoint-down(md) {
+
+            }
         }
 
         #footer-info{
-            width: 50%;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            @include media-breakpoint-down(xl) {
+                font-size: small;
+                padding-left: 5px;
+            }
+            @include media-breakpoint-down(lg) {
+                font-size: x-small;
+                padding: 20px 0px 20px 0px;
+            }
+            @include media-breakpoint-down(md) {
 
+            }
         }
 
         .title-container{
@@ -86,9 +120,17 @@
         }
 
         .title{
-            padding-left: 85px;
             width: 50%;
             color: #EDF2F4;
+            @include media-breakpoint-down(xl) {
+                font-size: small;
+            }
+            @include media-breakpoint-down(lg) {
+                font-size: x-small;
+            }
+            @include media-breakpoint-down(md) {
+
+            }
         }
 
         .info-container{
@@ -111,7 +153,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 25%;
             height: 100%;
         }i{
             font-size: xx-large;
