@@ -1,5 +1,6 @@
 <script>
-import CardTypologies from './CardTypologies.vue';
+import CardTypologies from './partials/CardTypologies.vue'
+
 export default {
     name: 'SearchTypologies',
 
