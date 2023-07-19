@@ -8,14 +8,14 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" onsubmit="return (validateForm(this) && validateCheckbox())" action="{{ route('register') }}">
                         @csrf
 
                         <div class="mb-4 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name"  autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@
                               @foreach ($typologies as $typology)
                                   <input
                                       type="checkbox"
-                                      class="btn-check"
+                                      class="btn-check form-control @error('typologies[]') is-invalid @enderror"
                                       id="typology{{$loop->iteration}}"
                                       value="{{$typology->id}}"
                                       name="typologies[]"
@@ -116,17 +116,24 @@
                                       @if (in_array($typology->id, old('typologies', [])))
                                           checked
                                       @endif
-                                      >
-                                  <label class="btn btn-outline-secondary m-2" for="typology{{$loop->iteration}}">{{ $typology->name }}</label>
+                                    >
+                                    <label class="btn btn-outline-secondary m-2" for="typology{{$loop->iteration}}">{{ $typology->name }}</label>
                               @endforeach
                           </div>
-                      </div>
+                                @error('typologies')
+                                  <div>
+                                    <span class="d-block text-danger" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                    </span>
+                                  </div>
+                                @enderror
+                        </div>
                         <!------------------------------------------------------------ CUSTOM PART-------------------------------------------------------->
 
                         <div class="w-100 mt-5">
                             <div class="w-100 text-center">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Registrati
                                 </button>
                             </div>
                         </div>
@@ -136,4 +143,38 @@
         </div>
     </div>
 </div>
+
+
+
+<script language="javascript" type="text/javascript">
+
+  function validateForm(passwordForm){
+    if(passwordForm.password.value == ""){
+      alert("Devi inserire una password!")
+      passwordForm.password.focus()
+      return false
+    }
+    if(passwordForm.password.value != passwordForm.password_confirmation.value){
+      alert("Le due password inserite non sono uguali!")
+      passwordForm.password.focus()
+      passwordForm.password.select()
+      return false
+    }
+    return true
+  }
+
+  function validateCheckbox(){
+    var form_data = new FormData(document.querySelector("form"));
+
+    if(!form_data.has("typologies[]")){
+      alert("Devi scegliere almeno una tipologia!")
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+</script>
+
 @endsection
