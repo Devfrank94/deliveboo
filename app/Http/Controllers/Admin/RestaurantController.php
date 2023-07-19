@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TypologyRequest;
 use App\Models\Restaurant;
 use App\Models\Typology;
 use Illuminate\Http\Request;
@@ -96,7 +97,7 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(TypologyRequest $request, Restaurant $restaurant)
     {
       $form_data = $request->all();
 

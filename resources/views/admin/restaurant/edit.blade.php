@@ -5,6 +5,8 @@
     <h4 class="fs-4 text-secondary my-4">
       Modifica il mio Ristorante
     </h4>
+
+
     <form onsubmit="return validateCheckbox()" action="{{route('admin.restaurant.update', $restaurant)}}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
@@ -83,7 +85,7 @@
           @foreach ($typologies as $typology)
               <input
                   type="checkbox"
-                  class="btn-check form-control @error('typologies[]') is-invalid @enderror"
+                  class="btn-check form-control @error('typologies') is-invalid @enderror"
                   id="typology{{$loop->iteration}}"
                   value="{{$typology->id}}"
                   name="typologies[]"
@@ -96,13 +98,14 @@
                 >
                 <label class="btn btn-outline-secondary m-2" for="typology{{$loop->iteration}}">{{ $typology->name }}</label>
           @endforeach
-<!-- CONTROLLARE INPUT ERRORE DAL BACK-END, SEMBRA LEGGERE L'ERRORE MA NON LO FA VEDERE IN PAGINA-->
-            @error('typologies[]')
-              <span class="invalid-feedback" role="alert">
-                  <strong>Selezionare almeno una tipologia</strong>
-              </span>
-            @enderror
       </div>
+      @error('typologies')
+        <div>
+          <span class="d-block text-danger" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        </div>
+      @enderror
     </div>
 
     <button type="submit" class="btn btn-success mt-3 me-3">Salva</button>

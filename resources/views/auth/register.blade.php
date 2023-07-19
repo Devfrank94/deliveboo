@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name"  autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -119,14 +119,15 @@
                                     >
                                     <label class="btn btn-outline-secondary m-2" for="typology{{$loop->iteration}}">{{ $typology->name }}</label>
                               @endforeach
-<!-- CONTROLLARE INPUT ERRORE DAL BACK-END, SEMBRA LEGGERE L'ERRORE MA NON LO FA VEDERE IN PAGINA-->
-                                @error('typologies[]')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>Selezionare almeno una tipologia</strong>
-                                  </span>
-                                @enderror
                           </div>
-                      </div>
+                                @error('typologies')
+                                  <div>
+                                    <span class="d-block text-danger" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                    </span>
+                                  </div>
+                                @enderror
+                        </div>
                         <!------------------------------------------------------------ CUSTOM PART-------------------------------------------------------->
 
                         <div class="w-100 mt-5">
