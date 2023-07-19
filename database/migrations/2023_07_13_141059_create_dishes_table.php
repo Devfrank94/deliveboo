@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('ingredients');
             $table->tinyInteger('visible');
-            $table->tinyInteger('vote');
+            $table->tinyInteger('vote')->nullable();
             $table->timestamps();
         });
     }
