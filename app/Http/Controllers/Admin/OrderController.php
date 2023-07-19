@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Dish;
+use App\Http\Requests\OrderRequest;
 
 class OrderController extends Controller
 {
@@ -46,10 +48,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Order $order, Dish $dish)
     {
         $orders = Order::all();
-        return view('admin.orders.show', compact('order', 'orders'));
+        $dishes = Dish::all();
+        return view('admin.orders.show', compact('order', 'orders', 'dish', 'dishes'));
     }
 
     /**
@@ -58,9 +61,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        $dishes = Dish::all();
+        return view('admin.orders.edit',compact('order', 'dishes') );
     }
 
     /**
@@ -70,9 +74,13 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OrderRequest $request, Order $order)
     {
-        //
+      $form_data=$request->all();
+
+      $order->update($form_data);
+
+      return redirect()->route('admin.orders.show', compact('order'));
     }
 
     /**
