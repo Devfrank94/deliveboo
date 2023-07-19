@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: 'Restaurants'
+    name: 'Restaurants',
 }
 </script>
 

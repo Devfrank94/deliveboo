@@ -1,6 +1,11 @@
 <script>
 export default {
-    name: 'CardTypology'
+    name: 'CardTypology',
+    props:{
+    name:String,
+    image_path: String,
+    address:String,
+  }
 }
 </script>
 
