@@ -40,7 +40,7 @@ export default {
 
         <div class="button-head">
             <button><a href="/admin">REGISTRATI</a></button>
-            <button>COME FUNZIONA</button>
+            <button><a href="#sec-3">COME FUNZIONA</a></button>
         </div>
 
     </div>
