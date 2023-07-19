@@ -23,7 +23,7 @@
                         </div>
                         <ul class="list-group list-group-flush">
                         <li class="list-group-item"><div class="fw-bold">Prezzo:</div>{{$dish->price}} €</li>
-                        <li class="list-group-item">
+                        {{-- <li class="list-group-item">
                             <div class="fw-bold">Voto:</div>
                             @for($i = 1; $i <= 5; $i++)
                                 @if($i <= $dish->vote)
@@ -32,7 +32,7 @@
                                 <i class="fa-solid fa-burger me-1" style="color: #c0c0c0;"></i></span>
                                 @endif
                             @endfor
-                        </li>
+                        </li> --}}
                         <li class="list-group-item">
                             <div class="fw-bold">Stato di attivazione:</div>
                             @if($dish->visible == 1)

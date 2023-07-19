@@ -25,11 +25,11 @@ class DishRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:255',
-            'image_path' => 'required',
+            // 'image_path' => 'required',
             'description' => 'required',
             'ingredients' => 'required',
             'price' => 'required|numeric',
-            'vote' => 'required',
+            // 'vote' => 'required',
         ];
     }
 
@@ -40,9 +40,8 @@ class DishRequest extends FormRequest
             'name.required' => 'Il nome è un campo obbligatorio',
             'description.required' => 'La Descrizione è un campo obbligatorio',
             'ingredients.required' => 'Gli ingredienti sono un campo obbligatorio',
-            'image_path.required' => 'L\'immagine è un campo obbligatorio',
             'price.required' => 'Il Prezzo è un campo obbligatorio',
-            'vote.required' => 'Il Voto è un campo obbligatorio',
+            // 'vote.required' => 'Il Voto è un campo obbligatorio',
 
 
             // Caratteri massimi

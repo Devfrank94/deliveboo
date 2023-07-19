@@ -14,7 +14,7 @@
         <div class="card mb-3" style="max-width: 70rem;">
             <div class="row g-0">
               <div class="col-md-6">
-                <img src="{{ asset('storage/' . $dish->image_path) }}" class="img-fluid rounded-start ratio ratio-1x1 h-100" alt="{{ $dish->image_original_name }}">
+                <img src="{{ asset('storage/' . $dish->image_path) }}" onerror="this.src='/img/no_image.jpg'" class="img-fluid rounded-start ratio ratio-1x1 h-100" alt="{{ $dish->image_original_name }}">
               </div>
               <div class="col-md-6">
                 <div class="card-body">
@@ -23,7 +23,7 @@
                   <p class="card-text"><div class="fw-bold">Ingredienti:</div>{!!$dish->ingredients!!}</p>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><div class="fw-bold">Prezzo:</div>{{$dish->price}} €</li>
-                    <li class="list-group-item">
+                    {{-- <li class="list-group-item">
                         <div class="fw-bold">Voto:</div>
                         @for($i = 1; $i <= 5; $i++)
                             @if($i <= $dish->vote)
@@ -32,7 +32,7 @@
                             <i class="fa-solid fa-burger me-1" style="color: #c0c0c0;"></i></span>
                             @endif
                         @endfor
-                    </li>
+                    </li> --}}
                         <li class="list-group-item">
                             <div class="fw-bold">Stato scheda prodotto:</div>
                             @if($dish->visible == 1)
