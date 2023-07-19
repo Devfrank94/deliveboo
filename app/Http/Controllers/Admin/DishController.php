@@ -111,6 +111,12 @@ class DishController extends Controller
         $form_data['slug']  = $dish->slug;
       }
 
+      if (array_key_exists('visible', $form_data)) {
+        $form_data['visible'] = 1;
+      }else{
+      $form_data['visible'] = 0;
+      }
+
       if (array_key_exists('image_path', $form_data)) {
         // Verifica se esiste un'immagine precedente e, se presente, eliminala dallo storage
         if ($dish->image_path) {
