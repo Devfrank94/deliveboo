@@ -69,11 +69,11 @@ export default {
 
 
         <!-- delivery -->
-        <div class="container-section right py-5">
+        <div class="container-section py-5">
 
           <div class="section-description">
 
-            <h3 class="text-center"> 4. Ricevi il tuo ordine</h3>
+            <h3 class="text-center"> 3. Ricevi il tuo ordine</h3>
 
             <p class="mx-5 text-center">
               E Adesso non ti rimane che aspettare l'arrivo del rider. Ti avviseremo non appena l'ordine sarà partito dal ristorante
