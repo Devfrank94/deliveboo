@@ -52,7 +52,11 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $dishes = Dish::all();
-        return view('admin.orders.show', compact('order', 'orders', 'dish', 'dishes'));
+
+        $date = date_create($order->date);
+        $date_formatted = date_format($date, 'd/m/Y' );
+
+        return view('admin.orders.show', compact('order', 'orders', 'dish', 'dishes', 'date_formatted'));
     }
 
     /**
@@ -63,8 +67,9 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+        $orders = Order::all();
         $dishes = Dish::all();
-        return view('admin.orders.edit',compact('order', 'dishes') );
+        return view('admin.orders.edit',compact('order', 'dishes', 'orders') );
     }
 
     /**
