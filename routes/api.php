@@ -22,9 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::namespace('Api')
         ->prefix('restaurants')
         ->group(function(){
-            Route::get('/',[RestaurantController::class, 'index']); //tutti i ristoranti
-            Route::get('/typologies',[RestaurantController::class, 'getCategories']); // get typology
-            Route::get('/restaurant-typology/{id}',[RestaurantController::class, 'getPostsByCategory']); //restaurant typology
-            Route::get('/{slug}',[RestaurantController::class, 'getPostDetail']); //get restaurant detail
+            Route::get('/',[RestaurantController::class, 'index']); //prende tutti i ristoranti con tutte le sue relezioni (piatti e tipologie)
+            Route::get('/typologies',[RestaurantController::class, 'getAllTypologies']); // prende tutte le tipologie
+            Route::get('/restaurant-typology/{name}',[RestaurantController::class, 'getRestaurantByTypology']); //prende i ristoranti con quella tipologia
+            Route::get('/{slug}',[RestaurantController::class, 'getDetailRestaurant']); //prende il dettaglio del singolo ristorante con tutte le sue relezioni (piatti e tipologie)
             Route::get('/search/{tosearch}',[RestaurantController::class, 'search']); //search generica
         });
