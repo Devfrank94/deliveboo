@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\TypologyController;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Guest\PageController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::middleware(['auth', 'verified'])
     Route::resource('dishes', DishController::class);
     Route::resource('restaurant', RestaurantController::class);
     Route::put('/gallery', [RestaurantController::class, 'gallery'])->name('gallery');
+    Route::resource('orders', OrderController::class);
 });
 
 require __DIR__.'/auth.php';
