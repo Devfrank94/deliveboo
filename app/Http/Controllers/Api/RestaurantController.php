@@ -26,6 +26,11 @@ class RestaurantController extends Controller
 
   public function getDetailRestaurant($slug){
     $restaurant = Restaurant::where('slug', $slug)->with('typologies', 'dishes')->first();
+    if($restaurant->image_path) $restaurant->image_path = asset('storage/' . $restaurant->image_path) ;
+        else{
+            $restaurant->image_path = asset('storage/uploads/no_image.jpg') ;
+            $restaurant->image_original_name = '- no image -';
+        }
 
     return response()->json($restaurant);
   }

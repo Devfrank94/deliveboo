@@ -164,8 +164,8 @@ return
     ],
     [
         "name" => "Bottega Nostrana",
-        "image_path" => "img/italiano/bottoga-nostrana.jpg",
-        "image_original_name" => "bottoga-nostrana",
+        "image_path" => "img/italiano/bottega-nostrana.jpg",
+        "image_original_name" => "bottega-nostrana",
         "address" => "Via di Porta Cavalleggeri, 109 00165 Roma",
         "p_iva" => "IT123456789",
         "visible" => "1",
