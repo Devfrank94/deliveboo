@@ -1,47 +1,47 @@
 <script>
+import SearchTypologies from '../components/SearchTypologies.vue';
+import Jumbotron from '../components/Jumbotron.vue';
+import HypeRestaurants from '../components/HypeRestaurants.vue';
+import HowDoesItWork from '../components/HowDoesItWork.vue';
+import Plans from '../components/Plans.vue';
+
 export default {
-    name: 'Home'
+    name: 'Home',
+
+    components:{
+      SearchTypologies,
+      Jumbotron,
+      HypeRestaurants,
+      HowDoesItWork,
+      Plans
+    }
 }
 </script>
 
 <template>
 
-    <h1>Pages Home</h1>
 
-    <section id="jumbotr" class="jumbotron test">
+   <h1>Pages Home</h1>
 
-    </section>
+  <Jumbotron/>
 
-    <section id="sec-1" class="test2"></section>
-    <section id="sec-2 " class="test"></section>
-    <section id="sec-3" class="test3"></section>
-    <section id="sec-4" class="test2"></section>
+  <HypeRestaurants/>
+
+  <SearchTypologies/>
+
+  <HowDoesItWork/>
+
+  <Plans/>
+
+
 
 </template>
 
 
 <style lang="scss" scoped>
 
-.jumbotron{
-    height: 400px;
-}
-
-#sec-1{
-    height: 400px;
-}
-
-#sec-2{
-    height: 400px;
-}
-
-#sec-3{
-    height: 400px;
-}
-
-#sec-4{
-    height: 400px;
-}
-
+  @use '../../scss/partialsGuest/vars' as *;
 
 
 </style>
+

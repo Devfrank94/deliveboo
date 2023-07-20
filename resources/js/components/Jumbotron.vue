@@ -6,7 +6,7 @@ export default {
 
 <template>
 
-    <h1>Jumbotron</h1>
+  <h1>Jumbotron</h1>
 
 </template>
 
