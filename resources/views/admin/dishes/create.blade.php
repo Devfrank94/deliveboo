@@ -40,11 +40,15 @@
                 <input
                   id="image_path"
                   onchange="showImage(event)"
-                  class="form-control @error('image_path') is-invalid @enderror"
+                  value="{{ old('image_path') }}"
+                  class="form-control"
                   name="image_path"
                   type="file"
                 >
                 <img class="mt-3 rounded-2" style="width: 200px" id="prev-image" src="" onerror="this.src='/img/no_image.jpg'" alt="">
+                <div>
+                  <input type="radio" name="noImage" onchange="removeImage()"> <label for="">Rimuovi immagine</label>
+              </div>
             </div>
 
             {{--------------- DESCRIZIONE PIATTO -----------------}}
@@ -83,7 +87,7 @@
             </div>
 
             {{--------------- VOTO PIATTO -----------------}}
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label for="vote" class="form-label">Seleziona un voto da 1 a 5 (*)</label>
                 <div>
                     <input type="range" class="form-range w-50" value="{{ old('vote') }}" min="1" max="5" id="vote" name="vote">
@@ -91,7 +95,7 @@
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
 
             {{-- STATO DI ATTIVAZIONE DEL PRODOTTO --}}
             <div class="mb-4">
@@ -136,6 +140,13 @@
         const tagImage = document.getElementById('prev-image');
         tagImage.src = URL.createObjectURL(event.target.files[0]);
     }
+
+    function removeImage(){
+          const imageInput = document.getElementById('image_path');
+          imageInput.value = '';
+          const tagImage = document.getElementById('prev-image');
+          tagImage.src = '';
+      }
   </script>
 
 @endsection

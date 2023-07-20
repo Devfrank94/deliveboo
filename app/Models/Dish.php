@@ -19,7 +19,7 @@ class Dish extends Model
         'image_path',
         'image_original_name',
         'price',
-        'vote',
+        // 'vote',
         'visible'
       ];
 

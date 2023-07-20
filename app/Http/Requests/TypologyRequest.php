@@ -24,16 +24,26 @@ class TypologyRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|min:3|max:50"
+            "name" => "required|min:3|max:50",
+            "address" => "required|min:3|max:100",
+            "p_iva" => "required|min:11|max:100",
+            "typologies" => "required",
         ];
     }
 
     public function messages()
     {
         return [
-            "name.required" => "il nome è obbligatorio",
-            "name.min" => "il nome deve contenere :min caratteri",
-            "name.max" => "il nome deve contenere :max caratteri"
+            "name.required" => "Il nome è obbligatorio",
+            "name.min" => "Il nome deve contenere :min caratteri",
+            "name.max" => "Il nome deve contenere :max caratteri",
+            "address.required" => "L'indirizzo è obbligatorio",
+            "address.min" => "L'indirizzo contenere :min caratteri",
+            "address.max" => "L'indirizzo contenere :max caratteri",
+            "p_iva.required" => "La partita Iva è obbligatoria",
+            "p_iva.min" => "La partita Iva contenere :min caratteri",
+            "p_iva.max" => "La partita Iva contenere :max caratteri",
+            "typologies.required" => "Devi selezionare almeno una tipologia"
         ];
     }
 

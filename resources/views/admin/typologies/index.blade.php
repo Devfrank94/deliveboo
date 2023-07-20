@@ -47,18 +47,18 @@
 
             {{-- Edit --}}
             <td  class="text-center">
-              <a href="{{route('admin.typologies.edit', $typology)}}" class="btn btn-warning" title="Modifica">
+              {{-- <a href="{{route('admin.typologies.edit', $typology)}}" class="btn btn-warning" title="Modifica">
                 <i class="fa-solid fa-pencil"></i>
-              </a>
+              </a> --}}
 
 
               {{-- Delete --}}
 
 
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-danger" title="elimina" data-bs-toggle="modal" data-bs-target="{{'#' . $typology->id}}">
+              {{-- <button type="button" class="btn btn-danger" title="elimina" data-bs-toggle="modal" data-bs-target="{{'#' . $typology->id}}">
                 <i class="fa-solid fa-trash-can"></i>
-              </button>
+              </button> --}}
 
               <!-- Modal -->
               <div class="modal fade" id="{{$typology->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

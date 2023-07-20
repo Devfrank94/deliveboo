@@ -1,12 +1,13 @@
 <script>
 export default {
-    name: 'Restaurants',
+    name: 'HypeRestaurant'
 }
 </script>
 
 <template>
 
-    <h1>Pages Restaurants</h1>
+    <h1>HypeRestaurant</h1>
+    <p>add swiper</p>
 
 </template>
 
