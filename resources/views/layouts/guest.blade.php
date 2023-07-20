@@ -10,7 +10,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest"> 
+        <link rel="manifest" href="/site.webmanifest">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -25,6 +25,25 @@
     <body class="font-sans text-gray-900 antialiased">
 
                 @yield('content')
+      {{-- Script Lottie per Jumbotron --}}
+      {{-- <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script> --}}
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
 
+// let player = document.getElementById("firstLottie");
+
+// player.addEventListener("ready", () => {
+    LottieInteractivity.create({
+    player:'#firstLottie',
+    mode:"scroll",
+        actions: [
+        {
+            visibility:[0, 1.0],
+            type: "seek",
+            frames: [0, 300],
+        },
+        ]
+      });
+    // });
+    </script>
     </body>
 </html>
