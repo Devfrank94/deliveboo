@@ -29,20 +29,21 @@ export default {
   <HowDoesItWork/>
 
   <Plans/>
-  
+
+<section>
             <h3 class="text-center"> 1. Scegli il ristorante</h3>
 
             <p class="mx-5 text-center">
               Scegli il ristorante dove vuoi mangiare e una volta scelto, selezionalo
             </p>
 
-          </div>
+
 
           <div class="section-img">
             <img src="../../../public/img/Assets/illustration-1.png" alt="img">
           </div>
 
-        </div>
+
 
         <!-- add to cart -->
 
@@ -85,7 +86,7 @@ export default {
 
         </div>
 
-      </div>
+
 
     </section>
 

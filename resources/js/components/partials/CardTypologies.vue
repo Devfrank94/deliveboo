@@ -5,6 +5,7 @@ export default {
     name:String,
     image_path: String,
     address:String,
+    slug:String,
   }
 }
 </script>
@@ -12,45 +13,19 @@ export default {
 <template>
 
   <div class="card">
+    <img v-if="image_path != null" :src="image_path" class="w-100 h-100" :alt="image_original_name" :title="image_original_name">
+      <img v-else src="../../../../public/storage/uploads/no_image.jpg" :alt="image_original_name" :title="image_original_name">
     <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p class="card__title">{{ name }}</p>
+      <p class="card__description">{{ address }}</p>
       <div class="button-container">
-
-        <div class="button">
-          <a href="#">Visita</a>
+        <div class="button"> Visita
+          <!-- <router-link :to="{ name: 'detail-restaurant', params: { slug: slug } }">Visita</router-link> -->
         </div>
 
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <div class="button-container">
-
-        <div class="button">
-          <a href="#">Visita</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__content">
-      <p class="card__title">Card Title</p>
-      <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <div class="button-container">
-
-        <div class="button">
-          <a href="#">Visita</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
 </template>
 
 
@@ -69,8 +44,10 @@ export default {
   perspective: 1000px;
   box-shadow: 0 0 0 5px #ffffff80;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-image: url(../../../../public/img/pizze/margherita.jpg);
+  background-image: url(../../../../public/storage/uploads/no_image.jpg);
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
   border: solid 1px black;
 }
@@ -94,7 +71,7 @@ export default {
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #f2f2f257;
+  background-color: #e5e5e591;
   transform: rotateX(-90deg);
   transform-origin: bottom;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -148,7 +125,8 @@ export default {
 }
 
 .button:hover{
-    background-color:rgba(255, 0, 0, 0.704) ;
+    background-color:#F86624 ;
+    color: white;
   }
 
 

@@ -25,6 +25,6 @@ Route::namespace('Api')
             Route::get('/',[RestaurantController::class, 'index']); //prende tutti i ristoranti con tutte le sue relezioni (piatti e tipologie)
             Route::get('/typologies',[RestaurantController::class, 'getAllTypologies']); // prende tutte le tipologie
             Route::get('/restaurant-typology/{name}',[RestaurantController::class, 'getRestaurantByTypology']); //prende i ristoranti con quella tipologia
-            Route::get('/{slug}',[RestaurantController::class, 'getDetailRestaurant']); //prende il dettaglio del singolo ristorante con tutte le sue relezioni (piatti e tipologie)
+            Route::get('/{slug}',[RestaurantController::class, 'getDetailRestaurant']); //prende il dettaglio del singolo ristorante con tutte le sue relazioni (piatti e tipologie)
             Route::get('/search/{tosearch}',[RestaurantController::class, 'search']); //search generica
         });

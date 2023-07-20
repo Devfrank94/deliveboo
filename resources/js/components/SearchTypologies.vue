@@ -1,11 +1,58 @@
 <script>
+import { store } from '../store.js';
+import axios from 'axios';
 import CardTypologies from './partials/CardTypologies.vue'
+import Loader from '../components/partials/Loader.vue';
 
 export default {
     name: 'SearchTypologies',
 
     components:{
-      CardTypologies
+      CardTypologies,
+      Loader,
+    },
+    data(){
+        return{
+            tosearch : '',
+            restaurant: null,
+            store,
+        }
+    },
+
+    methods:{
+  getApi(endpoint, param){
+            store.loaded = false;
+            axios.get(endpoint)
+                .then(results => {
+              // console.log(results.data);
+                    param ? store.restaurants = results.data.data[0].restaurants : store.restaurants = results.data.data
+                    // store.links = results.data.restaurants.links
+                    // store.first_page_url = results.data.restaurants.first_page_url
+                    // store.last_page_url = results.data.restaurants.last_page_url
+                    // store.current_page = results.data.restaurants.current_page
+                    // store.last_page = results.data.restaurants.last_page
+                    store.loaded = true;
+                })
+
+        },
+
+        getAllTypologies(endpoint){
+            axios.get(endpoint)
+                .then(results => {
+            // console.log(results.data);
+                    store.typologies = results.data.typologies;
+                })
+
+        },
+
+        getRestaurantByTypology(name){
+            this.getApi(store.apiUrl + 'restaurants/restaurant-typology/'+name, true)
+        },
+    },
+
+    mounted(){
+      store.loaded = true,
+      this.getAllTypologies(store.apiUrl + 'restaurants/typologies')
     }
 }
 </script>
@@ -15,97 +62,37 @@ export default {
   <div class="main-container">
       <div id="search-bar">
         <i id="search" class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Cerca una categoria">
+        <input type="text" placeholder="Cerca il nome di un ristorante"
+        v-model.trim="tosearch" @keyup.enter="getApi(store.apiUrl + 'restaurants/search/'+tosearch, false)">
+
       </div>
 
-      <div id="typologies-container" class="d-flex row-cols-4">
+      <div>
+                <h2 class="mb-4">Cerca per tipologia</h2>
 
-        <div class="col d-flex justify-content-center align-items-center mb-3">
+           </div>
 
-          <div class="typology d-flex">Italiano</div>
+      <div id="typologies-container" class="d-flex justify-content-center row-cols-5">
 
-        </div>
+        <div class="typology d-flex m-2" v-for="typology in store.typologies"
+              :key="typology.id"
+              @click="getRestaurantByTypology(typology.name)"
+              >{{ typology.name }}</div>
 
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Pizza</div>
-
-        </div>
-
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Sushi</div>
-
-        </div>
-
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Americano</div>
-
-        </div>
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Messicano</div>
-
-        </div>
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Francese</div>
-
-        </div>
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Indiana</div>
-
-        </div>
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Spagnola</div>
-
-        </div>
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Cinese</div>
-
-        </div>
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Fast Food</div>
-
-        </div>
-
-        <div class="col d-flex justify-content-center align-items-center mb-3">
-
-          <div class="typology d-flex">Giapponese</div>
-
-        </div>
-
-
-        <!-- <div class="typology d-flex">Sushi</div>
-
-        <div class="typology d-flex">Italiana</div>
-        <div class="typology d-flex">Americana</div>
-        <div class="typology d-flex">Messicana</div>
-
-        <div class="typology d-flex">Francese</div>
-        <div class="typology d-flex">Indiana</div>
-        <div class="typology d-flex">Spagnola</div>
-
-        <div class="typology d-flex">Cinese</div>
-        <div class="typology d-flex">Fast Food</div>
-        <div class="typology d-flex">Giapponese</div> -->
       </div>
 
       <div id="cards-container">
-        <CardTypologies/>
+        <Loader v-if="!store.loaded" />
+        <div v-else class="page-wrapper d-flex">
+          <CardTypologies v-for="restaurant in store.restaurants"
+          :key="restaurant.id"
+          :name="restaurant.name"
+          :address="restaurant.address"
+          :image_path="restaurant.image_path"
+          :slug="restaurant.slug"
+          />
+
+        </div>
       </div>
 
 
@@ -188,9 +175,8 @@ export default {
 
   #cards-container{
     padding-top:20px 50px;
-    display: flex;
     flex-wrap: wrap;
-    padding:60px 200px;
+    margin: 20px auto;
     justify-content: space-around;
   }
 </style>
