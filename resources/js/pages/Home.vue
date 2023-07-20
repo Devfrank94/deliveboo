@@ -30,7 +30,7 @@ export default {
 
   <Plans/>
 
-<section>
+<!--<section>
             <h3 class="text-center"> 1. Scegli il ristorante</h3>
 
             <p class="mx-5 text-center">
@@ -41,13 +41,13 @@ export default {
 
           <div class="section-img">
             <img src="../../../public/img/Assets/illustration-1.png" alt="img">
-          </div>
+          </div> -->
 
 
 
         <!-- add to cart -->
 
-        <div class="container-section right py-5">
+        <!-- <div class="container-section right py-5">
 
 
           <div class="section-description">
@@ -64,11 +64,11 @@ export default {
             <img src="../../../public/img/Assets/illustration-2.png" alt="img">
           </div>
 
-        </div>
+        </div> -->
 
 
         <!-- delivery -->
-        <div class="container-section py-5">
+        <!-- <div class="container-section py-5">
 
           <div class="section-description">
 
@@ -90,7 +90,7 @@ export default {
 
     </section>
 
-    <section id="sec-4" class="test2"></section>
+    <section id="sec-4" class="test2"></section> -->
 
 </template>
 
