@@ -13,8 +13,8 @@ export default {
 <template>
 
 
-<header class="py-2">
-    <div class="sb-container d-flex justify-content-between align-items-center  px-0 my-4 px-3 ">
+<header>
+    <div class="sb-container d-flex justify-content-between align-items-center px-3 ">
 
 <!-- logo header -->
         <div class="img-head w-25">
