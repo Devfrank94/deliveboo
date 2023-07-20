@@ -39,8 +39,8 @@ export default {
         </div>
 
         <div class="button-head">
-            <button><a href="/admin">REGISTRATI</a></button>
-            <button>COME FUNZIONA</button>
+            <button><a href="/admin">Account</a></button>
+            <button><a href="#sec-3">Come Funziona</a></button>
         </div>
 
     </div>

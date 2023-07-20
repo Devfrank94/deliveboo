@@ -20,6 +20,9 @@ export default {
 
 <template>
 
+
+   <h1>Pages Home</h1>
+
   <Jumbotron/>
 
   <HypeRestaurants/>
