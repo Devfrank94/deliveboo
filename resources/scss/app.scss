@@ -67,3 +67,19 @@ header{
   .ck-editor__editable_inline {
     min-height: 200px;
   }
+
+  .icon-button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .icon-button input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }

@@ -47,7 +47,12 @@
                 >
                 <img class="mt-3 rounded-2" style="width: 200px" id="prev-image" src="" onerror="this.src='/img/no_image.jpg'" alt="">
                 <div>
-                  <input type="radio" name="noImage" onchange="removeImage()"> <label for="">Rimuovi immagine</label>
+
+                  <label for="noImage" class="icon-button">
+                    <i class="fas fa-eraser"></i>
+                    <input type="radio" id="noImage" name="noImage" onchange="removeImage()">
+                  </label>
+                  <label for="">Rimuovi immagine</label>
               </div>
             </div>
 
