@@ -41,6 +41,8 @@ export default {
         <div class="button-head">
             <button><a href="/admin">Account</a></button>
             <button><a href="#sec-3">Come Funziona</a></button>
+            <button class="fs-3"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></button>
+
         </div>
 
     </div>
@@ -111,6 +113,7 @@ ul{
   button{
           border: 0;
           padding: 10px 30px;
+          margin:0 3px;
           background-color: #EF233C;
           color: white;
           border-radius: 20px;
