@@ -34,7 +34,7 @@ class DishController extends Controller
         // L'utente non è autenticato, quindi lo reindirizzo alla pagina di login
         return redirect()->route('login');
     }
-    
+
 
     return view('admin.dishes.create');
     }
@@ -95,7 +95,17 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+
+      if (!$this->canEdit($dish)) {
+        // Puoi fare un reindirizzamento a una pagina di errore o mostrare un messaggio di errore.
+        return redirect()->route('admin.dishes.index')->with('error', 'Non hai il permesso di modificare il piatto di un altro ristorante.');
+    }
         return view('admin.dishes.edit', compact('dish'));
+    }
+
+    private function canEdit(Dish $dish)
+    {
+        return Auth::user()->restaurant->id === $dish->restaurant_id;
     }
 
     /**
