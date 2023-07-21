@@ -83,7 +83,7 @@ export default {
 
       <div id="cards-container">
         <Loader v-if="!store.loaded" />
-        <div v-else class="page-wrapper d-flex">
+        <div v-else class="page-wrapper d-flex flex-wrap justify-content-center">
           <CardTypologies v-for="restaurant in store.restaurants"
           :key="restaurant.id"
           :name="restaurant.name"
@@ -174,6 +174,7 @@ export default {
   }
 
   #cards-container{
+    display: flex;
     padding-top:20px 50px;
     flex-wrap: wrap;
     margin: 20px auto;

@@ -101,7 +101,6 @@ export default {
       width: 90%;
       display: flex;
       flex-wrap: wrap;
-      margin-bottom:150px;
       .section-description{
         width: 450px;
         text-align: center;

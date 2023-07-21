@@ -14,7 +14,7 @@ export default {
 
   <div class="card">
     <img v-if="image_path != null" :src="image_path" class="w-100 h-100" :alt="image_original_name" :title="image_original_name">
-      <img v-else src="../../../../public/storage/uploads/no_image.jpg" :alt="image_original_name" :title="image_original_name">
+      <img class="w-100" v-else src="../../../../public/storage/uploads/no_image.jpg" :alt="image_original_name" :title="image_original_name">
     <div class="card__content">
       <p class="card__title">{{ name }}</p>
       <p class="card__description">{{ address }}</p>
