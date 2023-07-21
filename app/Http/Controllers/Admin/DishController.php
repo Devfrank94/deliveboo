@@ -30,7 +30,13 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('admin.dishes.create');
+      if (!Auth::check()) {
+        // L'utente non è autenticato, quindi lo reindirizzo alla pagina di login
+        return redirect()->route('login');
+    }
+    
+
+    return view('admin.dishes.create');
     }
 
     /**
