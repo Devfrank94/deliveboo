@@ -12,74 +12,73 @@ export default {
       Loader,
     },
     data(){
-        return{
-            tosearch : '',
-            restaurant: null,
-            store,
-        }
+      return{
+        tosearch : '',
+        restaurant: null,
+        store,
+      }
     },
 
     methods:{
-  getApi(endpoint, param){
+      getApi(endpoint){
             store.loaded = false;
             axios.get(endpoint)
                 .then(results => {
-              // console.log(results.data);
-                    param ? store.restaurants = results.data.data[0].restaurants : store.restaurants = results.data.data
-                    // store.links = results.data.restaurants.links
-                    // store.first_page_url = results.data.restaurants.first_page_url
-                    // store.last_page_url = results.data.restaurants.last_page_url
-                    // store.current_page = results.data.restaurants.current_page
-                    // store.last_page = results.data.restaurants.last_page
-                    store.loaded = true;
+                  store.restaurants = results.data.restaurants;
+                  store.typologies = results.data.typologies;
+                  console.log(results.data.typologies);
+                  console.log(results.data.restaurants);
+                  console.log(store.typologies);
+                  // store.links = results.data.restaurants.links
+                  // store.first_page_url = results.data.restaurants.first_page_url
+                  // store.last_page_url = results.data.restaurants.last_page_url
+                  // store.current_page = results.data.restaurants.current_page
+                  // store.last_page = results.data.restaurants.last_page
+                  store.loaded = true;
                 })
-
-        },
-
-        getAllTypologies(endpoint){
-            axios.get(endpoint)
-                .then(results => {
-            // console.log(results.data);
-                    store.typologies = results.data.typologies;
-                })
-
-        },
-
-        getRestaurantByTypology(name){
-            this.getApi(store.apiUrl + 'restaurants/restaurant-typology/'+name, true)
-        },
+      },
     },
 
     mounted(){
       store.loaded = true,
-      this.getAllTypologies(store.apiUrl + 'restaurants/typologies')
+      this.getApi(store.apiUrl + 'typologies'),
+      this.getApi(store.apiUrl + 'restaurants')
     }
 }
 </script>
 
 <template>
 
+  <h2 class="text-center">
+    Cerca il tuo ristorante preferito
+  </h2>
+
   <div class="main-container">
-      <div id="search-bar">
-        <i id="search" class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Cerca il nome di un ristorante"
-        v-model.trim="tosearch" @keyup.enter="getApi(store.apiUrl + 'restaurants/search/'+tosearch, false)">
+
+    <div class="search-container">
+        <div id="search-bar">
+      <i id="search" class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Cerca il nome di un ristorante"
+        v-model.trim="tosearch">
 
       </div>
-
-      <div>
-                <h2 class="mb-4">Cerca per tipologia</h2>
-
-           </div>
-
-      <div id="typologies-container" class="d-flex justify-content-center row-cols-5">
-
-        <div class="typology d-flex m-2" v-for="typology in store.typologies"
-              :key="typology.id"
-              @click="getRestaurantByTypology(typology.name)"
-              >{{ typology.name }}</div>
-
+      <div class="button-group d-flex">
+        <div class="typology bg-danger">
+          <i class="fa-solid fa-rotate-left"></i>
+        </div>
+        <div class="typology bg-success">
+          <i class="fa-solid fa-check"></i>
+        </div>
       </div>
+    </div>
+
+      <div id="typologies-container" class="d-flex justify-content-center row-cols-5 button-group w-50">
+        <div class="typology d-flex justify-content-center" v-for="typology in store.typologies"
+            :key="typology.id"
+          >{{ typology.name }}
+        </div>
+      </div>
+  </div>
 
       <div id="cards-container">
         <Loader v-if="!store.loaded" />
@@ -96,7 +95,7 @@ export default {
       </div>
 
 
-  </div>
+
 
 </template>
 
@@ -106,6 +105,11 @@ export default {
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
+
+$borderColor: #000000;
+$borderRadius: 8px;
+$buttonOffset: 12px;
+$borderWidth: 1px;
 
 // xs: 0,
 // sm: 576px,
@@ -117,7 +121,7 @@ export default {
 
   .main-container{
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     padding: 30px 0;
   }
@@ -147,7 +151,6 @@ export default {
   #typologies-container{
     justify-content: space-around;
     flex-wrap: wrap;
-    width: 50%;
     @include media-breakpoint-down(xl) {
                 width: 65%;
             }
@@ -159,19 +162,82 @@ export default {
             }
   }
 
-  .typology{
-    padding: 10px 30px;
-    background-color: #EF233C;
-    color: white;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    @include media-breakpoint-down(md) {
-      font-size: small;
-      padding: 10px 20px;
-    }
-  }
+  .button-group {
+              display: inline-flex;
+              position: relative;
+
+              &:before {
+                display: block;
+                content: '';
+                position: absolute;
+                top: $buttonOffset;
+                right: 0;
+                bottom: -$buttonOffset;
+                left: 0;
+                border-radius: $borderRadius;
+              }
+
+              .typology {
+                  color: #000;
+                  background-color: #F9C80E;
+                  font-weight: bold;
+                  border: 0;
+                  border-bottom: $borderWidth solid $borderColor;
+                  outline: none;
+                  position: relative;
+                  top: 0;
+                  padding: 12px 16px;
+                  margin: 0 -1px 0 -1px;
+                  border-radius: 8px;
+                  margin: 0.8rem;
+
+
+                  z-index: 10;
+
+                  transition: top 140ms linear;
+
+                  @include media-breakpoint-down(md) {
+                    font-size: small;
+                    padding: 10px 20px;
+                  }
+
+                  &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 1px;
+                    right: 1px;
+                    bottom: -$buttonOffset;
+                    z-index: 5;
+                    pointer-event: none;
+                    cursor: pointer;
+                    border-radius: 8px;
+
+                    box-shadow: 0 0 0 $borderWidth $borderColor;
+
+                    transition: bottom 140ms linear;
+                  }
+
+                  &:hover {
+                    top: 4px;
+
+                    &:before {
+                      bottom: -($buttonOffset - 4px);
+                    }
+                  }
+
+                  &:active{
+                    top: 12px;
+
+                    &:before {
+                      bottom: -($buttonOffset - 12px);
+                    }
+                  }
+                }
+              }
+
+
 
   #cards-container{
     display: flex;
