@@ -37,6 +37,14 @@ components:{
             // price:,
           },
         ],
+
+        // by this variable we can justify all things in the cart that come, so add it in data
+        cartadd: {
+          id: "",
+          name: "",
+          price: "",
+          image:"",
+        },
       };
     },
 
@@ -72,8 +80,26 @@ components:{
       },
     },
 
+
+    created() {
+      this.viewCart();
+    },
+
     //get quantity of buy from user
     methods: {
+
+      viewCart() {
+        if (localStorage.getItem("cart")) {
+          this.cart = JSON.parse(localStorage.getItem("cart"));
+          this.badge = this.cart.length;
+          this.totalprice = this.cart.reduce((total, item) => {
+            return total + item.qty * item.price;
+          }, 0);
+        }
+      },
+
+
+
       getQty(id) {
         var item = findById(this.cart, id);
 
@@ -82,22 +108,30 @@ components:{
       },
 
       added(item) {
-        var total = 0;
         var itemm = findById(this.cart, id);
 
         //push id, name, qty, img and price in cart
         if (item !== undefined) {
           itemm.qty += 1;
+          this.saveCats();
         }else {
-          this.cart.push({
-            id: item.id,
-            name: item.name,
-            qty: 1,
-            image: item.image,
-
-            price: item.price,
-          });
+          // cartadd get all things that click
+          this.cartadd.id = item.id;
+          this.cartadd.name = item.name;
+          this.cartadd.price = item.price;
+          this.cartadd.image = item.image;
+          this.cartadd.qty = 1;
+          this.cart.push(this.cartadd);
+          this.cartadd = {};
+          this.saveCats(); //to save all inform of products
         }
+      },
+
+      //function to save in local storage
+      saveCats(){
+        let parsed = JSON.stringify(this.cart);
+        localStorage.setItem("cart", parsed);
+        this.viewCart(); //function to see al products are save
       },
 
 // function to remove buy
@@ -110,6 +144,7 @@ components:{
             var index = this.cart.indexOf(item);
             this.cart.splice(index, 1);
           }
+          this.saveCats;
         }
       },
 
@@ -131,6 +166,7 @@ components:{
 </script>
 
 <template>
+
     <Header/>
         <div>
 
