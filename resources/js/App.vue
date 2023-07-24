@@ -2,14 +2,132 @@
 import Header from "./components/Header.vue"
 import Footer from "./components/Footer.vue"
 
+// Function FIND BY ID
+function findById(arr, id) {
+  return arr.find((x) => x.id === id);
+}
+
 export default {
 name: 'App',
 components:{
     Header,
     // Main,
     Footer
-    }
-}
+    },
+
+    data() {
+      return {
+        cart: [],
+        selling: [
+          {
+            id: 1,
+            // image:,
+            name: "esempio",
+            // price:,
+          },
+          {
+            id: 2,
+            // image:,
+            name: "esempio2",
+            // price:,
+          },        {
+            id: 3,
+            // image:,
+            name: "esempio3",
+            // price:,
+          },
+        ],
+      };
+    },
+
+    computed: {
+      // function to show all data that add in cart and total price
+      cartTotal: function(){
+        var i;
+        var  total = 0;
+
+        for (i = 0; i < this.cart.length; i++) {
+          total += this.cart[i].price;
+        }
+
+        return total;
+
+      },
+
+      // function to plus all price of buy
+      totalItem: function() {
+        let sum = 0;
+        let summ = 0;
+        this.cart.forEach(function(item) {
+          var sum = item.price;
+          summ += sum * parseFloat(item.qty);
+
+          if ( summ < 1) {
+            $(".modal").hode();
+          }
+        });
+
+        return summ;
+
+      },
+    },
+
+    //get quantity of buy from user
+    methods: {
+      getQty(id) {
+        var item = findById(this.cart, id);
+
+        if (item !== undefined) return item.qty;
+        else return 0;
+      },
+
+      added(item) {
+        var total = 0;
+        var itemm = findById(this.cart, id);
+
+        //push id, name, qty, img and price in cart
+        if (item !== undefined) {
+          itemm.qty += 1;
+        }else {
+          this.cart.push({
+            id: item.id,
+            name: item.name,
+            qty: 1,
+            image: item.image,
+
+            price: item.price,
+          });
+        }
+      },
+
+// function to remove buy
+      remove(id){
+        var item = findById(this.cart, id);
+
+        if(item !== undefined) {
+          item.qty -= 1;
+          if ( item.qty <= 0) {
+            var index = this.cart.indexOf(item);
+            this.cart.splice(index, 1);
+          }
+        }
+      },
+
+      // button# to show all choose buy
+      Card() {
+        this.$("#myDIV").toggleClass("hide").fadeTo("slow");
+        this.$(".page").addClass("hide");
+      },
+
+      // function for can back from cart to main page
+      back(){
+        $("#myDIV").addClass("hide");
+        $(".page").removeClass("hide");
+      },
+    },
+};
+
+
 </script>
 
 <template>
