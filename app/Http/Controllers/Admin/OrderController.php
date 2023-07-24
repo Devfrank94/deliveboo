@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Dish;
 use App\Http\Requests\OrderRequest;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -19,6 +20,27 @@ class OrderController extends Controller
     {
       $orders = Order::all();
       return view('admin.orders.index', compact('orders'));
+    }
+
+    public function orderStatistics()
+    {
+        $orders = Order::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(total_price) as total_amount')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->get();
+
+        $data = [
+            'labels' => [],
+            'amounts' => []
+        ];
+
+        foreach ($orders as $order) {
+            $data['labels'][] = Carbon::createFromDate($order->year, $order->month)->format('M Y');
+            $data['amounts'][] = $order->total_amount;
+        }
+
+        return view('admin.restaurant.order-statistics', compact('data'));
     }
 
     /**
