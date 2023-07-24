@@ -11,7 +11,7 @@ use App\Models\Dish;
 class RestaurantController extends Controller
 {
   public function index(){
-    $restaurants = Restaurant::with('typologies', 'dishes')->paginate(5);
+    $restaurants = Restaurant::with('typologies', 'dishes')->get();
     $typologies = Typology::all();
     $dishes = Dish::all();
 
@@ -42,7 +42,7 @@ class RestaurantController extends Controller
   }
 
   public function search($tosearch){
-    $restaurants = Restaurant::where('name','like',"%$tosearch%")->with('typologies', 'dishes')->paginate(5);
+    $restaurants = Restaurant::where('name','like',"%$tosearch%")->with('typologies', 'dishes')->get();
 
     return response()->json($restaurants);
   }

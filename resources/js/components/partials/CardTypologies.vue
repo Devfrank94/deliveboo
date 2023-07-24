@@ -71,7 +71,7 @@ export default {
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #e5e5e591;
+  background-color: #00000063;
   transform: rotateX(-90deg);
   transform-origin: bottom;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -85,7 +85,7 @@ export default {
 .card__title {
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -96,7 +96,7 @@ export default {
 .card__description {
   margin: 10px 0 0;
   font-size: 14px;
-  color: black;
+  color: rgb(255, 255, 255);
   line-height: 1.4;
   height: 20px;
 }
