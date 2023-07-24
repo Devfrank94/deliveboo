@@ -44,7 +44,9 @@
 
   <template>
 
-    <div id="jumbotron"></div>
+    <div id="jumbotron">
+      <img src="../../.././public/img/cinese/Sichun.jpg" alt="">
+    </div>
 
     <div id="name-container">
         <h1>Nome Ristorante</h1>
@@ -52,9 +54,9 @@
 
     <div id="cards-container">
 
-      <div class="card">
+      <div class="nd-card">
         <div class="img-container">
-          <img src="../../.././public/img/italiano/arrabbiata.jpg" alt="">
+          <img src="../../.././public/img/cinese/riso-alla-cantonese.jpg" alt="">
         </div>
 
         <div class="card-info">
@@ -76,7 +78,7 @@
           </div>
 
           <div v-if="showDiv2" class="ingredients mbn-5">
-            <strong>Ingredients:</strong>
+            <strong>Ingredienti:</strong>
             <ul>
               <li>Olio</li>
               <li>Olio</li>
@@ -119,6 +121,9 @@
       height: 500px;
       width: 100%;
       background-color: orange;
+    }img{
+      width: 100%;
+      height: 500px;
     }
 
     #name-container{
@@ -130,16 +135,19 @@
     // STILE CARD
 
     #cards-container{
-      background-color: aqua;
+      background-color: #F86624;
       display: flex;
-      padding: 0px 50px;
+      padding: 20px 50px;
       flex-wrap: wrap;
       justify-content: center;
     }
-    .card{
+    .nd-card{
       margin: 10px 12px;
       min-width: 300px;
       width: calc(100% / 4 - 24px);
+      box-shadow: 4.8px 4.4px 4.7px rgba(0, 0, 0, 0.05), 10.2px 9.6px 10.2px rgba(0, 0, 0, 0.071), 17.5px 16.4px 17.8px rgba(0, 0, 0, 0.089), 31.1px 29.1px 32.4px rgba(0, 0, 0, 0.11), 93px 87px 94px rgba(0, 0, 0, 0.16);
+      background-color: white;
+      border-radius: 10px;
     }
 
     .img-container{
@@ -150,6 +158,7 @@
     .img-container img{
       width: 100%;
       height: 100%;
+      border-radius: 10px 10px 0px 0px;
     }
 
     .card-info{
@@ -177,8 +186,7 @@
       display: none;
     }
 
-    .ingredients{
-    }
+
 
     #ingredients-ap-dis{
       display: none;
@@ -187,7 +195,8 @@
     .counter-container{
       border: solid 1px;
       align-items: center;
-      margin: 10px 40px;
+      margin: 10px 83px;
+      border-radius: 4px;
     }
 
     #decrement{
@@ -216,7 +225,7 @@
     }
 
     .add-to-chart{
-      background-color: green;
+      background-color: #EF233C;
       color: white;
       padding: 4px 20px;
       border-radius: 10px;

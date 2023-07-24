@@ -1,5 +1,4 @@
 <script>
-import RestaurantDetails from '../components/RestaurantDetails.vue';
 export default {
     name: 'Restaurants',
 
@@ -13,7 +12,6 @@ export default {
 
     <h1>Pages Restaurants</h1>
 
-    <RestaurantDetails/>
 
 </template>
 
