@@ -21,7 +21,7 @@ class OrdersTableSeeder extends Seeder
 
           $new_order = new Order();
 
-          $new_order->id                = $order['$order_id'];
+          $new_order->id                = $order['order_id'];
           $new_order->name_user         = $order['name_user'];
           $new_order->surname_user      = $order['surname_user'];
           $new_order->email_user        = $order['email_user'];
