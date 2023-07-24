@@ -34,7 +34,15 @@
             id="image"
             name="image"
         >
-        <img class="py-3" src="{{ asset('storage/' . $restaurant->image_path)}}" id="img-show" alt="" width="200">
+        <img class="mt-3 rounded-2" src="{{ asset('storage/' . $restaurant->image_path)}}" onerror="this.src='/img/no_image.jpg'" id="img-show" alt="" width="200">
+        <div>
+
+          <label for="noImage" class="icon-button">
+            <i class="fas fa-eraser"></i>
+            <input type="radio" id="noImage" name="noImage" onchange="removeImage()">
+          </label>
+          <label for="">Rimuovi immagine</label>
+      </div>
       </div>
 
       <div class="mt-4">
@@ -125,6 +133,13 @@
         const tagImg = document.getElementById('img-show');
         tagImg.src = URL.createObjectURL(event.target.files[0]);
     }
+
+    function removeImage(){
+          const imageInput = document.getElementById('image');
+          imageInput.value = '';
+          const tagImage = document.getElementById('img-show');
+          tagImage.src = '';
+      }
 
     //function validateCheckbox(){
     //  var form_data = new FormData(document.querySelector("form"));
