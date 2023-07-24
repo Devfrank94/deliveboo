@@ -5,9 +5,8 @@ import CardTypologies from './partials/CardTypologies.vue'
 import Loader from '../components/partials/Loader.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 export default {
     name: 'SearchTypologies',
@@ -20,7 +19,7 @@ export default {
     },
     setup() {
       return {
-        modules: [EffectCoverflow, Pagination],
+        modules: [Autoplay,Pagination]
       };
     },
     data(){
@@ -124,7 +123,7 @@ export default {
     </div>
 
     <div id="typologies-container" class="d-flex justify-content-center row-cols-5 button-group w-50">
-        <div class="typology active d-flex justify-content-center" v-for="typology in store.typologies"
+        <div class="typology d-flex justify-content-center" v-for="typology in store.typologies"
             :key="typology.id"
             :id="typology.id"
             @click="getTypologiesId(typology.id), checkActive(typology.id)"
@@ -139,63 +138,31 @@ export default {
       </div>
 
 
-    <div id="cards-container">
-        <Loader v-if="!store.loaded" />
-        <div v-else class="page-wrapper d-flex flex-wrap justify-content-center">
-          <CardTypologies v-for="restaurant in store.restaurants"
-          :key="restaurant.id"
-          :name="restaurant.name"
-          :address="restaurant.address"
-          :image_path="restaurant.image_path"
-          :slug="restaurant.slug"
-          />
-        </div>
-
+    <div id="cards-container" class="w-100">
+      <Loader v-if="!store.loaded" />
+      <div v-else>
         <swiper
-          :effect="'coverflow'"
-          :grabCursor="true"
-          :centeredSlides="true"
-          :slidesPerView="'auto'"
-          :coverflowEffect="{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
+          :slidesPerView="5"
+          :spaceBetween="200"
+          :pagination="{
+            clickable: true,
           }"
-          :pagination="true"
           :modules="modules"
           class="mySwiper"
         >
-        <swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-1.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-2.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-3.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-4.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-5.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-6.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-7.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img
-            src="https://swiperjs.com/demos/images/nature-8.jpg" /></swiper-slide
-        ><swiper-slide
-          ><img src="https://swiperjs.com/demos/images/nature-9.jpg"
-        /></swiper-slide>
-      </swiper>
+          <swiper-slide v-for="restaurant in store.restaurants" :key="restaurant.id">
+            <CardTypologies
+              :name="restaurant.name"
+              :address="restaurant.address"
+              :image_path="restaurant.image_path"
+              :slug="restaurant.slug"
+            />
+          </swiper-slide>
+        </swiper>
+      </div>
+
     </div>
+    <p class="text-center w-100">Numero di risultati trovati {{ store.restaurants.length }}</p>
   </div>
 
 
@@ -373,11 +340,8 @@ $borderWidth: 1px;
     }
   }
 
-  #cards-container{
-    display: flex;
-    padding-top:20px 50px;
-    flex-wrap: wrap;
-    margin: 20px auto;
-    justify-content: space-around;
+  .swiper-pagination-bullets{
+    bottom: var(--swiper-pagination-bottom, -5px) !important;
   }
+
 </style>
