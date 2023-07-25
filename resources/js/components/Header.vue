@@ -76,6 +76,7 @@ export default {
       flex-direction: column;
       width: 100%;
       justify-content: space-around;
+      padding: 10px 0px;
       }
 }
 
