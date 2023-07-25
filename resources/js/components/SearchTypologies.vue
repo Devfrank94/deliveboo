@@ -114,11 +114,11 @@ export default {
 
     <div class="search-container">
 
-      <div id="search-bar">
+      <!--<div id="search-bar">
         <i id="search" class="fa-solid fa-magnifying-glass"></i>
         <input type="text" placeholder="Cerca il nome di un ristorante"
             v-model.trim="tosearch">
-      </div>
+      </div>-->
 
     </div>
 
@@ -310,7 +310,8 @@ $borderWidth: 1px;
               }
 
   .active{
-    color: #000 !important;
+    color: #ffffff !important;
+    background-color: $red !important;
     font-weight: bold !important;
     border: 0 !important;
     border-bottom: $borderWidth solid $borderColor !important;
