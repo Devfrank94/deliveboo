@@ -4,6 +4,8 @@ import Restaurants from './pages/Restaurants.vue'
 import Dishes from './pages/Dishes.vue'
 import Error404 from './pages/Error404.vue'
 import DetailRestaurant from './pages/DetailRestaurant.vue'
+import CartPage from './pages/CartPage.vue'
+
 const router = createRouter({
 
   history: createWebHistory(),
@@ -29,7 +31,12 @@ routes:[
       path: '/dettaglio-ristorante/:slug',
       name: 'DetailRestaurant',
       component: DetailRestaurant
-      },
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: CartPage,
+    },
 
     // Pagina Error 404
     {

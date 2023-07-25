@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\OrderController;
 
 
 Route::get('/', [PageController::class, 'index'])->name('home');
+// Route::get('/cart', [DishController::class, 'cartPage'])->name('cart');
 
 Route::middleware(['auth', 'verified'])
 ->name('admin.')
