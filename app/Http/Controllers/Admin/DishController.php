@@ -98,7 +98,7 @@ class DishController extends Controller
 
       if (!$this->canEdit($dish)) {
         // Puoi fare un reindirizzamento a una pagina di errore o mostrare un messaggio di errore.
-        return redirect()->route('admin.dishes.index')->with('error', 'Non hai il permesso di modificare il piatto di un altro ristorante.');
+        return redirect()->route('admin.dishes.index')->with('error', 'Operazione non consentita.');
     }
         return view('admin.dishes.edit', compact('dish'));
     }

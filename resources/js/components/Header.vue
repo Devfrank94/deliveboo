@@ -41,7 +41,9 @@ export default {
         <div class="button-head">
             <button><a href="/admin">Account</a></button>
             <button><a href="#sec-3">Come Funziona</a></button>
-            <button class="fs-3"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></button>
+            <button class="fs-3">
+                <router-link :to="{ name: 'cart' }"><i class="fa-solid fa-cart-shopping"></i></router-link>
+            </button>
 
         </div>
 
