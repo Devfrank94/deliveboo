@@ -114,11 +114,11 @@ export default {
 
     <div class="search-container">
 
-      <!--<div id="search-bar">
+      <div id="search-bar">
         <i id="search" class="fa-solid fa-magnifying-glass"></i>
         <input type="text" placeholder="Cerca il nome di un ristorante"
             v-model.trim="tosearch">
-      </div>-->
+      </div>
 
     </div>
 
@@ -197,9 +197,15 @@ $borderWidth: 1px;
     padding: 30px 0;
   }
 
+  .search-container{
+    width: 80%;
+    justify-content: center;
+    display: flex;
+  }
+
   #search-bar{
+    width: 100%;
     padding: 10px 0px;
-    width: 400px;
     background-color:#F9C80E;
     border-radius: 25px;
     display: flex;
@@ -220,7 +226,6 @@ $borderWidth: 1px;
   }
 
   #typologies-container{
-    justify-content: space-around;
     flex-wrap: wrap;
     @include media-breakpoint-down(xl) {
                 width: 65%;
@@ -231,8 +236,7 @@ $borderWidth: 1px;
             @include media-breakpoint-down(md) {
               width: 90%;
             }
-  }
-
+          }
   .button-group {
               display: inline-flex;
               position: relative;
@@ -261,17 +265,20 @@ $borderWidth: 1px;
                   margin: 0 -1px 0 -1px;
                   border-radius: 8px;
                   margin: 0.8rem;
+                  min-width: 90px;
                   cursor: pointer;
-
-
                   z-index: 10;
-
-                  transition: top 140ms linear;
-
-                  @include media-breakpoint-down(md) {
-                    font-size: small;
-                    padding: 10px 20px;
+                  transition: top 80ms linear;
+                  @include media-breakpoint-down(lg) {
+                    padding: 0px;
                   }
+                  @include media-breakpoint-down(md) {
+                    font-size: medium;
+                  }
+                  @include media-breakpoint-down(sm) {
+                  font-size: x-large;
+                  width: 100%;
+                }
 
                   &:before {
                     content: '';
@@ -345,5 +352,9 @@ $borderWidth: 1px;
   .swiper-pagination-bullets{
     bottom: var(--swiper-pagination-bottom, -5px) !important;
   }
+
+
+
+
 
 </style>
