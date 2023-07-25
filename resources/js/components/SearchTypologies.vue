@@ -227,8 +227,12 @@ $borderWidth: 1px;
 
   #typologies-container{
     flex-wrap: wrap;
-    @include media-breakpoint-down(xl) {
-                width: 65%;
+    width: 50%;
+    @include media-breakpoint-down(xxl) {
+                width: 60%;
+            }
+            @include media-breakpoint-down(xl) {
+              width: 70%;
             }
             @include media-breakpoint-down(lg) {
                 width: 80%;
@@ -268,7 +272,7 @@ $borderWidth: 1px;
                   margin: 0 -1px 0 -1px;
                   border-radius: 8px;
                   margin: 0.8rem;
-                  min-width: 90px;
+                  width: 150px;
                   cursor: pointer;
                   z-index: 10;
                   transition: top 80ms linear;
@@ -279,8 +283,8 @@ $borderWidth: 1px;
                     font-size: medium;
                   }
                   @include media-breakpoint-down(sm) {
-                  font-size:large;
-                  width: 50px;
+                  font-size:medium;
+                  width: 90px;
                 }
 
                   &:before {
