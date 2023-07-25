@@ -14,16 +14,16 @@ export default {
 
 
 <header>
-    <div class="sb-container d-flex justify-content-between align-items-center px-3 ">
+    <div class="sb-container d-flex justify-content-between align-items-center ">
 
 <!-- logo header -->
-        <div class="img-head w-25">
-            <img class="w-100" src="../../.././public/img/logo-no-background.png" alt="">
+        <div class="img-head ">
+            <img src="../../.././public/img/logo-no-background.png" alt="">
         </div>
 
 <!-- menu header -->
         <div class="central-menu">
-            <ul class="d-flex  fs-5 my-4 w-75">
+            <ul class="d-flex">
                 <li>
                     <router-link :to="{ name: 'home' }">Home</router-link>
                 </li>
@@ -64,29 +64,64 @@ export default {
 // xxl: 1400px
 
 
-
 .sb-container{
     margin: 0 auto;
-    width: 90%;
+    width: 98%;
+    height: 150px;
+    display: flex;
     @include media-breakpoint-down(md) {
       width: 100%;
-          }
+      }
+      @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      width: 100%;
+      justify-content: space-around;
+      }
+}
+
+.central-menu{
+  width: 100%;
 }
 
 img{
-    padding: 30px 0px 30px;
+    max-width: 300px;
+    @include media-breakpoint-down(lg) {
+              width: 250px;
+            }
+    @include media-breakpoint-down(md) {
+              width: 200px;
+            }
 }
 
 ul{
     list-style: none;
+    margin: 0px;
+    font-size: x-large;
+    padding: 0px;
+    justify-content: center;
+    @include media-breakpoint-down(lg) {
+        font-size: medium;
+      }
+    @include media-breakpoint-down(md) {
+        justify-content: center;
+      }
+    @include media-breakpoint-down(sm) {
+        justify-content: space-around;
+      }
   li{
     margin: 0 15px;
+    @include media-breakpoint-down(md) {
+              margin:0 5px;
+      }
     a{
       color:#F9C80E ;
       text-transform: uppercase;
       text-decoration: none;
       @include media-breakpoint-down(lg) {
               font-size: small;
+      }
+      @include media-breakpoint-down(sm) {
+              font-size: medium;
       }
       &.active{
         color: red;
@@ -99,41 +134,50 @@ ul{
 }
 
 .button-head{
-  width: 350px;
-      display: flex;
-      justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
       @include media-breakpoint-down(lg) {
               width: 250px;
             }
       @include media-breakpoint-down(md) {
             width: 200px;
           }
+      @include media-breakpoint-down(sm) {
+            width: 100%;
+            justify-content: space-around;
+      }
     }
 
   button{
           border: 0;
-          padding: 10px 30px;
+          padding: 1px 35px;
           margin:0 3px;
           background-color: #EF233C;
           color: white;
           border-radius: 20px;
-          justify-content: center;
-          align-items: center;
           cursor: pointer;
           @include media-breakpoint-down(xl) {
-            padding: 10px 20px;
+            padding: 6px 20px;
           }
           @include media-breakpoint-down(lg) {
               font-size: x-small;
             }
           @include media-breakpoint-down(md) {
             font-size: xx-small;
-            padding: 10px 10px;
+            padding: 3px 10px;
+          }
+          @include media-breakpoint-down(sm) {
+            font-size: x-small;
+            padding: 9px 22px;
           }
           a{
             color: white;
             text-transform: uppercase;
-            text-decoration: none
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-content: center;
           }
           a:hover{
             color: #F9C80E;
@@ -141,6 +185,8 @@ ul{
     }
     button:hover{
         color: #F9C80E;
+    }i{
+      font-size: medium;
     }
 </style>
 
