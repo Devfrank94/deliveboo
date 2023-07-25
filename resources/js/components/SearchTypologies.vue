@@ -122,7 +122,7 @@ export default {
 
     </div>
 
-    <div id="typologies-container" class="d-flex justify-content-center row-cols-5 button-group w-50">
+    <div id="typologies-container" class="d-flex justify-content-center row-cols-5 button-group ">
         <div class="typology d-flex justify-content-center" v-for="typology in store.typologies"
             :key="typology.id"
             :id="typology.id"
@@ -236,6 +236,9 @@ $borderWidth: 1px;
             @include media-breakpoint-down(md) {
               width: 90%;
             }
+            @include media-breakpoint-down(sm) {
+              width: 90%;
+            }
           }
   .button-group {
               display: inline-flex;
@@ -276,8 +279,8 @@ $borderWidth: 1px;
                     font-size: medium;
                   }
                   @include media-breakpoint-down(sm) {
-                  font-size: x-large;
-                  width: 100%;
+                  font-size:large;
+                  width: 50px;
                 }
 
                   &:before {
