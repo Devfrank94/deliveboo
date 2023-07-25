@@ -1,4 +1,8 @@
 <script>
+import { store } from '../store';
+import Loader from './partials/Loader.vue';
+
+
   export default {
     name: 'RestaurantDetails',
 
@@ -8,6 +12,10 @@
         showDiv1: false,
         showDiv2: false,
         toggle: false
+      }
+
+      components:{
+        Loader
       }
     },
 
@@ -49,10 +57,10 @@
     </div>
 
     <div id="name-container">
-        <h1>Nome Ristorante</h1>
+        <h1>{{ name }}</h1>
       </div>
 
-    <div id="cards-container">
+    <div id="cards-container" v-for="(dish, index) in restaurants.dishes" :key="index">
 
       <div class="nd-card">
         <div class="img-container">
@@ -61,7 +69,7 @@
 
         <div class="card-info">
 
-          <h4>Pasta</h4>
+          <h4>{{ dish.name }}</h4>
 
           <div class="plate-price mbn-5">
             <strong>Prezzo: </strong>

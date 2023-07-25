@@ -19,10 +19,13 @@ export default {
       <p class="card__title">{{ name }}</p>
       <p class="card__description">{{ address }}</p>
       <div class="button-container">
-        <div class="button"> Visita
-          <!-- <router-link :to="{ name: 'detail-restaurant', params: { slug: slug } }">Visita</router-link> -->
-        </div>
+        <div class="button">
 
+          <button>
+            <router-link :to="{ name: 'DetailRestaurant', params: { slug: slug } }">Visita</router-link>
+          </button>
+
+        </div>
       </div>
     </div>
   </div>
@@ -122,6 +125,13 @@ export default {
     text-decoration: none;
     color: white;
     font-size: small;
+}button{
+  background-color: none;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
 }
 
 .button:hover{

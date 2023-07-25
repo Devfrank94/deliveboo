@@ -3,6 +3,7 @@ import Home from './pages/Home.vue'
 import Restaurants from './pages/Restaurants.vue'
 import Dishes from './pages/Dishes.vue'
 import Error404 from './pages/Error404.vue'
+import DetailRestaurant from './pages/DetailRestaurant.vue'
 const router = createRouter({
 
   history: createWebHistory(),
@@ -24,6 +25,11 @@ routes:[
     name: 'dishes',
     component: Dishes
     },
+    {
+      path: '/dettaglio-ristorante/:slug',
+      name: 'DetailRestaurant',
+      component: DetailRestaurant
+      },
 
     // Pagina Error 404
     {
