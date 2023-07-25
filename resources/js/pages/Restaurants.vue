@@ -1,10 +1,6 @@
 <script>
 export default {
     name: 'Restaurants',
-
-    components:{
-      RestaurantDetails
-    }
 }
 </script>
 

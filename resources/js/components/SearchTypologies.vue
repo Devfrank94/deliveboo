@@ -261,6 +261,7 @@ $borderWidth: 1px;
                   margin: 0 -1px 0 -1px;
                   border-radius: 8px;
                   margin: 0.8rem;
+                  cursor: pointer;
 
 
                   z-index: 10;
@@ -281,7 +282,7 @@ $borderWidth: 1px;
                     right: 1px;
                     bottom: -12px;
                     z-index: 5;
-                    pointer-event: none;
+                    pointer-events: none;
                     cursor: pointer;
                     border-radius: 8px;
 
@@ -331,7 +332,7 @@ $borderWidth: 1px;
       right: 1px !important;
       bottom: 0 !important;
       z-index: 5 !important;
-      pointer-event: none !important;
+      pointer-events: none !important;
       cursor: pointer !important;
 
       box-shadow: 0 0 0 $borderWidth $borderColor !important;
