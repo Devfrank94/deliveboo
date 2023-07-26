@@ -30,7 +30,7 @@ export default {
     position: fixed;
     text-decoration: none;
     bottom: 0px;
-    right: 70px;
+    right: 30px;
     opacity: 0;
     background-color: #F86624;
     border-radius: 5px 5px 0 0;
