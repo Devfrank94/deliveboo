@@ -13,7 +13,7 @@ export default {
     data(){
         return{
             restaurant: null,
-            // counter: 0,
+            counter: 0,
             showDiv1: false,
             showDiv2: false,
             toggle: false,
@@ -154,17 +154,17 @@ export default {
         </div>
 
         <div class="add-to-chart-container d-flex justify-content-center">
-          <!-- <div
+          <div
           class="add-to-chart"
-          @click="counter++"
-          v-if="counter == 0">
+          @click="increment(dish)"
+          v-if="getCartItemQuantity(dish) == 0">
           Aggiungi al carrello
-          </div> -->
+          </div>
 
-          <div class="counter-container d-flex">
-            <div id="decrement" class="d-flex" @click="decrement(dish)"><i class="fa-solid fa-minus"></i></div>
-            <div id="counter" class="d-flex">{{ getCartItemQuantity(dish) }}</div>
-            <div id="increment" class="d-flex" @click="increment(dish)"><i class="fa-solid fa-plus"></i></div>
+          <div v-else class="counter-container d-flex text-white">
+            <div id="decrement" class="d-flex btn btn-primary py-2" @click="decrement(dish)"><i class="fa-solid fa-minus"></i></div>
+            <div id="counter" class="d-flex btn btn-primary mx-1 px-4">{{ getCartItemQuantity(dish) }}</div>
+            <div id="increment" class="d-flex btn btn-primary py-2" @click="increment(dish)"><i class="fa-solid fa-plus"></i></div>
           </div>
 
         </div>
@@ -276,7 +276,6 @@ export default {
   }
 
   .counter-container{
-    border: solid 1px;
     align-items: center;
     margin: 10px 83px;
     border-radius: 4px;
@@ -284,27 +283,10 @@ export default {
 
   #decrement{
     cursor: pointer;
-    border-right: solid 1px ;
-    width: 20%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #counter{
-    width: 80%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
   }
 
   #increment{
     cursor: pointer;
-    border-left: solid 1px ;
-    width: 20%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
   }
 
   .add-to-chart{
