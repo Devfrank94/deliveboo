@@ -59,12 +59,14 @@ export default {
 
 .cart-item-count {
   position: absolute;
-  top: -30px;
+  top: -25px;
   right: -30px;
   background-color:#2B2D42;
   color: white;
-  border-radius: 20px;
-  padding: 8px 13px;
+  border: 1.2px solid white;
+  border-radius: 50%;
+  padding: 8px 11px;
+  line-height: 16px;
   font-size: 16px;
 }
 
