@@ -98,14 +98,14 @@ export default {
     },
 
     removeFromCart(dish) {
-      const index = this.cartItems.indexOf(cartItem);
+      const index = this.cartItems.indexOf(dish);
       this.cartItems.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(this.dishes));
       this.getTotal();
     },
 
     clearCart() {
-      // this.cartItems = null;
+      this.cartItems.length = 0;
       localStorage.clear();
       console.log(this.cartItems);
       console.log(localStorage);
@@ -116,7 +116,7 @@ export default {
     // },
 
     getTotal() {
-      if(localStorage.getItem('cart')){
+      if(localStorage.getItem('cartItems')){
         (this.totalPrice = 0),
           this.cartItems.forEach((dish) => {
             let price = dish.price;
@@ -143,13 +143,13 @@ export default {
           <div class="col-12 col-md-5 col-lg-4 text-dark">
             <h3>{{ dish.name }}</h3>
             <span>€ {{ dish.price }}</span>
-            <p>{{ dish.ingredients }}</p>
+            <p v-html="dish.ingredients"></p>
           </div>
           <div class="col-6 col-md-2">
             <div class="counter-container d-flex text-dark">
-            <div id="decrement" class="d-flex" @click="decrement(dish)"><i class="fa-solid fa-minus"></i></div>
+            <div id="decrement" class="d-flex" @click="decrement(dish), getTotal()"><i class="fa-solid fa-minus"></i></div>
             <div id="counter" class="d-flex">{{ getCartItemQuantity(dish) }}</div>
-            <div id="increment" class="d-flex" @click="increment(dish)"><i class="fa-solid fa-plus"></i></div>
+            <div id="increment" class="d-flex" @click="increment(dish), getTotal()"><i class="fa-solid fa-plus"></i></div>
           </div>
           </div>
           <div class="col-6 col-md-1 trash text-end text-dark" @click="removeFromCart(dish)">

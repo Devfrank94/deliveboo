@@ -1,7 +1,12 @@
 <script>
+import CartIcon from './partials/CartIcon.vue';
 
 export default {
   name: "Header",
+  components:{
+    CartIcon
+  },
+
   data(){
     return{
 
@@ -42,7 +47,7 @@ export default {
             <button><a href="/admin">Account</a></button>
             <button><a href="#sec-3">Come Funziona</a></button>
             <button class="fs-3">
-                <router-link :to="{ name: 'cart' }"><i class="fa-solid fa-cart-shopping"></i></router-link>
+                <router-link :to="{ name: 'cart' }"><CartIcon/></router-link>
             </button>
 
         </div>

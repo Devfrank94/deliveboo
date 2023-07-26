@@ -12,5 +12,5 @@ export const store = reactive({
     typologies: [],
     dishes: [],
     loaded: false,
-
+    countPopUp:0,
 })
