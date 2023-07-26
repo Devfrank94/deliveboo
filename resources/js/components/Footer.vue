@@ -136,7 +136,6 @@
         }
 
         .title{
-
             color: #EDF2F4;
             @include media-breakpoint-down(xl) {
                 font-size: small;
@@ -159,7 +158,6 @@
         ul{
             margin:0px;
             padding: 0px;
-
         }
 
         li{
@@ -192,7 +190,6 @@
             @include media-breakpoint-down(lg) {
               font-size: large;
             }
-
         }
 
         i:hover{

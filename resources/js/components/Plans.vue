@@ -12,14 +12,17 @@ export default {
           Scegli il piano adatto a te
         </h1>
       </div>
-      <div class="container-plan d-flex justify-content-center">
-        <div class="pack-container mx-5">
+      <div class="container-plan d-flex justify-content-around">
+
+        <div class="pack-container">
           <div class="header">
             <h1 class="title">STANDARD</h1>
             <div class="price-container">
-              <span>€</span>10
-              <span>/mese</span>
+              <span>€</span>
+              <span>10</span>
+              <span>/ mese</span>
             </div>
+
           </div>
           <div>
             <ul class="lists">
@@ -51,12 +54,14 @@ export default {
             </button>
           </div>
         </div>
-        <div class="pack-container mx-5">
+
+        <div class="pack-container">
           <div class="header">
             <h1 class="title">PROFESSIONAL</h1>
             <div class="price-container">
-              <span>€</span>50
-              <span>/mese</span>
+              <span>€</span>
+              <span>50</span>
+              <span>/ mese</span>
             </div>
           </div>
           <div>
@@ -99,12 +104,14 @@ export default {
             </button>
           </div>
         </div>
-        <div class="pack-container mx-5">
+
+        <div class="pack-container">
           <div class="header">
             <h1 class="title">EXCLUSIVE</h1>
             <div class="price-container">
-              <span>€</span>100
-              <span>/mese</span>
+              <span>€</span>
+              <span>100</span>
+              <span>/ mese</span>
             </div>
           </div>
           <div>
@@ -165,29 +172,71 @@ export default {
 
 
 <style lang="scss" scoped>
-
 @use '../../scss/partialsGuest/vars' as *;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// xs: 0,
+// sm: 576px,
+// md: 768px,
+// lg: 992px,
+// xl: 1200px,
+// xxl: 1400px
+
+// @include media-breakpoint-down(xxl) {
+//                 width: 60%;
+//             }
+//             @include media-breakpoint-down(xl) {
+//               width: 70%;
+//             }
+//             @include media-breakpoint-down(lg) {
+//                 width: 80%;
+//             }
+//             @include media-breakpoint-down(md) {
+//               width: 90%;
+//             }
+//             @include media-breakpoint-down(sm) {
+//               width: 90%;
+//             }
+
+
+
 .container-plan{
   margin-top: 4.5rem;
   margin-bottom: 4.5rem;
+  @include media-breakpoint-down(md) {
+      flex-wrap: wrap;
+    }
 }
 .pack-container {
   position: relative;
   display: flex;
   width: 350px;
-  height: 550px;
+  height: 540px;
+  padding-top: 20px;
   flex-direction: column;
   border-radius: 12px;
   background-color: #2B2D42;
-  padding: 1.6rem;
   color: #fff;
   box-shadow:
   4.8px 4.4px 4.7px rgba(0, 0, 0, 0.05),
   10.2px 9.6px 10.2px rgba(0, 0, 0, 0.071),
   17.5px 16.4px 17.8px rgba(0, 0, 0, 0.089),
   31.1px 29.1px 32.4px rgba(0, 0, 0, 0.11),
-  93px 87px 94px rgba(0, 0, 0, 0.16)
-;
+  93px 87px 94px rgba(0, 0, 0, 0.16);
+  padding: 20px 10px;
+  @include media-breakpoint-down(xl) {
+          width: 300px;
+        }
+        @include media-breakpoint-down(lg) {
+          width: 250px;
+          height: 429px;
+          }
+          @include media-breakpoint-down(md) {
+              margin-bottom: 20px;
+            }
 }
 
 .header {
@@ -201,11 +250,7 @@ export default {
   padding-bottom: 1rem;
   text-align: center;
 }
-.title-1{
-  h1{
-    font-size: 5rem;
-  }
-}
+
 .title {
   display: block;
   font-family: sans-serif;
@@ -216,33 +261,49 @@ export default {
 }
 
 .price-container {
-  margin-top: 10px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 4px;
   font-family: sans-serif;
-  font-size: 4.5rem;
-  line-height: 1;
 }
 
-.price-container span:first-child {
-  margin-top: 10px;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+.price-container span{
+  font-size: xx-large;
+  margin: 0px 5px;
+  @include media-breakpoint-down(lg) {
+    font-size: xx-large;
+    margin: 0px 5px;
+  }
 }
 
-.price-container span:last-child {
-  align-self: flex-end;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+
+.price-container span:first-child{
+  font-size: x-large;
+  align-self: center;
+  @include media-breakpoint-down(lg) {
+    font-size: x-large;
+    align-self: center;
+  }
+}
+
+
+.price-container span:last-child{
+  align-self: center;
+  font-size: x-large;
 }
 
 
 .lists {
-  display: flex;
   flex-direction: column;
-  gap: 8px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include media-breakpoint-down(xl) {
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 }
 
 .list {
@@ -250,6 +311,9 @@ export default {
   align-items: center;
   gap: 10px;
   margin-top: 1.5rem;
+  @include media-breakpoint-down(xl) {
+          margin-top: 10px;
+        }
 
 }
 
@@ -270,16 +334,18 @@ export default {
 }
 
 .list p {
-  display: block;
   font-family: sans-serif;
+  margin: 0;
+  width: 190px;
+  @include media-breakpoint-down(xl) {
+        font-size: small;
+        width: 180px;
+        }
 }
 
 .button-container {
-  margin-top: 20px;
-  padding: 0;
-  position: absolute;
-  bottom: 15px;
-  margin-left: 95px;
+  display: flex;
+  justify-content: center;
 }
 
 .button-container button:hover{
@@ -289,7 +355,6 @@ export default {
 
 .button-container button {
   display: block;
-  width: 100%;
   background-color: #fff;
   padding: 10px 20px;
   text-transform: uppercase;
@@ -297,5 +362,7 @@ export default {
   outline: 0;
   border: 0;
   border-radius: 10px;
+  position: absolute;
+  bottom: 20px;
 }
 </style>
