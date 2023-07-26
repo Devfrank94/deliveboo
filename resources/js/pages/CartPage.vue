@@ -132,64 +132,67 @@ export default {
 </script>
 <template>
 
-  <div v-if="!loaded" class="row">
-    <h2>Il tuo carrello</h2>
-    <div class="col-12 col-lg-8">
-      <div v-if="cartItems.length > 0" class="row pt-5 p-3 text-white form_content rounded">
-        <div class="row pt-3" v-for="dish in cartItems" :key="dish.id">
-          <img :src="'/storage/' + dish.image_path" :alt="dish.name"
-            class="img-fluid col-12 col-md-4 col-lg-5 m_o_fit"
-          />
-          <div class="col-12 col-md-5 col-lg-4 text-dark">
-            <h3>{{ dish.name }}</h3>
-            <span>€ {{ dish.price }}</span>
-            <p v-html="dish.ingredients"></p>
-          </div>
-          <div class="col-6 col-md-2">
-            <div class="counter-container d-flex text-dark">
-            <div id="decrement" class="d-flex" @click="decrement(dish), getTotal()"><i class="fa-solid fa-minus"></i></div>
-            <div id="counter" class="d-flex">{{ getCartItemQuantity(dish) }}</div>
-            <div id="increment" class="d-flex" @click="increment(dish), getTotal()"><i class="fa-solid fa-plus"></i></div>
-          </div>
-          </div>
-          <div class="col-6 col-md-1 trash text-end text-dark" @click="removeFromCart(dish)">
-            <i class="fa-solid fa-trash-can"></i>
-          </div>
+  <div v-if="!loaded" class="container-fluid">
+    <h2>Riepilogo carrello</h2>
+    <div class="row row-cols-auto d-flex justify-content-between">
+        <div v-if="cartItems.length > 0" class="row pt-5 p-3 text-white form_content">
+          <div class="cont-cartitem border border-5 py-4 mb-3 rounded-4 d-flex justify-content-between" v-for="dish in cartItems" :key="dish.id">
+            <img :src="'/storage/' + dish.image_path" :alt="dish.name" class="img-fluid  m_o_fit ms-3" />
+              <div class="text-white d-flex align-items-center m-5">
+                <div class="more-info border border-4 p-3">
+                  <h3 class="text-decoration-underline">{{ dish.name }}</h3>
+                  <span class="badge text-bg-primary p-2">€ {{ dish.price }}</span>
+                  <p class="mt-2" v-html="dish.ingredients"></p>
+                  <p class="mt-2" v-html="dish.description"></p>
+                </div>
+              </div>
 
-        </div>
-        <div class="col-12 col-lg-4">
-      <div class="m-4 bg-check text-center p-3 rounded">
-        <div class="border-bottom">
-          <h6>Totale</h6>
-          <h4>€ {{ totalPrice }}</h4>
-        </div>
-        <div class="row">
-          <div class="container">
-            <div class="p-3">
-              <a href="#" class="btn btn-success"
-                >Vai al Checkout</a
-              >
+            <div class="d-flex">
+              <div class="counter-container d-flex align-items-center m-5">
+                <div id="decrement" class="d-flex btn btn-primary py-2" @click="decrement(dish), getTotal()"><i class="fa-solid fa-minus"></i></div>
+                <div id="counter" class="d-flex btn btn-primary mx-1 px-4">{{ getCartItemQuantity(dish) }}</div>
+                <div id="increment" class="d-flex btn btn-primary py-2" @click="increment(dish), getTotal()"><i class="fa-solid fa-plus"></i></div>
+                <div class="d-flex trash align-items-center m-5" @click="removeFromCart(dish)">
+                  <i class="fa-solid fa-trash-can text-danger fs-4"></i>
+                </div>
+              </div>
             </div>
-            <div class="p-3">
 
-              <button
-                class="btn btn-outline-danger"
-                @click="clearCart()"
-                >Svuota il carello</button
-              >
+        </div>
+
+          <div class="d-flex justify-content-center">
+              <div class="m-4 bg-check w-75 text-center p-3 rounded-4 border border-4">
+                <div class="border-bottom">
+                  <h3>Totale</h3>
+                  <h4>€ {{ totalPrice }}</h4>
+              </div>
+            <div class="row">
+              <div class="container">
+                <div class="p-3">
+                  <a href="#" class="btn btn-success"
+                    >Vai al Checkout</a
+                  >
+                </div>
+                <div class="p-3">
+
+                  <button
+                    class="btn btn-outline-danger"
+                    @click="clearCart()"
+                    >Svuota il carello</button
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-      </div>
-      <div v-else class="row p-3">
-          <h5>Il tuo carrello è vuoto!</h5>
-      </div>
-    </div>
-
-
+        <div v-else class="hide-cart container">
+          <h4 class="text-danger text-center m-5">Il tuo carrello è vuoto!</h4>
+        </div>
   </div>
+
+
+</div>
   <Loader
   v-else
   />
@@ -197,11 +200,39 @@ export default {
 </template>
 <style lang="scss" scoped>
 .m_o_fit{
-  object-fit: contain;
+  // object-fit: contain;
+  border-radius: 20px;
 }
+
+img{
+  width: 25%;
+}
+
 .bg-check {
   background-color: #ffbd59;
 }
+
+.more-info{
+  border-radius: 20px 0 20px 0;
+}
+
+.hide-cart{
+  height: calc(100vh - 500px);
+}
+
+
+.cont-cartitem{
+  background-color: #2b2d4245;
+  box-shadow:
+  2px 1.7px 3px -17px rgba(0, 0, 0, 0.026),
+  4.7px 4.1px 7.3px -17px rgba(0, 0, 0, 0.046),
+  8.9px 7.8px 13.8px -17px rgba(0, 0, 0, 0.061),
+  15.9px 13.8px 24.6px -17px rgba(0, 0, 0, 0.079),
+  29.7px 25.9px 46px -17px rgba(0, 0, 0, 0.107),
+  71px 62px 110px -17px rgba(0, 0, 0, 0.16)
+;
+}
+
 a {
   text-decoration: none;
   color: rgb(255, 255, 255);
@@ -210,29 +241,5 @@ a {
   cursor: pointer;
 }
 
-#decrement{
-    cursor: pointer;
-    border-right: solid 1px ;
-    width: 20%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #counter{
-    width: 80%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #increment{
-    cursor: pointer;
-    border-left: solid 1px ;
-    width: 20%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
 
 </style>

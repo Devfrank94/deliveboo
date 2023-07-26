@@ -31,11 +31,21 @@ export default {
 <template>
   <div class="cart-icon" @click="togglePopup" @mouseleave="togglePopup">
     <i class="fas fa-shopping-cart"></i>
-    <span v-if="cartItemCount" class="cart-item-count">{{ store.countPopUp }}</span>
+    <span v-if="cartItemCount" class="cart-item-count bg-primary">{{ store.countPopUp }}</span>
     <div v-if="isPopupVisible" class="cart-popup">
-      <ul>
-        <li v-for="product in cartItems" :key="product.id">{{ product.name }}</li>
-      </ul>
+    <ol class="list-group list-group-numbered">
+      <li v-for="product in cartItems" :key="product.id" class="list-group-item d-flex justify-content-between align-items-start px-3">
+        <span class="me-3">
+          {{ product.name }}
+        </span>
+        <div class="mx-3">
+          <img v-if="product.image_path != null" :src="product.image_path">
+          <img v-else src="../../../../public/img/no_image.jpg">
+        </div>
+
+        <div class="badge bg-primary rounded-pill ms-3 align-baseline">{{ product.quantity }}</div>
+      </li>
+    </ol>
     </div>
   </div>
 </template>
@@ -61,7 +71,6 @@ export default {
   position: absolute;
   top: -25px;
   right: -30px;
-  background-color:#2B2D42;
   color: white;
   border: 1.2px solid white;
   border-radius: 50%;
@@ -70,13 +79,22 @@ export default {
   font-size: 16px;
 }
 
+.list-group-item{
+  font-size: .9rem;
+
+  img{
+    object-fit: contain;
+    width: 3rem;
+  }
+}
+
 .cart-popup {
   position: absolute;
   top: 30px;
   right: -10px;
   background-color: white;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
