@@ -83,3 +83,52 @@ header{
     opacity: 0;
     cursor: pointer;
   }
+
+  .logo-img{
+    width: 200px;
+  }
+
+
+  .no-wrap{
+    flex-wrap: nowrap;
+  }
+
+  .nw100{
+    width: 100%;
+  }
+
+  .m0{
+    margin: 0;
+  }
+
+  .bg-dark{
+    position: relative;
+  }
+
+  .nd-right-bar{
+    right: 34px;
+    position: absolute;
+    display: flex;
+    @include media-breakpoint-down(md) {
+      display: flex;
+    }
+  }
+
+  .ndm-18{
+    @include media-breakpoint-down(md) {
+      margin-right: 18px;
+    }
+  }
+
+  #dropdown{
+    bottom: 0px;
+    height: 111px;
+    position: absolute;
+  }
+
+  #pr{
+    position: relative;
+  }
+
+
+

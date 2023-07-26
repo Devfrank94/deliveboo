@@ -185,22 +185,6 @@ export default {
 // xl: 1200px,
 // xxl: 1400px
 
-// @include media-breakpoint-down(xxl) {
-//                 width: 60%;
-//             }
-//             @include media-breakpoint-down(xl) {
-//               width: 70%;
-//             }
-//             @include media-breakpoint-down(lg) {
-//                 width: 80%;
-//             }
-//             @include media-breakpoint-down(md) {
-//               width: 90%;
-//             }
-//             @include media-breakpoint-down(sm) {
-//               width: 90%;
-//             }
-
 
 
 .container-plan{
