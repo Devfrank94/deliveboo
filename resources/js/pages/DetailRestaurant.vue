@@ -5,6 +5,7 @@ import Loader from '../components/partials/Loader.vue';
 
 export default {
     name:'DetailRestaurants',
+    props: ["cartItems"],
     components:{
         Loader
     },
@@ -12,31 +13,67 @@ export default {
     data(){
         return{
             restaurant: null,
-            counter: 0,
+            // counter: 0,
             showDiv1: false,
             showDiv2: false,
             toggle: false,
             store,
+            dishes: [],
         }
     },
 
     methods:{
 
-      incrementCounter() {
-      const incrementButton = document.getElementById('increment')
 
-      this.counter++;
-
+      increment(dish) {
+      const cartItem = this.cartItems.find((item) => item.id === dish.id);
+      if (cartItem) {
+        cartItem.quantity++;
+        console.log(cartItem);
+      } else {
+        this.cartItems.push({ ...dish, quantity: 1 });
+      }
+      this.$emit("update-cart", this.cartItems);
     },
 
 
-    decrementCounter() {
-      const decrementButton = document.getElementById('decrement');
 
-      if (this.counter > 0) {
-        this.counter--;
+    decrement(dish) {
+      const cartItem = this.cartItems.find((item) => item.id === dish.id);
+      if (cartItem) {
+        if (cartItem.quantity > 1) {
+          cartItem.quantity--;
+          console.log(cartItem);
+        } else {
+          // Rimuovi il piatto dal carrello se la quantità è 1
+          const index = this.cartItems.indexOf(cartItem);
+          this.cartItems.splice(index, 1);
+        }
+        this.$emit("update-cart", this.cartItems);
       }
     },
+
+
+    getCartItemQuantity(dish) {
+      const cartItem = this.cartItems.find((item) => item.id === dish.id);
+      return cartItem ? cartItem.quantity : 0;
+    },
+
+    //   incrementCounter() {
+    //   const incrementButton = document.getElementById('increment')
+
+    //   this.counter++;
+
+    // },
+
+
+    // decrementCounter() {
+    //   const decrementButton = document.getElementById('decrement');
+
+    //   if (this.counter > 0) {
+    //     this.counter--;
+    //   }
+    // },
 
     toggleDivs() {
       this.toggle = !this.toggle;
@@ -49,15 +86,15 @@ export default {
       store.loaded = false;
       axios.get(store.apiUrl + "restaurants/" + this.$route.params.slug)
       .then (result => {
-        console.log(result.data)
+        // console.log(result.data)
 
         this.restaurant = result.data;
-        console.log(this.restaurant)
+        // console.log(this.restaurant)
         store.loaded = true;
       })
 
     }
-    },
+  },
 
     created(){
       this.getApi();
@@ -116,20 +153,18 @@ export default {
 
         </div>
 
-
-
         <div class="add-to-chart-container d-flex justify-content-center">
-          <div
+          <!-- <div
           class="add-to-chart"
           @click="counter++"
           v-if="counter == 0">
           Aggiungi al carrello
-          </div>
+          </div> -->
 
-          <div v-else class="counter-container d-flex">
-            <div id="decrement" class="d-flex" @click="decrementCounter()"><i class="fa-solid fa-minus"></i></div>
-            <div id="counter" class="d-flex">{{ counter }}</div>
-            <div id="increment" class="d-flex" @click="incrementCounter()"><i class="fa-solid fa-plus"></i></div>
+          <div class="counter-container d-flex">
+            <div id="decrement" class="d-flex" @click="decrement(dish)"><i class="fa-solid fa-minus"></i></div>
+            <div id="counter" class="d-flex">{{ getCartItemQuantity(dish) }}</div>
+            <div id="increment" class="d-flex" @click="increment(dish)"><i class="fa-solid fa-plus"></i></div>
           </div>
 
         </div>
@@ -280,8 +315,5 @@ export default {
     cursor: pointer;
     margin: 10px;
   }
-
-
-
 
 </style>
