@@ -10,8 +10,20 @@ components:{
     // Main,
     Footer
     },
-  };
+    data() {
+    return {
+      cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
+    }
+  },
 
+  methods: {
+    updateCart(newCartItems) {
+      this.cartItems = newCartItems;
+      // Salvo il carrello nel local storage
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+    },
+  },
+};
 
 
 </script>
@@ -23,7 +35,7 @@ components:{
 
 
 
-        <router-view></router-view>
+        <router-view :cartItems="cartItems" @update-cart="updateCart"></router-view>
 
 
         </div>
