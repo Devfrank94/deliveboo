@@ -7,7 +7,7 @@ export default {
     name:'DetailRestaurants',
     props: ["cartItems"],
     components:{
-        Loader
+        Loader,
     },
 
     data(){
@@ -24,17 +24,48 @@ export default {
 
     methods:{
 
+      // FUNZIONE FUNZIONANTE
+    //   increment(dish) {
+    //   const cartItem = this.cartItems.find((item) => item.id === dish.id);
+    //   if (cartItem) {
+    //     cartItem.quantity++;
+    //     console.log(cartItem);
+    //   } else {
+    //     this.cartItems.push({ ...dish, quantity: 1 });
+    //   }
+    //   this.$emit("update-cart", this.cartItems);
+    // },
 
-      increment(dish) {
-      const cartItem = this.cartItems.find((item) => item.id === dish.id);
-      if (cartItem) {
-        cartItem.quantity++;
-        console.log(cartItem);
-      } else {
-        this.cartItems.push({ ...dish, quantity: 1 });
-      }
-      this.$emit("update-cart", this.cartItems);
-    },
+    increment(dish) {
+  // Verifica se il piatto da aggiungere ha un restaurant_id valido
+  if (!dish.restaurant_id) {
+    store.showError = true;
+    setTimeout(() => {
+          store.showError = false;
+        }, 5000);
+    return;
+  }
+
+  // Verifica se il restaurant_id del piatto da aggiungere corrisponde ai piatti già presenti nel carrello
+  const restaurantMismatch = this.cartItems.some(item => item.restaurant_id !== dish.restaurant_id);
+
+  if (restaurantMismatch) {
+    store.showError = true;
+    setTimeout(() => {
+          store.showError = false;
+        }, 5000);
+    return;
+  }
+
+  const cartItem = this.cartItems.find((item) => item.id === dish.id);
+  if (cartItem) {
+    cartItem.quantity++;
+    console.log(cartItem);
+  } else {
+    this.cartItems.push({ ...dish, quantity: 1 });
+  }
+  this.$emit("update-cart", this.cartItems);
+},
 
 
 
@@ -154,23 +185,37 @@ export default {
         </div>
 
         <div class="add-to-chart-container d-flex justify-content-center">
-          <div
+
+
+
+        <div
           class="add-to-chart"
           @click="increment(dish)"
           v-if="getCartItemQuantity(dish) == 0">
           Aggiungi al carrello
-          </div>
+        </div>
 
-          <div v-else class="counter-container d-flex text-white">
-            <div id="decrement" class="d-flex btn btn-primary py-2" @click="decrement(dish)"><i class="fa-solid fa-minus"></i></div>
-            <div id="counter" class="d-flex btn btn-primary mx-1 px-4">{{ getCartItemQuantity(dish) }}</div>
-            <div id="increment" class="d-flex btn btn-primary py-2" @click="increment(dish)"><i class="fa-solid fa-plus"></i></div>
-          </div>
 
+        <div v-else class="counter-container d-flex text-white">
+          <div id="decrement" class="d-flex btn btn-primary py-2" @click="decrement(dish)"><i class="fa-solid fa-minus"></i></div>
+          <div id="counter" class="d-flex btn btn-primary mx-1 px-4">{{ getCartItemQuantity(dish) }}</div>
+          <div id="increment" class="d-flex btn btn-primary py-2" @click="increment(dish)"><i class="fa-solid fa-plus"></i></div>
         </div>
       </div>
-
     </div>
+
+      <div v-if="store.showError" class="z-0 position-absolute my-5 p-5 rounded-3 error-message bg-danger border border-3">
+        <div class="text-white text-center">
+          <h2>Errore!!!</h2>
+          <h3>Il piatto appartiene a un ristorante diverso da quelli già presenti nel carrello. <br> Per ordinare questo piatto cancella quelli presenti nel carrello</h3>
+          <i class="fa-solid fa-triangle-exclamation fa-beat text-white fs-2 mt-2"></i>
+        </div>
+        <div>
+        </div>
+
+      </div>
+
+  </div>
 
   </div>
 
