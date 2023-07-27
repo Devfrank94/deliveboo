@@ -159,8 +159,8 @@ export default {
           </div>
         </div>
       </div>
-        <div v-else class="hide-cart container">
-          <h3 class="text-danger text-center m-5">Il tuo carrello è vuoto!</h3>
+        <div v-else class="hide-cart container col-10 m-5 text-center">
+          <h2 class="text-danger m-5">Il tuo carrello è vuoto!</h2>
         </div>
   </div>
 
