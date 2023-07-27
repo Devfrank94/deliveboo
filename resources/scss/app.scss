@@ -35,6 +35,12 @@ header{
     }
   }
 
+  #navbarSupportedContent{
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
   aside{
     height: 100%;
     width: 220px;
@@ -125,6 +131,13 @@ header{
     margin-left: 5px;
     @include media-breakpoint-down(sm) {
       display: none;
+    }
+  }
+
+  .dis-link{
+    display: none;
+    @include media-breakpoint-down(sm) {
+      display: block;
     }
   }
 
