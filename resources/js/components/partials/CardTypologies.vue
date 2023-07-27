@@ -49,6 +49,12 @@ export default {
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   border: solid 1px black;
+  object-fit: cover;
+
+  img{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .card svg {
