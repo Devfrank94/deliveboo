@@ -10,4 +10,8 @@ class PageController extends Controller
     public function index(){
         return view('guest.home');
     }
+
+    public function checkOut(){
+      return view('guest.checkout');
+    }
 }
