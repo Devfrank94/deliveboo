@@ -32,14 +32,6 @@ export default {
                 <li>
                     <router-link :to="{ name: 'home' }">Home</router-link>
                 </li>
-
-                <li>
-                    <router-link :to="{ name: 'restaurants' }">Ristoranti</router-link>
-                </li>
-
-                <li>
-                    <router-link :to="{ name: 'dishes' }">Piatti</router-link>
-                </li>
             </ul>
         </div>
 

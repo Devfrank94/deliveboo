@@ -13,8 +13,8 @@ export default {
 <template>
 
   <div class="card">
-    <img v-if="image_path != null" :src="image_path" class="w-100 h-100" :alt="image_original_name" :title="image_original_name">
-      <img class="w-100" v-else src="../../../../public/storage/uploads/no_image.jpg" :alt="image_original_name" :title="image_original_name">
+    <img v-if="image_path != null && image_path !='' " :src="image_path" class="w-100" :alt="image_original_name" :title="image_original_name">
+      <img class="img-thumbnail" v-else src="../../../../public/storage/uploads/no_image.jpg" :alt="image_original_name" :title="image_original_name">
     <div class="card__content">
       <p class="card__title">{{ name }}</p>
       <p class="card__description">{{ address }}</p>
@@ -47,12 +47,14 @@ export default {
   perspective: 1000px;
   box-shadow: 0 0 0 5px #ffffff80;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-image: url(../../../../public/storage/uploads/no_image.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   cursor: pointer;
   border: solid 1px black;
+  object-fit: cover;
+
+  img{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .card svg {

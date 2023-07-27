@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { auto } from '@popperjs/core';
 
 export default {
     name: 'SearchTypologies',
@@ -147,8 +148,40 @@ export default {
           :pagination="{
             clickable: true,
           }"
+
           :modules="modules"
           class="mySwiper"
+
+          :breakpoints="{
+            '300': {
+              slidesPerView: 1,
+              spaceBetween: 0,
+            },
+            '600': {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            '800': {
+              slidesPerView: 2,
+              spaceBetween: 5,
+            },
+            '900': {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            '1200': {
+              slidesPerView: 4,
+              spaceBetween: 90,
+            },
+            '1400': {
+              slidesPerView: 5,
+              spaceBetween: 200,
+            },
+            '2000': {
+              slidesPerView: 7,
+              spaceBetween: 200,
+            },
+          }"
         >
           <swiper-slide v-for="restaurant in store.restaurants" :key="restaurant.id">
             <CardTypologies
