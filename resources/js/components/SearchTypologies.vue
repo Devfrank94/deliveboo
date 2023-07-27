@@ -116,7 +116,7 @@ export default {
 
       <div id="search-bar">
         <i id="search" class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Cerca il nome di un ristorante"
+        <input class="w-100" type="text" placeholder="Cerca il nome di un ristorante"
             v-model.trim="tosearch">
       </div>
 
