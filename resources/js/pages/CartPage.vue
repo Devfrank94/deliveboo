@@ -27,20 +27,7 @@ export default {
   },
 
   mounted() {
-    // if (localStorage.cart) {
-    //   let dishesArray = JSON.parse(localStorage.getItem("cart"));
-    //   console.log(dishesArray);
-    //   dishesArray.forEach((element) => {
-    //     this.arr.push(element);
 
-    //     this.dishes = Array.from(new Set(this.arr.map((a) => a.id))).map(
-    //       (id) => {
-    //         return this.arr.findLast((a) => a.id === id);
-    //       }
-    //     );
-    //   });
-    //   this.getTotal();
-    // }
   },
 
   methods: {
@@ -49,19 +36,8 @@ export default {
         const cart = JSON.parse(localStorage.getItem('cart'));
         console.log(this.cartItems)
       }
-      // if (cart) {
-      //   this.cartItems = JSON.parse(cart);
-      // }
-      // this.loaded = false;
     },
-    // addToCart(dish) {
-    //   this.cartItems.push(dish);
-    //   this.saveCartItems();
-    // },
-    // removeFromCart(index) {
-    //   this.cartItems.splice(index, 1);
-    //   this.saveCartItems();
-    // },
+
     increment(dish) {
       const cartItem = this.cartItems.find((item) => item.id === dish.id);
       if (cartItem) {
@@ -82,7 +58,6 @@ export default {
           cartItem.quantity--;
           console.log(cartItem);
         } else {
-          // Rimuovi il piatto dal carrello se la quantità è 1
           const index = this.cartItems.indexOf(cartItem);
           this.cartItems.splice(index, 1);
         }
@@ -100,8 +75,9 @@ export default {
     removeFromCart(dish) {
       const index = this.cartItems.indexOf(dish);
       this.cartItems.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(this.dishes));
+      this.$emit("update-cart", this.cartItems);
       this.getTotal();
+      console.log(this.cartItems)
     },
 
     clearCart() {
@@ -111,9 +87,6 @@ export default {
       console.log(localStorage);
     },
 
-    // saveCartItems() {
-    //   localStorage.setItem('cart', JSON.stringify(this.cartItems));
-    // },
 
     getTotal() {
       if(localStorage.getItem('cartItems')){
@@ -187,7 +160,7 @@ export default {
         </div>
       </div>
         <div v-else class="hide-cart container">
-          <h4 class="text-danger text-center m-5">Il tuo carrello è vuoto!</h4>
+          <h3 class="text-danger text-center m-5">Il tuo carrello è vuoto!</h3>
         </div>
   </div>
 

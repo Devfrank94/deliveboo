@@ -13,4 +13,6 @@ export const store = reactive({
     dishes: [],
     loaded: false,
     countPopUp:0,
+    showError: false,
+    showModal: false,
 })
