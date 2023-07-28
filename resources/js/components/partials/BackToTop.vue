@@ -32,7 +32,7 @@ export default {
     bottom: 0px;
     right: 20px;
     opacity: 0;
-    background-color: #EF233C;
+    background-color: #F9C80E;
     border-radius: 5px 5px 0 0;
     width: 60px;
     height: 60px;
@@ -40,9 +40,9 @@ export default {
     justify-content: center;
     align-items: center;
     transition: all .5s;
-
+    z-index: 999;
     i{
-      color: #EDF2F4;
+      color: #2B2D42;
     }
 
     &.show{

@@ -23,17 +23,14 @@ export default {
 
 <!-- logo header -->
         <div class="img-head ">
+
+          <router-link :to="{ name: 'home' }">
             <img src="../../.././public/img/logo-no-background.png" alt="">
+          </router-link>
+
         </div>
 
 <!-- menu header -->
-        <div class="central-menu">
-            <ul class="d-flex">
-                <li>
-                    <router-link :to="{ name: 'home' }">Home</router-link>
-                </li>
-            </ul>
-        </div>
 
         <div class="button-head">
             <button><a href="/admin">Account</a></button>
@@ -63,6 +60,15 @@ export default {
 // xxl: 1400px
 
 
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color:#edf2f4bb;
+  width: 100%;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}
 .sb-container{
     margin: 0 auto;
     width: 98%;
@@ -85,6 +91,7 @@ export default {
 
 img{
     max-width: 300px;
+    // filter: drop-shadow(.3rem 2rem 1.5rem rgb(0, 0, 0));
     @include media-breakpoint-down(lg) {
               width: 250px;
             }
@@ -153,8 +160,8 @@ ul{
           border: 0;
           padding: 1px 35px;
           margin:0 3px;
-          background-color: #EF233C;
-          color: white;
+          background-color: #2B2D42;
+          // color: white;
           border-radius: 20px;
           cursor: pointer;
           @include media-breakpoint-down(xl) {
@@ -179,12 +186,12 @@ ul{
             justify-content: center;
             align-content: center;
           }
-          a:hover{
-            color: #F9C80E;
-          }
+          // a:hover{
+          //   color: #F9C80E;
+          // }
     }
     button:hover{
-        color: #F9C80E;
+        background-color: #2b2d42dc;
     }i{
       font-size: medium;
     }

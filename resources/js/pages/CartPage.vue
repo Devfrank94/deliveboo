@@ -121,7 +121,7 @@ export default {
 </script>
 <template>
 
-  <div v-if="!loaded" class="container-fluid">
+  <div v-if="!loaded" class="sg-container container-fluid">
     <h2>Riepilogo carrello</h2>
 
     <div class="row d-flex justify-content-center">
@@ -206,6 +206,11 @@ export default {
 // lg: 992px,
 // xl: 1200px,
 // xxl: 1400px
+
+
+.sg-container{
+  margin-top:200px;
+}
 
 .m_o_fit{
   // object-fit: contain;
