@@ -2,58 +2,110 @@
 
 @section('content')
 
-<div class="container my-5">
-  <form id="payment-form" action="" method="post">
-    @csrf
-    <div id="dropin-container"></div>
 
-    <label for="customer_name">Nome Cliente:</label>
-    <input type="text" id="customer_name" name="customer_name" required>
+@if (session('success_message'))
+<div class="alert alert-success">
+    {{ session('success_message') }}
+</div>
+@endif
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+@if(count($errors) > 0)
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
-    <label for="address">Indirizzo:</label>
-    <input type="text" id="address" name="address" required>
+<div class="content container my-5">
+  <h2 class=""><i class="fa-solid fa-truck"></i> Informazioni per la consegna: </h2>
+  <form method="post" id="payment-form" action="{{ url('/checkout') }}">
+      @csrf
+      <section>
+        <div class="form-group my-3 w-75">
+          <label for="name">Nome:</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group my-3 w-75">
+          <label for="surname">Cognome:</label>
+          <input type="text" class="form-control" id="surname" name="surname" required>
+        </div>
+        <div class="form-group my-3 w-75">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group my-3 w-75">
+          <label for="phone_number">Numero di telefono:</label>
+          <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+        </div>
+        <div class="form-group my-3 w-75">
+          <label for="address">Indirizzo di consegna:</label>
+          <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+          <label for="amount">
+              <h4 class="input-label my-4">Riepilogo Carrello</h4>
+              <div class="input-wrapper amount-wrapper">
 
-    <input type="submit" value="Pay with Braintree">
+                @foreach ($dishes as $dish)
+                  <div class="single-element d-flex align-items-center my-4">
+                    <div class="img-container img-thumbnail w-25 me-4">
+                      <img class="w-100" src="{{ asset('storage/' . $dish->image_path) }}" onerror="this.src='/img/no_image.jpg'" alt="{{ $dish->image_original_name }}">
+                    </div>
+                    <div class="info-element">
+                      <h4>{{$dish->name}}</h4>
+                      <p>Quantità : <span>{{$dish->quantity}}</span></p>
+                      <p>Prezzo : <span>{{$dish->price}}</span></p>
+                    </div>
+                  </div>
+                @endforeach
+
+                <h4>Importo totale : {{$totalPrice}}</h4>
+                  {{-- <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10"> --}}
+              </div>
+          </label>
+
+          <div class="bt-drop-in-wrapper w-50">
+              <div id="bt-dropin"></div>
+          </div>
+      </section>
+
+      <input id="nonce" name="payment_method_nonce" type="hidden" />
+      <button class="button btn btn-success" type="submit"><span>Paga</span></button>
   </form>
 </div>
 
-{{-- <script src="https://js.braintreegateway.com/web/dropin/1.26.0/js/dropin.min.js"></script>
-    <script>
-        var form = document.getElementById('payment-form');
-        var clientToken = "{{ Braintree\ClientToken::generate() }}";
+<!-- includes the Braintree JS client SDK -->
+<script src="https://js.braintreegateway.com/web/dropin/1.39.0/js/dropin.min.js"></script><!-- includes jQuery -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 
-        braintree.dropin.create({
-            authorization: clientToken,
-            container: '#dropin-container'
-        }, function (createErr, instance) {
-            if (createErr) {
-                console.error(createErr);
-                return;
-            }
+<script>
+  var form = document.querySelector('#payment-form');
+  var client_token ='{{$token}}' ;
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
+  braintree.dropin.create({
+    authorization: client_token,
+    selector: '#bt-dropin',
+  }, function (createErr, instance) {
+    if (createErr) {
+      console.log('Create Error', createErr);
+      return;
+    }
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
 
-                instance.requestPaymentMethod(function (err, payload) {
-                    if (err) {
-                        console.error(err);
-                        return;
-                    }
+      instance.requestPaymentMethod(function (err, payload) {
+        if (err) {
+          console.log('Request Payment Method Error', err);
+          return;
+        }
 
-                    // Include il payload in campi nascosti nel form e invia il form al tuo server per elaborare il pagamento
-                    var nonceInput = document.createElement('input');
-                    nonceInput.name = 'payment_method_nonce';
-                    nonceInput.value = payload.nonce;
-                    nonceInput.type = 'hidden';
-                    form.appendChild(nonceInput);
-
-                    form.submit();
-                });
-            });
-        });
-    </script> --}}
-
+        // Add the nonce to the form and submit
+        document.querySelector('#nonce').value = payload.nonce;
+        form.submit();
+      });
+    });
+  });
+</script>
 @endsection

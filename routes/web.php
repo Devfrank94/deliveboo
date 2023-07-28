@@ -24,6 +24,8 @@ use App\Http\Controllers\Admin\OrderController;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/check-out', [PageController::class, 'checkOut'])->name('checkout');
+Route::post('/checkout', [PageController::class, 'processPayment'])->name('processPayment');
+
 // Route::get('/cart', [DishController::class, 'cartPage'])->name('cart');
 
 Route::middleware(['auth', 'verified'])

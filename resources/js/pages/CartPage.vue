@@ -130,13 +130,15 @@ export default {
     },
 
     sendCart(){
-      let data = this.cartItems;
-      console.log(this.cartItems);
+      let data = [];
+      data.push(this.totalPrice);
+      data.push(this.cartItems);
+      console.log(data);
       axios.post('http://127.0.0.1:8000/api/orders/check-out', data)
           .then(results =>{
-            console.log(results.data);
-            if(results.data){
-              window.location.href = 'http://127.0.0.1:8000/check-out';
+            console.log(results.data.success);
+            if(results.data.success){
+               window.location.href = 'http://127.0.0.1:8000/check-out';
             }
 
           })
