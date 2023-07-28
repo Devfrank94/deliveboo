@@ -264,7 +264,7 @@ img{
 
 
 .cont-cartitem{
-  background-color: #F86624;
+  background-color: #ffbd59;
   box-shadow:
   2px 1.7px 3px -17px rgba(0, 0, 0, 0.026),
   4.7px 4.1px 7.3px -17px rgba(0, 0, 0, 0.046),

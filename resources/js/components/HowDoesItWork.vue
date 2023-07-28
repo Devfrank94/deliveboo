@@ -145,11 +145,14 @@ export default {
     }
     .container-section.right{
       justify-content: flex-end;
+      @include media-breakpoint-down(xl) {
+        justify-content: center;
+      }
     }
   }
 }
 
-p{
-  margin-bottom: 0;
-}
+  p{
+    margin-bottom: 0;
+  }
 </style>
