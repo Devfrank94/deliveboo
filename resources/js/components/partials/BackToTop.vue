@@ -32,7 +32,7 @@ export default {
     bottom: 0px;
     right: 30px;
     opacity: 0;
-    background-color: #F86624;
+    background-color: #EF233C;
     border-radius: 5px 5px 0 0;
     width: 60px;
     height: 60px;

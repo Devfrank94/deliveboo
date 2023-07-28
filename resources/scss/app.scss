@@ -2,6 +2,13 @@
 @import '@fontsource/galada';
 @import '@fontsource/spectral-sc';
 
+// xs: 0,
+// sm: 576px,
+// md: 768px,
+// lg: 992px,
+// xl: 1200px,
+// xxl: 1400px
+
 
 body{
     font-family: 'Spectral SC';
@@ -28,6 +35,12 @@ header{
     }
   }
 
+  #navbarSupportedContent{
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
   aside{
     height: 100%;
     width: 220px;
@@ -35,6 +48,13 @@ header{
     nav{
 
       ul{
+        @include media-breakpoint-down(sm) {
+          padding: 0;
+          justify-content: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
         list-style: none;
 
@@ -101,8 +121,18 @@ header{
     margin: 0;
   }
 
-  .bg-dark{
-    position: relative;
+  .dis-span{
+    margin-left: 5px;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  .dis-link{
+    display: none;
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
   }
 
   .nd-right-bar{

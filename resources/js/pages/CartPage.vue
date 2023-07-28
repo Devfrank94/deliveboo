@@ -107,31 +107,40 @@ export default {
 
   <div v-if="!loaded" class="container-fluid">
     <h2>Riepilogo carrello</h2>
-    <div class="row row-cols-auto d-flex justify-content-between">
-        <div v-if="cartItems.length > 0" class="row pt-5 p-3 text-white form_content">
-          <div class="cont-cartitem border border-5 py-4 mb-3 rounded-4 d-flex justify-content-between" v-for="dish in cartItems" :key="dish.id">
-            <img :src="'/storage/' + dish.image_path" :alt="dish.name" class="img-fluid  m_o_fit ms-3" />
-              <div class="text-white d-flex align-items-center m-5">
+
+    <div class="row d-flex justify-content-center">
+        <div v-if="cartItems.length > 0" class=" pt-5 p-3 text-white form_content">
+          <div class="cont-cartitem border border-5 py-4 mb-3 rounded-4 d-flex justify-content-around" v-for="dish in cartItems" :key="dish.id">
+
+            <img :src="'/storage/' + dish.image_path" :alt="dish.name" />
+
+            <div class="rotate-container d-flex">
+
+              <div class="text-white d-flex align-items-center">
+
                 <div class="more-info border border-4 p-3">
                   <h3 class="text-decoration-underline">{{ dish.name }}</h3>
                   <span class="badge text-bg-primary p-2">€ {{ dish.price }}</span>
                   <p class="mt-2" v-html="dish.ingredients"></p>
                   <p class="mt-2" v-html="dish.description"></p>
                 </div>
+
               </div>
 
-            <div class="d-flex">
-              <div class="counter-container d-flex align-items-center m-5">
-                <div id="decrement" class="d-flex btn btn-primary py-2" @click="decrement(dish), getTotal()"><i class="fa-solid fa-minus"></i></div>
-                <div id="counter" class="d-flex btn btn-primary mx-1 px-4">{{ getCartItemQuantity(dish) }}</div>
-                <div id="increment" class="d-flex btn btn-primary py-2" @click="increment(dish), getTotal()"><i class="fa-solid fa-plus"></i></div>
-                <div class="d-flex trash align-items-center m-5" @click="removeFromCart(dish)">
-                  <i class="fa-solid fa-trash-can text-danger fs-4"></i>
+              <div class="d-flex" id="cart-side">
+                <div class="counter-container d-flex align-items-center w-100">
+                  <div id="decrement" class="d-flex btn btn-primary py-2" @click="decrement(dish), getTotal()"><i class="fa-solid fa-minus"></i></div>
+                  <div id="counter" class="d-flex btn btn-primary mx-1 px-4">{{ getCartItemQuantity(dish) }}</div>
+                  <div id="increment" class="d-flex btn btn-primary py-2" @click="increment(dish), getTotal()"><i class="fa-solid fa-plus"></i></div>
+                  <div class="d-flex trash align-items-center" @click="removeFromCart(dish)">
+                    <i class="fa-solid fa-trash-can text-danger fs-4"></i>
+                  </div>
                 </div>
               </div>
+
             </div>
 
-        </div>
+          </div>
 
           <div class="d-flex justify-content-center">
               <div class="m-4 bg-check w-75 text-center p-3 rounded-4 border border-4">
@@ -172,13 +181,42 @@ export default {
 
 </template>
 <style lang="scss" scoped>
+
+  @import "~bootstrap/scss/functions";
+  @import "~bootstrap/scss/variables";
+  @import "~bootstrap/scss/mixins";
+
+// xs: 0,
+// sm: 576px,
+// md: 768px,
+// lg: 992px,
+// xl: 1200px,
+// xxl: 1400px
+
 .m_o_fit{
   // object-fit: contain;
   border-radius: 20px;
 }
 
 img{
-  width: 25%;
+  width: 320px;
+  max-height: 320px;
+  border-radius: 20px;
+  @include media-breakpoint-down(md) {
+    width: 400px;
+    margin-bottom: 30px;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 200px;
+    margin-bottom: 30px;
+  }
+}
+.rotate-container{
+  @include media-breakpoint-down(lg) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            }
 }
 
 .bg-check {
@@ -187,10 +225,30 @@ img{
 
 .more-info{
   border-radius: 20px 0 20px 0;
+  max-height: 269px;
+  overflow: scroll;
+  margin: 0px 40px;
+  @include media-breakpoint-down(sm) {
+    width: 200px;
+  }
+}
+
+.counter-container{
+  @include media-breakpoint-down(lg) {
+    margin-top: 20px;
+  }
+  @include media-breakpoint-down(sm) {
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 
 .hide-cart{
   height: calc(100vh - 500px);
+}
+
+#cart-side{
+  width: 214px;
 }
 
 
@@ -202,8 +260,12 @@ img{
   8.9px 7.8px 13.8px -17px rgba(0, 0, 0, 0.061),
   15.9px 13.8px 24.6px -17px rgba(0, 0, 0, 0.079),
   29.7px 25.9px 46px -17px rgba(0, 0, 0, 0.107),
-  71px 62px 110px -17px rgba(0, 0, 0, 0.16)
-;
+  71px 62px 110px -17px rgba(0, 0, 0, 0.16);
+  padding: 0px 20px;
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 a {
@@ -212,6 +274,7 @@ a {
 }
 .trash {
   cursor: pointer;
+  margin-left: 30px;
 }
 
 
