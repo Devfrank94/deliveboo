@@ -113,7 +113,7 @@ export default {
 
   <div class="main-container">
 
-    <div class="search-container">
+    <!-- <div class="search-container">
 
       <div id="search-bar">
         <i id="search" class="fa-solid fa-magnifying-glass"></i>
@@ -121,7 +121,7 @@ export default {
             v-model.trim="tosearch">
       </div>
 
-    </div>
+    </div> -->
 
     <div id="typologies-container" class="d-flex justify-content-center row-cols-5 button-group ">
         <div class="typology d-flex justify-content-center" v-for="typology in store.typologies"

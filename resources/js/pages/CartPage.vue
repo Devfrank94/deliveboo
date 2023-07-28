@@ -227,6 +227,8 @@ img{
   border-radius: 20px 0 20px 0;
   max-height: 269px;
   overflow: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
   margin: 0px 40px;
   @include media-breakpoint-down(sm) {
     width: 200px;
