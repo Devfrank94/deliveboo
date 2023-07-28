@@ -7,8 +7,8 @@ export default {
 <template>
 
       <!-- How does it work -->
-      <section id="sec-3" class="py-5">
-      <h1 class="text-center py-5 mb-5">Come Funziona</h1>
+      <section id="sec-3">
+      <h1 class="text-center">Come Funziona</h1>
 
       <!-- choose the restaurant -->
       <div class="container-sg">
@@ -79,11 +79,24 @@ export default {
 
 
 <style lang="scss" scoped>
-
 @use '../../scss/partialsGuest/vars' as *;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// xs: 0,
+// sm: 576px,
+// md: 768px,
+// lg: 992px,
+// xl: 1200px,
+// xxl: 1400px
+
+
 
 #sec-3{
   background-color: $orange;
+  padding: 20px;
 
   h1{
     color:$white;
@@ -94,15 +107,14 @@ export default {
   }
 
   .container-sg{
-    width: 80%;
-    margin: 0 auto;
 
     .container-section{
-      width: 90%;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-around;
       .section-description{
         width: 450px;
+        min-height: 240px;
         text-align: center;
         background-color: $white;
         box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.35);
@@ -116,12 +128,16 @@ export default {
       }
 
       .section-img{
-        width: 600px;
+        min-width: 350px;
+        margin-left: 60px;
+        margin-top: 90px;
+        @include media-breakpoint-down(sm) {
+              min-width: 200px;
+            }
 
         img{
           object-fit: contain;
           width: 100%;
-          margin: 50px 0;
           filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
         }
       }
