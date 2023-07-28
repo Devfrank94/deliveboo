@@ -293,8 +293,8 @@ $borderWidth: 1px;
               }
 
               .typology {
-                  color: #000;
-                  background-color: #F9C80E;
+                  color: #EDF2F4;
+                  background-color: #2B2D42;
                   font-weight: bold;
                   border: 0;
                   border-bottom: $borderWidth solid $borderColor;
@@ -358,7 +358,7 @@ $borderWidth: 1px;
 
   .active{
     color: #ffffff !important;
-    background-color: $red !important;
+    background-color: #F86624 !important;
     font-weight: bold !important;
     border: 0 !important;
     border-bottom: $borderWidth solid $borderColor !important;

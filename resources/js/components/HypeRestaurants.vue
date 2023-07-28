@@ -37,6 +37,8 @@ export default {
 
       <swiper
       :grabCursor="true"
+      :rewind="true"
+      :navigation="true"
       :effect="'creative'"
       :creativeEffect="{
         prev: {
@@ -51,6 +53,7 @@ export default {
           :modules="modules"
           class="mySwiper2"
           >
+
           <swiper-slide
           v-for="restaurant in store.restaurants"
           :key="restaurant.id">
@@ -98,20 +101,63 @@ export default {
   }
 
   .swiper {
-    width: 740px;
-    height: 620px;
+    width: 1500px;
+    height: 1000px;
     cursor:grab;
+    @include media-breakpoint-down(xxl) {
+      width: 1200px;
+      height: 800px;
+      }
+      @include media-breakpoint-down(xl) {
+        width: 1000px;
+        height: 700px;
+      }
+      @include media-breakpoint-down(lg) {
+        width: 800px;
+        height: 700px;
+      }
+      @include media-breakpoint-down(md) {
+        width: 700px;
+        height: 500px;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 500px;
+        height: 500px;
+      }
+
 
     .container-img{
-      width: 740px;
-      height: 520px;
-      object-fit: cover;
+      width: 1500px;
+      height: 1000px;
       border-radius: 10px;
+      @include media-breakpoint-down(xxl) {
+        width: 1200px;
+        height: 800px;
+      }
+      @include media-breakpoint-down(xl) {
+        width: 1000px;
+        height: 700px;
+      }
+      @include media-breakpoint-down(lg) {
+        width: 800px;
+        height: 700px;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 500px;
+        height: 500px;
+      }
+      @include media-breakpoint-down(md) {
+        width: 700px;
+        height: 500px;
+      }
+
+
 
       img{
         border-radius: 10px;
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
 
     }
