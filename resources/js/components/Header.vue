@@ -23,17 +23,14 @@ export default {
 
 <!-- logo header -->
         <div class="img-head ">
+
+          <router-link :to="{ name: 'home' }">
             <img src="../../.././public/img/logo-no-background.png" alt="">
+          </router-link>
+
         </div>
 
 <!-- menu header -->
-        <div class="central-menu">
-            <ul class="d-flex">
-                <li>
-                    <router-link :to="{ name: 'home' }">Home</router-link>
-                </li>
-            </ul>
-        </div>
 
         <div class="button-head">
             <button><a href="/admin">Account</a></button>
