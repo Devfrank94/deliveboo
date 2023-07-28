@@ -84,7 +84,7 @@ class PageController extends Controller
           $new_order->dishes()->attach($dish->id, ['dish_quantity' => $dish->quantity]);
         }
 
-      return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);;
+      return redirect('http://127.0.0.1:8000/pagamento-convalidato');
     } else {
       $errorString = "";
 
