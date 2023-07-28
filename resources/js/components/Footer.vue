@@ -18,7 +18,7 @@
 
             <div class="nd-container d-flex">
 
-                <div id="footer-img-container" class="container-fluid">
+                <div id="footer-img-container">
                     <img src="../../../public/deliveboo-white-no-background.png" alt="">
                 </div>
 
@@ -76,9 +76,11 @@
         // xxl: 1400px
 
         .nd-container{
-            height: 300px;
             background-color: #2B2D42;
             color: #8D99AE;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px 0px;
             @include media-breakpoint-down(sm) {
                 flex-direction: column;
                 justify-content: center;
@@ -92,7 +94,6 @@
             padding-left: 21px;
             align-items: center;
             display: flex;
-            width: 30%;
             position: relative;
             @include media-breakpoint-down(sm) {
                 padding: 0px;
@@ -102,7 +103,6 @@
             }
         }img{
             width: 378px;
-            position: relative;
             @include media-breakpoint-down(xl) {
                 width: 222px;
             }
@@ -110,7 +110,10 @@
                 width: 200px;
             }
             @include media-breakpoint-down(md) {
-              left: -47px;
+
+            }
+            @include media-breakpoint-down(sm) {
+
             }
         }
 
@@ -118,7 +121,6 @@
             height: 100%;
             display: flex;
             align-items: center;
-            width: 30%;
             @include media-breakpoint-down(xl) {
                 padding-left: 5px;
             }
@@ -174,7 +176,6 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            width: 30%;
             @include media-breakpoint-down(sm) {
               width: 50%;
               justify-content: space-around;
