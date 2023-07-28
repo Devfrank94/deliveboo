@@ -1,0 +1,53 @@
+{
+    "price": 45.9,
+    "dishes": [
+        {
+            "id": 49,
+            "restaurant_id": 2,
+            "name": "Corndog",
+            "slug": "corndog",
+            "image_path": "img\/americano\/corndog.jpg",
+            "image_original_name": "corndog",
+            "price": "2.00",
+            "description": "Il corndog \u00e8 un tipico piatto americano da fast-food.",
+            "ingredients": "Wurstel, Panatura, Ketchup, Maionese",
+            "visible": 1,
+            "vote": 4,
+            "created_at": "2023-07-14T10:12:46.000000Z",
+            "updated_at": "2023-07-14T10:12:46.000000Z",
+            "quantity": 3
+        },
+        {
+            "id": 51,
+            "restaurant_id": 2,
+            "name": "Macandcheese",
+            "slug": "macandcheese",
+            "image_path": "img\/americano\/macandcheese.jpg",
+            "image_original_name": "macandcheese",
+            "price": "7.00",
+            "description": "Cremosa e filante, la pasta al formaggio americana pi\u00f9 amata.",
+            "ingredients": "Pasta, Latte, Burro, Farina, Mozzarella, Cheddar, Parmigiano reggiano",
+            "visible": 1,
+            "vote": 4,
+            "created_at": "2023-07-14T10:12:46.000000Z",
+            "updated_at": "2023-07-14T10:12:46.000000Z",
+            "quantity": 3
+        },
+        {
+            "id": 48,
+            "restaurant_id": 2,
+            "name": "Pollo fritto",
+            "slug": "pollo-fritto",
+            "image_path": "img\/americano\/pollo-fritto.jpg",
+            "image_original_name": "pollo-fritto",
+            "price": "6.30",
+            "description": "Il pollo fritto \u00e8 un tipico piatto americano da Junk food",
+            "ingredients": "Pollo, Panatura, Paprika, Pepe, Sale",
+            "visible": 1,
+            "vote": 5,
+            "created_at": "2023-07-14T10:12:46.000000Z",
+            "updated_at": "2023-07-14T10:12:46.000000Z",
+            "quantity": 3
+        }
+    ]
+}

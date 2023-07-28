@@ -5,6 +5,7 @@ import Dishes from './pages/Dishes.vue'
 import Error404 from './pages/Error404.vue'
 import DetailRestaurant from './pages/DetailRestaurant.vue'
 import CartPage from './pages/CartPage.vue'
+import ValidationTrue from './pages/ValidationTrue.vue'
 
 const router = createRouter({
 
@@ -36,6 +37,11 @@ routes:[
       path: '/cart',
       name: 'cart',
       component: CartPage,
+    },
+    {
+      path: '/pagamento-convalidato',
+      name: 'ValidationTrue',
+      component: ValidationTrue,
     },
 
     // Pagina Error 404

@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 // import axios from 'axios';
 // import { store } from '../store.js';
 import CartIcon from '../components/partials/CartIcon.vue';
@@ -100,6 +101,21 @@ export default {
           console.log(this.totalPrice);
       }
     },
+
+    sendCart(){
+      let data = [];
+      data.push(this.totalPrice);
+      data.push(this.cartItems);
+      console.log(data);
+      axios.post('http://127.0.0.1:8000/api/orders/check-out', data)
+          .then(results =>{
+            console.log(results.data.success);
+            if(results.data.success){
+               window.location.href = 'http://127.0.0.1:8000/check-out';
+            }
+
+          })
+    }
   },
 };
 </script>
@@ -151,9 +167,7 @@ export default {
             <div class="row">
               <div class="container">
                 <div class="p-3">
-                  <a href="#" class="btn btn-success"
-                    >Vai al Checkout</a
-                  >
+                  <button @click="sendCart()" class="btn btn-success">Vai al Checkout</button>
                 </div>
                 <div class="p-3">
 
