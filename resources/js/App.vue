@@ -43,5 +43,7 @@ components:{
 </template>
 
 <style lang="scss">
-
+    .swiper-pagination{
+      display: none;
+    }
 </style>
