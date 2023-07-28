@@ -207,7 +207,7 @@ img{
     margin-bottom: 30px;
   }
   @include media-breakpoint-down(sm) {
-    width: 200px;
+    width: 70%;
     margin-bottom: 30px;
   }
 }
@@ -227,15 +227,24 @@ img{
   border-radius: 20px 0 20px 0;
   max-height: 269px;
   overflow: scroll;
-  overflow-y: hidden;
-  overflow-x: hidden;
   margin: 0px 40px;
+  width: 600px;
+  @include media-breakpoint-down(xxl) {
+    width: 440px;
+  }
+  @include media-breakpoint-down(xl) {
+    width: 285px;
+  }
+  @include media-breakpoint-down(md) {
+    width: 500px;
+  }
   @include media-breakpoint-down(sm) {
-    width: 200px;
+    width: 95%;
   }
 }
 
 .counter-container{
+  justify-content: end;
   @include media-breakpoint-down(lg) {
     margin-top: 20px;
   }
@@ -255,7 +264,7 @@ img{
 
 
 .cont-cartitem{
-  background-color: #2b2d4245;
+  background-color: #F86624;
   box-shadow:
   2px 1.7px 3px -17px rgba(0, 0, 0, 0.026),
   4.7px 4.1px 7.3px -17px rgba(0, 0, 0, 0.046),
