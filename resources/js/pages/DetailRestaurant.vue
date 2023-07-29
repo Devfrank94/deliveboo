@@ -90,21 +90,12 @@ export default {
       return cartItem ? cartItem.quantity : 0;
     },
 
-    //   incrementCounter() {
-    //   const incrementButton = document.getElementById('increment')
-
-    //   this.counter++;
-
-    // },
-
-
-    // decrementCounter() {
-    //   const decrementButton = document.getElementById('decrement');
-
-    //   if (this.counter > 0) {
-    //     this.counter--;
-    //   }
-    // },
+    clearCart() {
+      this.cartItems.length = 0;
+      localStorage.clear();
+      console.log(this.cartItems);
+      console.log(localStorage);
+    },
 
     toggleDivs() {
       this.toggle = !this.toggle;
@@ -192,7 +183,7 @@ export default {
           class="add-to-chart"
           @click="increment(dish)"
           v-if="getCartItemQuantity(dish) == 0">
-          Aggiungi al carrello
+          <h6 class="pb-0 pt-2">Aggiungi al carrello</h6>
         </div>
 
 
@@ -206,9 +197,11 @@ export default {
 
       <div v-if="store.showError" class="z-0 position-absolute my-5 p-5 rounded-3 error-message bg-danger border border-3">
         <div class="text-white text-center">
+          <i class="fa-regular fa-circle-xmark text-white fs-2 m-2 position-absolute top-0 end-0" @click="store.showError = false"></i>
+          <i class="fa-solid fa-triangle-exclamation fa-beat text-white fs-2 mb-2"></i>
           <h2>Errore!!!</h2>
-          <h3>Il piatto appartiene a un ristorante diverso da quelli già presenti nel carrello. <br> Per ordinare questo piatto cancella quelli presenti nel carrello</h3>
-          <i class="fa-solid fa-triangle-exclamation fa-beat text-white fs-2 mt-2"></i>
+          <h3>Il piatto appartiene a un ristorante diverso da quelli già presenti nel carrello. <br> Per ordinare questo piatto svuota il carrello</h3>
+          <button class="btn btn-warning text-white" @click="clearCart(), store.showError = false">Svuota il carello</button>
         </div>
         <div>
         </div>
@@ -326,11 +319,11 @@ export default {
     border-radius: 4px;
   }
 
-  #decrement{
+  #decrement, #increment{
     cursor: pointer;
   }
 
-  #increment{
+  .fa-circle-xmark{
     cursor: pointer;
   }
 

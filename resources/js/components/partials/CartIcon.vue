@@ -5,13 +5,14 @@ export default {
   data() {
     return {
       isPopupVisible: false,
-      store
+      store,
     };
   },
   computed: {
     cartItems() {
       return JSON.parse(localStorage.getItem("cartItems")) || [];
     },
+
     cartItemCount() {
       this.cartItems.forEach(element => {
         store.countPopUp += element.quantity;
@@ -23,29 +24,62 @@ export default {
     togglePopup() {
       this.isPopupVisible = !this.isPopupVisible;
     },
+
+    calculateTotal() {
+      let total = 0;
+      for (const product of this.cartItems) {
+        total += product.price * product.quantity;
+      }
+      return total;
+    },
+
+    loadCartItems() {
+      if(localStorage.getItem('cart')){
+        const cart = JSON.parse(localStorage.getItem('cart'));
+        console.log(this.cartItems)
+      }
+    },
+
+    getCartItemQuantity(dish) {
+      const cartItem = this.cartItems.find((item) => item.id === dish.id);
+      return cartItem ? cartItem.quantity : 0;
+    },
+
   },
 };
 </script>
 
 
 <template>
-  <div class="cart-icon" @click="togglePopup" @mouseleave="togglePopup">
+  <div class="cart-icon">
     <i class="fas fa-shopping-cart"></i>
-    <span v-if="cartItemCount" class="cart-item-count bg-primary">{{ store.countPopUp }}</span>
+    <span v-if="cartItemCount" @mouseenter="togglePopup" class="cart-item-count bg-primary">{{ store.countPopUp }}</span>
     <div v-if="isPopupVisible" class="cart-popup">
-    <ol class="list-group list-group-numbered">
-      <li v-for="product in cartItems" :key="product.id" class="list-group-item d-flex justify-content-between align-items-start px-3">
-        <span class="me-3">
-          {{ product.name }}
-        </span>
-        <div class="mx-3">
-          <img v-if="product.image_path != null" :src="product.image_path">
-          <img v-else src="../../../../public/img/no_image.jpg">
-        </div>
+    <table class="table p-3 table-bordered border border-2 align-middle">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="product in cartItems" :key="product.id">
+      <td>
+        <img v-if="product.image_path != null && product.image_path !='' " :src="product.image_path">
+        <img v-else src="../../../../public/img/no_image.jpg">
+      </td>
+      <td>{{ product.name }}</td>
+      <td>€ {{ product.price }}</td>
+      <td>{{ product.quantity }} Pz.</td>
+      <td>€ {{ product.quantity * product.price }}</td>
+    </tr>
+  </tbody>
+</table>
+    <div class="m-2 bg-check w-70 text-center text-white p-3 rounded-4 border border-4">
+      <div class="border-bottom">
+        <h5>Totale</h5>
+        <h4>€ {{ calculateTotal() }}</h4>
+      </div>
+    </div>
 
-        <div class="badge bg-primary rounded-pill ms-3 align-baseline">{{ product.quantity }}</div>
-      </li>
-    </ol>
     </div>
   </div>
 </template>
@@ -65,6 +99,16 @@ export default {
           padding: 0.5rem;
         }
       }
+}
+
+.table{
+  width: 21rem;
+  font-size: .8rem;
+
+  img{
+    width: 4rem;
+    border-radius: 8px;
+  }
 }
 
 .cart-item-count {
@@ -97,5 +141,9 @@ export default {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg-check {
+  background-color: #ffbd59;
 }
 </style>
