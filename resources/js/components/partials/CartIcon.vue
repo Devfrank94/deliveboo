@@ -53,7 +53,7 @@ export default {
 <template>
   <div class="cart-icon">
     <i class="fas fa-shopping-cart"></i>
-    <span v-if="cartItemCount" @mouseenter="togglePopup" class="cart-item-count bg-primary">{{ store.countPopUp }}</span>
+    <span v-if="cartItemCount" @mouseover="togglePopup" @mouseleave="togglePopup" class="cart-item-count bg-primary">{{ store.countPopUp }}</span>
     <div v-if="isPopupVisible" class="cart-popup">
     <table class="table p-3 table-bordered border border-2 align-middle">
   <thead>
