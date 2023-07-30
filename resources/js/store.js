@@ -15,4 +15,7 @@ export const store = reactive({
     countPopUp:0,
     showError: false,
     showModal: false,
+
+
+
 })

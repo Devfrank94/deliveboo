@@ -14,6 +14,7 @@
     },
     "dependencies": {
         "@fontsource/galada": "^5.0.5",
+        "@fontsource/open-sans": "^5.0.5",
         "@fontsource/spectral-sc": "^5.0.5",
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-vue": "^4.2.3",
