@@ -248,6 +248,8 @@ img{
   overflow: scroll;
   margin: 0px 40px;
   width: 600px;
+  overflow-y: hidden;
+  overflow-x: hidden;
   @include media-breakpoint-down(xxl) {
     width: 440px;
   }

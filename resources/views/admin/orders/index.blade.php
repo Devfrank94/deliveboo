@@ -27,7 +27,6 @@
         <th scope="col" class="text-center">Telefono</th>
         <th scope="col" class="text-center">Email</th>
         <th scope="col" class="text-center">Indirizzo di Consegna</th>
-        <th scope="col" class="text-center">Totale Piatti</th>
         <th scope="col" class="text-center">Totale</th>
         <th scope="col" class="text-center">Pagamento</th>
         <th scope="col" class="text-center">Data</th>
@@ -44,8 +43,6 @@
         <td class="text-center">{{$order->phone_number_user}}</td>
         <td class="text-center">{{$order->email_user}}</td>
         <td class="text-center">{{$order->address_user}}</td>
-    
-            {{-- FIXME --}}<td class="text-center">-</td>
 
         <td class="text-center">{{$order->total_price}} &euro;</td>
         <td class="text-center">{{$order->type_payment}}</td>

@@ -13,6 +13,10 @@ export default {
 </template>
 
 
-<style>
+<style lang="scss" scoped>
+
+  .container{
+    padding-top: 100px;
+  }
 
 </style>

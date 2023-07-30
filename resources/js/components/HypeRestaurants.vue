@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/effect-creative';
-import { EffectCreative } from 'swiper/modules';
+import { EffectCreative, Autoplay } from 'swiper/modules';
 import { store } from '../store';
 
 
@@ -22,7 +22,7 @@ export default {
     },
     setup() {
       return {
-        modules: [EffectCreative],
+        modules: [EffectCreative, Autoplay],
       };
     },
 }
@@ -32,6 +32,7 @@ export default {
 
 
 
+  <h1 class="text-center py-4">Ristoranti più ricercati</h1>
   <div id="cards-container" class="w-100">
     <div id="card">
 
@@ -40,6 +41,10 @@ export default {
       :rewind="true"
       :navigation="true"
       :effect="'creative'"
+      :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false,
+      }"
       :creativeEffect="{
         prev: {
           shadow: true,
@@ -57,12 +62,11 @@ export default {
           <swiper-slide
           v-for="restaurant in store.restaurants"
           :key="restaurant.id">
-          <div class="h-100">
-            <h1 class="text-center">{{ restaurant.name}} </h1>
-            <div class="container-img">
-              <img v-if="restaurant.image_path != null &&restaurant.image_path !== ''" :src="restaurant.image_path" :alt="image_original_name">
-              <img class="w-100" v-else src="../../../public/img/no_image.jpg" >
-            </div>
+          <div class="h-100 position-relative">
+              <div class="container-img position-relative">
+                  <img v-if="restaurant.image_path != null &&restaurant.image_path !== ''" :src="restaurant.image_path" :alt="image_original_name">
+                  <img class="w-100" v-else src="../../../public/img/no_image.jpg" >
+              </div>
           </div>
           </swiper-slide>
         </swiper>
@@ -83,12 +87,13 @@ export default {
   #card {
     height: 100%;
     position: relative;
-    background: #eee;
+    background: #ffffff;
     font-size: 14px;
     color: #000;
     margin: 0;
     padding: 0;
     border-radius: 20px;
+    overflow-x: hidden;
   }
 
 
@@ -99,6 +104,7 @@ export default {
     margin-bottom: 100px;
 
   }
+
 
   .swiper {
     width: 1500px;
@@ -125,6 +131,10 @@ export default {
         height: 500px;
       }
 
+      h3{
+        font-family: 'Open-sans' !important;
+        font-weight: 700;
+      }
 
     .container-img{
       width: 1500px;

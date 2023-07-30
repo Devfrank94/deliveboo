@@ -60,7 +60,7 @@
 
             <tbody>
 
-              @foreach ($dishes as $dish)
+              @foreach ($order->dishes as $dish)
               <tr>
 
                 <td>{{$dish->name}}</td>

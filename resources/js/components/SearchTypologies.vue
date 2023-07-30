@@ -195,7 +195,7 @@ export default {
       </div>
 
     </div>
-    <p class="text-center w-100">Numero di risultati trovati {{ store.restaurants.length }}</p>
+    <p class="text-center w-100 fs-5">Numero di risultati trovati {{ store.restaurants.length }}</p>
   </div>
 
 

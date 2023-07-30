@@ -4,7 +4,7 @@
 
 <div class="container my-4">
 
-  <h1 class="mb-5 text-center"> Ordini di {{$order->surname_user}} {{$order->name_user}} 
+  <h1 class="mb-5 text-center"> Ordini di {{$order->surname_user}} {{$order->name_user}}
     <a href="{{route('admin.orders.edit', $order)}}" class="btn btn-warning mx-3">
       <i class="fa-regular fa-pen-to-square" title="Modifica"></i>
     </a>
@@ -33,7 +33,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($dishes as $dish)
+              @foreach ($order->dishes as $dish)
               <tr>
                 <td>{{$dish->id}}</td>
                 <td>{{$dish->name}}</td>
@@ -43,7 +43,8 @@
                 <td>
                   {{$order->total_price}}
                 </td>
-                <td>qtà</td>
+
+                <td>{{$order->dish_quantity}}</td>
               </tr>
               <tr>
 

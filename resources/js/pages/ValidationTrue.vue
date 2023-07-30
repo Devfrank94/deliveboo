@@ -41,6 +41,10 @@ export default {
 
 <style>
 
+section{
+  padding-top: 100px;
+  height: calc(100vh - 242px);
+}
 
 .thankyou-wrapper{
   width:100%;
