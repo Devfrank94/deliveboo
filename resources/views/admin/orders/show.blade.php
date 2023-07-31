@@ -5,9 +5,9 @@
 <div class="container my-4">
 
   <h1 class="mb-5 text-center"> Ordini di {{$order->surname_user}} {{$order->name_user}}
-    <a href="{{route('admin.orders.edit', $order)}}" class="btn btn-warning mx-3">
+    {{-- <a href="{{route('admin.orders.edit', $order)}}" class="btn btn-warning mx-3">
       <i class="fa-regular fa-pen-to-square" title="Modifica"></i>
-    </a>
+    </a> --}}
 
 
   </h1>
@@ -30,6 +30,7 @@
                 <th scope="col">Foto</th>
                 <th scope="col">Prezzo</th>
                 <th scope="col">Quantità</th>
+                <th scope="col">Prezzo totale</th>
               </tr>
             </thead>
             <tbody>
@@ -41,10 +42,11 @@
                   <img class="mt-3 rounded-2" style="width: 200px" id="prev-image" src="{{ asset('storage/' . $dish->image_path) }}" onerror="this.src='/img/no_image.jpg'" alt="">
                 </td>
                 <td>
-                  {{$order->total_price}}
+                  {{$dish->price}}
                 </td>
 
                 <td>{{$order_pivot[$key]->dish_quantity}}</td>
+                <td>{{($dish->price)*$order_pivot[$key]->dish_quantity}}&euro;</td>
               </tr>
               <tr>
 
