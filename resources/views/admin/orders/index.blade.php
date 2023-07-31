@@ -59,18 +59,18 @@
 
 
             {{-- Edit --}}
-            <a href="{{route('admin.orders.edit', $order)}}" class="btn btn-warning" title="Modifica">
+            {{-- <a href="{{route('admin.orders.edit', $order)}}" class="btn btn-warning" title="Modifica">
               <i class="fa-solid fa-pencil"></i>
-            </a>
+            </a> --}}
 
 
             {{-- Delete --}}
 
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" title="Elimina" data-bs-toggle="modal" data-bs-target="{{'#' . $order->id}}">
+            {{-- <button type="button" class="btn btn-danger" title="Elimina" data-bs-toggle="modal" data-bs-target="{{'#' . $order->id}}">
               <i class="fa-solid fa-trash-can"></i>
-            </button>
+            </button> --}}
 
             <!-- Modal -->
             <div class="modal fade" id="{{$order->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -33,10 +33,10 @@ export default {
 <!-- menu header -->
 
         <div class="button-head">
-            <button><a href="/admin">Account</a></button>
+            <button><a href="/admin" class="py-2">Account</a></button>
             <button><a href="/#sec-3">Come Funziona</a></button>
             <button class="fs-3">
-                <router-link :to="{ name: 'cart' }"><CartIcon/></router-link>
+                <router-link :to="{ name: 'cart' }"><i class="fa-solid fa-cart-shopping fs-4"></i></router-link>
             </button>
 
         </div>

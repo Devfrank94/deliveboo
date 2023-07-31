@@ -53,7 +53,7 @@ export default {
 <template>
   <div class="cart-icon">
     <i class="fas fa-shopping-cart"></i>
-    <span v-if="cartItemCount" @mouseover="togglePopup" @mouseleave="togglePopup" class="cart-item-count bg-primary">{{ store.countPopUp }}</span>
+    <span v-if="cartItemCount" @mouseover="togglePopup" @mouseleave="togglePopup"  class="cart-item-count bg-primary">{{ store.countPopUp }}</span>
     <div v-if="isPopupVisible" class="cart-popup">
     <table class="table p-3 table-bordered border border-2 align-middle">
   <thead>
@@ -63,7 +63,7 @@ export default {
   <tbody>
     <tr v-for="product in cartItems" :key="product.id">
       <td>
-        <img v-if="product.image_path != null && product.image_path !='' " :src="product.image_path">
+        <img v-if="product.image_path != null && product.image_path !='' " :src="'/' + product.image_path">
         <img v-else src="../../../../public/img/no_image.jpg">
       </td>
       <td>{{ product.name }}</td>

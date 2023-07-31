@@ -58,7 +58,7 @@
 
             {{--------------- DESCRIZIONE PIATTO -----------------}}
             <div class="mb-4">
-                <label for="description" class="form-label form-control @error('description') is-invalid @enderror">Descrizione (*)</label>
+                <label for="description" class="form-label @error('description') is-invalid @enderror">Descrizione (*)</label>
                 <textarea class="form-control"  name="description" id="description" value="{{ old('description', $dish?->description) }}" cols="30" rows="10" placeholder="Descrivi il piatto">{{ old('description', $dish?->description) }}</textarea>
                 @error('description')
                     <p class="text-danger">{{ $message }}</p>
@@ -67,7 +67,7 @@
 
             {{--------------- INGREDIENTI PIATTO-----------------}}
             <div class="mb-4">
-                <label for="ingredients" class="form-label form-label form-control @error('ingredients') is-invalid @enderror">Ingredienti: (*)</label>
+                <label for="ingredients" class="form-label form-label @error('ingredients') is-invalid @enderror">Ingredienti: (*)</label>
                 <textarea class="form-control"  name="ingredients" id="ingredients" value="{{ old('ingredients', $dish?->ingredients) }}" cols="30" rows="10" placeholder="Inserisci ingredienti">{{ old('ingredients', $dish?->ingredients) }}</textarea>
                 @error('ingredients')
                     <p class="text-danger">{{ $message }}</p>

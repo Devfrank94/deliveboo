@@ -33,7 +33,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($order->dishes as $dish)
+              @foreach ($order->dishes as $key => $dish)
               <tr>
                 <td>{{$dish->id}}</td>
                 <td>{{$dish->name}}</td>
@@ -44,18 +44,17 @@
                   {{$order->total_price}}
                 </td>
 
-                <td>{{$order->dish_quantity}}</td>
+                <td>{{$order_pivot[$key]->dish_quantity}}</td>
               </tr>
               <tr>
 
-              @endforeach
-            </tbody>
+                @endforeach
+              </tbody>
           </table>
         </div>
 
 
         <div class="d-flex flex-column align-items-end mx-5">
-          <h5>Quantità totale piatti: - </h5>
           <h4> Totale Ordine: {{$order->total_price}} &euro; </h4>
         </div>
       </div>

@@ -97,12 +97,6 @@ export default {
       console.log(localStorage);
     },
 
-    toggleDivs() {
-      this.toggle = !this.toggle;
-      this.showDiv1 = this.toggle;
-      this.showDiv2 = this.toggle;
-    },
-
 
       getApi(){
       store.loaded = false;
@@ -134,7 +128,7 @@ export default {
       <img :src="restaurant.image_path" :alt="restaurant.name">
     </div>
 
-    <div id="name-container">
+    <div id="name-container" class="py-3">
         <h1>{{ restaurant.name }}</h1>
       </div>
 
@@ -157,19 +151,15 @@ export default {
             <span>{{ dish.price }} &euro; </span>
           </div>
 
-          <div class="plate-description mbn-5">
-            <strong>Più dettagli <i @click="toggleDivs" class="fa-solid fa-caret-down"></i></strong>
-          </div>
 
-          <div v-if="showDiv1" class="description mbn-5">
+          <div class="description mbn-5">
             <strong>Descrizione:</strong>
-            <div>{{ dish.description  }}</div>
+            <div v-html="dish.description"></div>
           </div>
 
-          <div v-if="showDiv2" class="ingredients mbn-5">
+          <div class="ingredients mbn-5">
             <strong>Ingredienti:</strong>
-            <div>
-              {{  dish.ingredients }}
+            <div v-html="dish.ingredients">
             </div>
           </div>
 

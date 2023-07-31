@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Dish;
 use App\Http\Requests\OrderRequest;
+use App\Models\DishOrder;
+use App\Models\Restaurant;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -18,7 +21,30 @@ class OrderController extends Controller
      */
     public function index()
     {
-      $orders = Order::all();
+      $ordersArray = [];
+      $orders = [];
+      $orders_ids = [];
+      $order_pivot = [];
+      $restaurant = Restaurant::where('user_id', '=', Auth::user()->id)->first();
+      $dishes     = $restaurant->dishes()->get();
+      foreach($dishes as $dish){
+        $order_pivot    = DishOrder::where('dish_id', $dish->id)->get();
+        foreach ($order_pivot as $order) {
+          if(!in_array($order->order_id, $orders_ids)){
+            $orders_ids[] = $order->order_id;
+          }
+        }
+      }
+
+      asort($orders_ids);
+
+      foreach($orders_ids as $orderItem){
+        $order = Order::where('id', $orderItem)->with('dishes')->first();
+        if($order != null && !in_array($order, $orders)){
+          $orders[] = $order;
+        };
+      }
+
       return view('admin.orders.index', compact('orders'));
     }
 
@@ -70,15 +96,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order, Dish $dish)
+    public function show(Order $order)
     {
-        $orders = Order::all();
-        $dishes = Dish::all();
+      $restaurant = Restaurant::where('user_id', '=', Auth::user()->id)->first();
+      $order_pivot = DishOrder::where('order_id', $order->id)->get();
 
-        $date = date_create($order->date);
-        $date_formatted = date_format($date, 'd/m/Y' );
-
-        return view('admin.orders.show', compact('order', 'orders', 'dish', 'dishes', 'date_formatted'));
+      return view('admin.orders.show', compact('order', 'order_pivot', 'restaurant'));
     }
 
     /**

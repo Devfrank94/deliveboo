@@ -39,7 +39,7 @@ export default {
 </template>
 
 
-<style>
+<style scoped>
 
 section{
   padding-top: 100px;
